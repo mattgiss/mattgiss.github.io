@@ -1,22 +1,36 @@
 # gissentanna.com
 
-Personal portfolio site for Matthew Gissentanna — drone mapping and aerial photogrammetry work.
+Static site for `gissentanna.com`, hosted on GitHub Pages. The domain is registered at GoDaddy and pointed here via DNS.
 
-Hosted on GitHub Pages. The domain `gissentanna.com` (registered at GoDaddy) is pointed at this repo via DNS.
+## Layout
 
-## Files
+```
+/                       (root — redirects to /matthew/ for now)
+├── CNAME               (gissentanna.com)
+├── .nojekyll           (skip Jekyll processing)
+├── index.html          (1-line meta-refresh redirect to /matthew/)
+└── matthew/            (Matthew's drone-mapping portfolio)
+    ├── index.html      (the whole portfolio — single page, no build step)
+    ├── images/         (headshot + project hero shots, optimized for web)
+    └── reports/        (ECSC 2019 + 2023 Pix4D reports)
+```
 
-- `index.html` — the whole site (single page, no build step)
-- `images/` — headshot and project hero shots
-- `CNAME` — tells GitHub Pages to serve this site at `gissentanna.com`
-- `.nojekyll` — disables Jekyll processing so files with leading underscores aren't ignored
+Future sections (e.g. `/family/`, `/blog/`) drop in as sibling folders. Replace the root `index.html` with a real hub page when there's more than one section worth linking to.
 
-## Updating
+## Updating the portfolio
 
-To add a new project, edit the `PROJECTS` array near the top of the `<script>` block in `index.html`. Each project is a JS object whose fields mirror the `inputs.yaml` schema from the `drone-mapping-deliverable` skill. Empty fields don't render.
+To add or update a project, edit the `PROJECTS` array near the top of the `<script>` block in `matthew/index.html`. Each project is a JS object whose fields mirror the `inputs.yaml` schema from the `drone-mapping-deliverable` skill. Empty fields don't render.
 
-Project hero images go in `images/`, then reference them as `images/your-file.png` in the project's `hero_shot` and `thumbnail` fields.
+Project hero images go in `matthew/images/`, then reference them as `images/your-file.jpg` (relative to the page).
 
-Delivery Report PDFs live in a separate repo (`mattgiss/deliverables`) and resolve at:
+PDFs for new coursework go in `matthew/reports/`, referenced as `reports/your-file.pdf`.
 
-  https://mattgiss.github.io/deliverables/{ParcelCode}_DeliveryReport.pdf
+## Delivery Report PDFs
+
+Client-facing Delivery Reports live in a separate repo (`mattgiss/deliverables`) and resolve at:
+
+```
+https://mattgiss.github.io/deliverables/{ParcelCode}_DeliveryReport.pdf
+```
+
+The portfolio links to them via fully-qualified URLs, so they're unaffected by site restructuring.
