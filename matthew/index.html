@@ -775,6 +775,174 @@
       ],
 
       links: []
+    },
+
+    {
+      project_id: "AVAL-2025-11",
+      project_name: "Crested Butte Avalanche Zone Mapping",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "09 November 2025",
+      site_address: "Crested Butte, CO",
+      county: "",
+      state: "CO",
+      owner_name: "",
+
+      hero_shot: "images/aval-hero.jpg",
+      thumbnail: "images/aval-hero.jpg",
+
+      summary: "Slope-aspect avalanche hazard mapping for Crested Butte — separating spring and fall risk zones across northeast- and southeast-facing slopes.",
+      overview: "Spatial analysis identifying seasonal avalanche zones in the Crested Butte backcountry. Northeast-facing slopes accumulate wind-loaded snow through fall and become unstable first; southeast-facing slopes destabilize later during spring melt. Hazard layers overlaid on a hillshade base for route-planning context.",
+
+      flight: null,
+      processing: { software: "ArcGIS Pro" },
+      crs: {
+        horizontal: "WGS 1984 UTM Zone 13N",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Slope and aspect raster derivation from USGS DEM",
+        "Reclassification into spring vs fall avalanche zones by aspect category",
+        "Overlay on hillshade base for cartographic context"
+      ],
+
+      deliverables: [
+        "Hazard map (PDF)"
+      ],
+
+      links: [
+        { label: "Map (PDF)", url: "reports/AVAL_Report.pdf", primary: true }
+      ]
+    },
+
+    {
+      project_id: "TONGASS-2025-11",
+      project_name: "Tongass Timber Stand Valuation",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "03 November 2025",
+      site_address: "Tongass National Forest, AK",
+      county: "",
+      state: "AK",
+      owner_name: "",
+
+      hero_shot: "images/tongass-hero.jpg",
+      thumbnail: "images/tongass-hero.jpg",
+
+      summary: "Valuation map of timber stands offered for sale in Tongass National Forest — 2,187 acres across four value tiers, $109.83M total.",
+      overview: "Cartographic deliverable inventorying timber stands offered for sale and classifying each by per-square-foot valuation tier. Output supports prospective bidder evaluation by visualizing stand boundaries, value class, and acreage in a single sheet.",
+
+      flight: null,
+      processing: { software: "ArcGIS Pro" },
+      crs: null,
+      parcel_stats: null,
+      coverage_acres: 2187,
+
+      methods: [
+        "Timber stand polygons digitized from agency source data",
+        "Per-square-foot value classified into 4 tiers (Jenks natural breaks)",
+        "Per-stand acreage labeled directly on the map for transparency"
+      ],
+
+      deliverables: [
+        "Valuation map (PDF)"
+      ],
+
+      links: [
+        { label: "Map (PDF)", url: "reports/TONGASS_Report.pdf", primary: true }
+      ]
+    },
+
+    {
+      project_id: "POWAY-2025-11",
+      project_name: "Poway Fire Station Siting Analysis",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "08 November 2025",
+      site_address: "City of Poway, CA",
+      county: "San Diego County",
+      state: "CA",
+      owner_name: "",
+
+      hero_shot: "images/poway-hero.jpg",
+      thumbnail: "images/poway-hero.jpg",
+
+      summary: "Multi-criteria suitability analysis identifying candidate parcels for a new fire station in Poway — funnels 113 → 79 → 35 → 29 parcels as criteria tighten.",
+      overview: "Suitability model identifying buildable parcels for a new fire station within Poway city limits. Eight site criteria (slope, road access, ownership, zoning, etc.) progressively narrow the candidate set. The funnel exposes the trade-offs between strict criteria and viable site count.",
+
+      flight: null,
+      processing: { software: "ArcGIS Pro" },
+      crs: {
+        horizontal: "NAD 1983 StatePlane California VI FIPS 0406 Feet",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Slope raster derivation, reclassified at <4% / <7% / <10% thresholds",
+        "Parcel attribute filtering by ownership type and zoning",
+        "Stacked criteria intersection: 8 layers applied incrementally"
+      ],
+
+      deliverables: [
+        "Suitability map with criteria funnel (PDF)"
+      ],
+
+      links: [
+        { label: "Map (PDF)", url: "reports/POWAY_Report.pdf", primary: true }
+      ]
+    },
+
+    {
+      project_id: "FBA-2025-12",
+      project_name: "Birthplaces of Foundational Black American Innovators",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "December 2025",
+      site_address: "Eastern United States",
+      county: "",
+      state: "",
+      owner_name: "",
+
+      hero_shot: "images/fba-hero.jpg",
+      thumbnail: "images/fba-hero.jpg",
+
+      summary: "Thematic map of the birthplaces of Foundational Black American Innovators (1755–1902), classified by contribution type — health and science, computing and telecom, infrastructure, everyday innovation.",
+      overview: "Final project for GIS 4504 Cartography. Identifies and maps the birthplaces of individuals whose innovations shaped American science, infrastructure, and daily life between 1755 and 1902. Each location is symbolized by contribution category to surface geographic patterns in foundational Black American innovation.",
+
+      flight: null,
+      processing: { software: "ArcGIS Pro" },
+      crs: null,
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Source data compiled from biographical and historical records",
+        "Contribution categorized into 4 thematic classes",
+        "Cartographic design: poster-format layout, contribution-coded markers, ocean masking for legibility"
+      ],
+
+      deliverables: [
+        "Poster-format thematic map (PDF)"
+      ],
+
+      links: [
+        { label: "Map (PDF)", url: "reports/FBA_Report.pdf", primary: true }
+      ]
     }
 
     /* ---- TEMPLATE — copy this whole block (with the comma) and paste above ----
