@@ -2,9 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Matthew Gissentanna — Drone Mapping & Aerial Photogrammetry</title>
   <meta name="description" content="FAA Part 107 remote pilot producing survey-grade orthomosaics, 3D models, and feature-extracted maps. Denver, Colorado.">
+  <link rel="canonical" href="https://gissentanna.com/matthew/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Matthew Gissentanna — Drone Mapping & Aerial Photogrammetry">
+  <meta property="og:description" content="FAA Part 107 remote pilot producing survey-grade orthomosaics, 3D models, and feature-extracted maps. Denver, Colorado.">
+  <meta property="og:url" content="https://gissentanna.com/matthew/">
+  <meta property="og:image" content="https://gissentanna.com/matthew/images/headshot.jpg">
+  <meta property="og:site_name" content="Liquid Sun Creative">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Matthew Gissentanna — Drone Mapping & Aerial Photogrammetry">
+  <meta name="twitter:description" content="FAA Part 107 remote pilot producing survey-grade orthomosaics, 3D models, and feature-extracted maps. Denver, Colorado.">
+  <meta name="twitter:image" content="https://gissentanna.com/matthew/images/headshot.jpg">
+
+  <!-- Structured data: Person + ProfessionalService (local SEO signals) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://gissentanna.com/matthew/#person",
+        "name": "Matthew Gissentanna",
+        "url": "https://gissentanna.com/matthew/",
+        "image": "https://gissentanna.com/matthew/images/headshot.jpg",
+        "jobTitle": "Drone Mapping & Aerial Photogrammetry Specialist",
+        "hasCredential": "FAA Part 107 Remote Pilot",
+        "knowsAbout": ["Drone mapping", "Aerial photogrammetry", "Orthomosaic generation", "Point cloud classification", "GIS", "ArcGIS Pro", "PIX4Dmatic", "RTK"],
+        "worksFor": { "@id": "https://gissentanna.com/matthew/#service" }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://gissentanna.com/matthew/#service",
+        "name": "Liquid Sun Creative",
+        "url": "https://gissentanna.com/matthew/",
+        "image": "https://gissentanna.com/matthew/images/headshot.jpg",
+        "description": "Survey-grade drone mapping and aerial photogrammetry: orthomosaics, 3D models, DSM/DTM, classified point clouds, and feature extraction.",
+        "founder": { "@id": "https://gissentanna.com/matthew/#person" },
+        "areaServed": [
+          { "@type": "City", "name": "Denver", "containedInPlace": { "@type": "State", "name": "Colorado" } },
+          { "@type": "City", "name": "Brighton", "containedInPlace": { "@type": "State", "name": "Colorado" } }
+        ],
+        "address": { "@type": "PostalAddress", "addressLocality": "Brighton", "addressRegion": "CO", "addressCountry": "US" },
+        "knowsAbout": ["Drone mapping", "Aerial photogrammetry", "Orthomosaic", "Photogrammetry", "GIS", "Part 107"]
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alata&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,6 +71,10 @@
   </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- ==========================================================
      LIQUID SUN CREATIVE — PORTFOLIO  (schema-aligned v2)
@@ -1083,7 +1145,7 @@
     if (p.delivery_date) metaBits.push(p.delivery_date);
 
     return ''
-      + '<article class="lsc-card" data-idx="' + idx + '" data-cat="' + (p.category || '') + '" tabindex="0">'
+      + '<article class="lsc-card" id="' + (p.project_id || '') + '" data-idx="' + idx + '" data-cat="' + (p.category || '') + '" tabindex="0">'
       +   '<div class="' + imgClass + '" ' + imgStyle + '>'
       +     (p.category ? '<span class="lsc-card-tag" ' + tagStyle + '>' + p.category + '</span>' : '')
       +     (p.status ? '<span class="lsc-card-status ' + statusClass + '">' + p.status + '</span>' : '')
@@ -1262,6 +1324,20 @@
   closeBtn.addEventListener('click', closeModal);
   backdrop.addEventListener('click', function(e) { if (e.target === backdrop) closeModal(); });
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  // Deep-link support: /matthew/#<project_id> scrolls to the card and opens its modal.
+  // Powers the internal links from blog posts (e.g. #CCR953-2025-11).
+  function openFromHash() {
+    const id = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+    if (!id) return;
+    const idx = VISIBLE.findIndex(function(p) { return p.project_id === id; });
+    if (idx === -1) return;
+    const card = grid.querySelector('[data-idx="' + idx + '"]');
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    openModal(idx);
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 })();
 </script>
 </div>

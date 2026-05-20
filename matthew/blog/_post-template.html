@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     BLOG POST TEMPLATE — Liquid Sun Creative / Field Notes
+     HOW TO ADD A POST:
+       1. Copy this file to:  /matthew/blog/<your-slug>/index.html
+          (one folder per post = clean URL /matthew/blog/<your-slug>/)
+       2. Replace every {{PLACEHOLDER}} below.
+       3. Confirm GTM-KTJSH5SZ matches the real container ID (head + noscript).
+       4. Add a <li> for the post to /matthew/blog/index.html (newest first).
+       5. Add the post URL to /sitemap.xml with today's <lastmod>.
+       6. Link back to relevant portfolio projects in .post-related
+          using /matthew/#<project_id> (e.g. #CCR953-2025-11) — this is the
+          internal-linking strategy that builds topical authority.
+     SEO checklist per post: unique <title> (≤60 chars), meta description
+       (≤155 chars), canonical, OG/Twitter, BlogPosting JSON-LD, ≥1 internal link.
+     ============================================================ -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{POST TITLE}}</title>
+  <meta name="description" content="{{META DESCRIPTION ≤155 CHARS}}">
+  <link rel="canonical" href="https://gissentanna.com/matthew/blog/{{SLUG}}/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{POST TITLE}}">
+  <meta property="og:description" content="{{META DESCRIPTION}}">
+  <meta property="og:url" content="https://gissentanna.com/matthew/blog/{{SLUG}}/">
+  <meta property="og:image" content="https://gissentanna.com/matthew/images/{{HERO IMAGE}}">
+  <meta property="article:published_time" content="{{YYYY-MM-DD}}">
+  <meta property="article:author" content="Matthew Gissentanna">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{POST TITLE}}">
+  <meta name="twitter:description" content="{{META DESCRIPTION}}">
+  <meta name="twitter:image" content="https://gissentanna.com/matthew/images/{{HERO IMAGE}}">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{POST TITLE}}",
+    "description": "{{META DESCRIPTION}}",
+    "image": "https://gissentanna.com/matthew/images/{{HERO IMAGE}}",
+    "datePublished": "{{YYYY-MM-DD}}",
+    "dateModified": "{{YYYY-MM-DD}}",
+    "author": { "@type": "Person", "name": "Matthew Gissentanna", "url": "https://gissentanna.com/matthew/" },
+    "publisher": { "@type": "Organization", "name": "Liquid Sun Creative", "logo": { "@type": "ImageObject", "url": "https://gissentanna.com/matthew/images/headshot.jpg" } },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gissentanna.com/matthew/blog/{{SLUG}}/" },
+    "keywords": ["{{KEYWORD 1}}", "{{KEYWORD 2}}", "{{KEYWORD 3}}"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../blog.css">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="blog-wrap">
+  <nav class="blog-top">
+    <a href="/matthew/">← Portfolio</a>
+    <span class="sep">/</span>
+    <a href="/matthew/blog/">Field Notes</a>
+    <span class="sep">/</span>
+    <span>{{SHORT TITLE}}</span>
+  </nav>
+
+  <header class="post-header">
+    <span class="post-tag">{{CATEGORY}}</span>
+    <h1 class="post-title">{{POST TITLE}}</h1>
+    <div class="post-byline">By Matthew Gissentanna · FAA Part 107 · {{DD Month YYYY}} · {{N}} min read</div>
+  </header>
+
+  <article class="post-body">
+    <p>{{Opening paragraph — hook + what the reader will learn.}}</p>
+
+    <h2>{{Section heading}}</h2>
+    <p>{{Body...}}</p>
+
+    <div class="post-callout">{{Optional key stat or pull-out fact.}}</div>
+
+    <blockquote>{{Optional pull quote.}}</blockquote>
+  </article>
+
+  <aside class="post-related">
+    <h4>Related work</h4>
+    <ul>
+      <li><a href="/matthew/#{{PROJECT_ID}}">{{Related portfolio project}}</a></li>
+      <li><a href="/matthew/">Drone mapping &amp; photogrammetry portfolio</a></li>
+    </ul>
+  </aside>
+
+  <p class="blog-foot">Liquid Sun Creative · <a href="/matthew/blog/">More field notes</a></p>
+</div>
+</body>
+</html>
