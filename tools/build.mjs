@@ -59,12 +59,12 @@ function projectPage(p) {
   const url = `${BASE}/matthew/work/${s}/`;
   const hero = p.hero_shot || p.thumbnail || "";
   const heroAbs = hero ? `${BASE}/matthew/${hero}` : `${BASE}/matthew/images/headshot.jpg`;
-  const title = `${p.project_name} — ${p.category} | Matthew Gissentanna`;
+  const title = `${p.project_name} | ${p.category} | Matthew Gissentanna`;
   const desc = (p.summary || p.overview || "").slice(0, 200);
   const metaParts = [loc(p), p.delivery_date && "Delivered " + p.delivery_date, p.owner_name && "Owner: " + p.owner_name, p.coverage_acres && p.coverage_acres + " ac coverage"].filter(Boolean);
 
   const sections = [];
-  if (hero) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)} — ${esc(loc(p) || p.category)}">`);
+  if (hero) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}">`);
   if (p.overview) sections.push(`<section><h2>Overview</h2><p>${esc(p.overview)}</p></section>`);
   const fr = flightRows(p.flight); if (fr.length) sections.push(`<section><h2>Flight</h2>${specsHTML(fr)}</section>`);
   const prr = procRows(p.processing); if (prr.length) sections.push(`<section><h2>Processing</h2>${specsHTML(prr)}</section>`);
@@ -157,7 +157,7 @@ console.log(`wrote ${count} project pages`);
 const idxPath = path.join(ROOT, "matthew", "index.html");
 let idx = fs.readFileSync(idxPath, "utf8");
 const noscript = `<noscript>\n<ul class="lsc-project-fallback">\n${VISIBLE.map((p) =>
-  `  <li><a href="work/${slug(p.project_id)}/">${esc(p.project_name)}</a> — ${esc(p.summary || "")}</li>`).join("\n")}\n</ul>\n</noscript>`;
+  `  <li><a href="work/${slug(p.project_id)}/">${esc(p.project_name)}</a>: ${esc(p.summary || "")}</li>`).join("\n")}\n</ul>\n</noscript>`;
 const START = "<!-- PROJECTS-FALLBACK:START -->", END = "<!-- PROJECTS-FALLBACK:END -->";
 const block = `${START}\n${noscript}\n${END}`;
 if (idx.includes(START) && idx.includes(END)) {

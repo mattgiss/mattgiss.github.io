@@ -24,8 +24,8 @@ export const PROJECTS = [
       thumbnail: "images/ccr953-hero.jpg",
 
       // Narrative
-      summary: "First end-to-end RTK photogrammetric deliverable for a 66-acre rural property in Orangeburg County, SC — orthomosaic, DSM, DTM, classified point cloud, and 5-ft contours packaged into a 26-page Delivery Report.",
-      overview: "End-to-end UAS photogrammetry mission over two parcels totaling 67.26 county-record acres. The Matrice 4E flew 270 images at 390 ft AGL with 80/70% forward/side overlap under diffuse overcast conditions using Point One Navigation network RTK Fixed — no GCPs deployed. PIX4Dmatic v2.5.1 returned 100% camera calibration, 1.77M automatic tie points, and 33.9M dense points at 0.111 ft/px GSD. ArcGIS Pro post-processing produced a 0.5 ft/px DTM, 5-ft contours clipped to the parcel boundary, and parcel-aligned zonal statistics. This project serves as the baseline template for the Liquid Sun Creative 26-page Delivery Report format.",
+      summary: "First end-to-end RTK photogrammetric deliverable for a 66-acre rural property in Orangeburg County, SC. Includes orthomosaic, DSM, DTM, classified point cloud, and 5-ft contours packaged into a 26-page Delivery Report.",
+      overview: "End-to-end UAS photogrammetry mission over two parcels totaling 67.26 county-record acres. The Matrice 4E flew 270 images at 390 ft AGL with 80/70% forward/side overlap under diffuse overcast conditions using Point One Navigation network RTK Fixed, with no GCPs deployed. PIX4Dmatic v2.5.1 returned 100% camera calibration, 1.77M automatic tie points, and 33.9M dense points at 0.111 ft/px GSD. ArcGIS Pro post-processing produced a 0.5 ft/px DTM, 5-ft contours clipped to the parcel boundary, and parcel-aligned zonal statistics. This project serves as the baseline template for the Liquid Sun Creative 26-page Delivery Report format.",
       key_technical_challenge: "Ground classification under dense canopy required iterative refinement from 5 ft to 1 ft DEM resolution.",
       lessons_learned: "Photogrammetry has real line-of-sight limits under canopy. Iterative classification at progressively finer DEM resolution significantly improves ground/canopy separation. RTK Fixed without GCPs is reliable for property-scale mapping but precludes ASPRS class assignment.",
 
@@ -65,7 +65,7 @@ export const PROJECTS = [
       coverage_acres: 113.131,
 
       methods: [
-        "390 ft AGL nadir grid — 80% forward / 70% side overlap",
+        "390 ft AGL nadir grid at 80% forward / 70% side overlap",
         "RTK Fixed via Point One Navigation network RTK; no GCPs deployed",
         "PIX4Dmatic: calibration to dense cloud to iterative ground classification to DSM to orthomosaic",
         "ArcGIS Pro: DTM interpolation at 0.5 ft/px, 5-ft contour generation, parcel-clipped contours, zonal statistics",
@@ -177,8 +177,8 @@ export const PROJECTS = [
       hero_shot: "images/ecsc-hero.jpg",
       thumbnail: "images/ecsc-hero.jpg",
 
-      summary: "Multi-temporal feature extraction across two captures of the same service road — 36 features identified in 2023 vs 32 in 2019, with detailed analysis of detection conditions.",
-      overview: "Compared two orthomosaic captures of the Energy Capital Sports Complex service road to inventory drainage, lighting, and access infrastructure. Examined how lighting, vegetation growth, and surface contrast between captures shifted detection rates by feature type — the 2019 fresh-asphalt phase outperformed 2023 for manholes despite a narrower footprint.",
+      summary: "Multi-temporal feature extraction across two captures of the same service road. 36 features identified in 2023 vs 32 in 2019, with detailed analysis of detection conditions.",
+      overview: "Compared two orthomosaic captures of the Energy Capital Sports Complex service road to inventory drainage, lighting, and access infrastructure. Examined how lighting, vegetation growth, and surface contrast between captures shifted detection rates by feature type. The 2019 fresh-asphalt phase outperformed 2023 for manholes despite a narrower footprint.",
       key_technical_challenge: "Maturing roadside vegetation between captures partially occluded drains and pole bases by 2023, reducing detection in features that had been cleanly identifiable two years prior.",
       lessons_learned: "Pre-flight vegetation trimming and flying closer to solar noon under overcast conditions would meaningfully improve repeat-capture detection rates. Pushing forward/side overlap above 75/80% adds resilience where shadows and occlusion are unavoidable.",
 
@@ -208,7 +208,7 @@ export const PROJECTS = [
 
     {
       project_id: "TIOGA-2026-05",
-      project_name: "Tioga Community Hall — Project Alignment",
+      project_name: "Tioga Community Hall Subproject Alignment",
       category: "Coursework",
       status: "Delivered",
       portfolio_worthy: "Yes",
@@ -262,7 +262,7 @@ export const PROJECTS = [
       hero_shot: "images/aval-hero.jpg",
       thumbnail: "images/aval-hero.jpg",
 
-      summary: "Slope-aspect avalanche hazard mapping for Crested Butte — separating spring and fall risk zones across northeast- and southeast-facing slopes.",
+      summary: "Slope-aspect avalanche hazard mapping for Crested Butte, separating spring and fall risk zones across northeast- and southeast-facing slopes.",
       overview: "Spatial analysis identifying seasonal avalanche zones in the Crested Butte backcountry. Northeast-facing slopes accumulate wind-loaded snow through fall and become unstable first; southeast-facing slopes destabilize later during spring melt. Hazard layers overlaid on a hillshade base for route-planning context.",
 
       flight: null,
@@ -306,7 +306,7 @@ export const PROJECTS = [
       hero_shot: "images/tongass-hero.jpg",
       thumbnail: "images/tongass-hero.jpg",
 
-      summary: "Valuation map of timber stands offered for sale in Tongass National Forest — 2,187 acres across four value tiers, $109.83M total.",
+      summary: "Valuation map of timber stands offered for sale in Tongass National Forest: 2,187 acres across four value tiers, $109.83M total.",
       overview: "Cartographic deliverable inventorying timber stands offered for sale and classifying each by per-square-foot valuation tier. Output supports prospective bidder evaluation by visualizing stand boundaries, value class, and acreage in a single sheet.",
 
       flight: null,
@@ -346,7 +346,7 @@ export const PROJECTS = [
       hero_shot: "images/poway-hero.jpg",
       thumbnail: "images/poway-hero.jpg",
 
-      summary: "Multi-criteria suitability analysis identifying candidate parcels for a new fire station in Poway — funnels 113 → 79 → 35 → 29 parcels as criteria tighten.",
+      summary: "Multi-criteria suitability analysis identifying candidate parcels for a new fire station in Poway. Funnels 113 → 79 → 35 → 29 parcels as criteria tighten.",
       overview: "Suitability model identifying buildable parcels for a new fire station within Poway city limits. Eight site criteria (slope, road access, ownership, zoning, etc.) progressively narrow the candidate set. The funnel exposes the trade-offs between strict criteria and viable site count.",
 
       flight: null,
@@ -390,7 +390,7 @@ export const PROJECTS = [
       hero_shot: "images/fba-hero.jpg",
       thumbnail: "images/fba-hero.jpg",
 
-      summary: "Thematic map of the birthplaces of Foundational Black American Innovators (1755–1902), classified by contribution type — health and science, computing and telecom, infrastructure, everyday innovation.",
+      summary: "Thematic map of the birthplaces of Foundational Black American Innovators (1755–1902), classified by contribution type: health and science, computing and telecom, infrastructure, and everyday innovation.",
       overview: "Final project for GIS 4504 Cartography. Identifies and maps the birthplaces of individuals whose innovations shaped American science, infrastructure, and daily life between 1755 and 1902. Each location is symbolized by contribution category to surface geographic patterns in foundational Black American innovation.",
 
       flight: null,
@@ -430,9 +430,9 @@ export const PROJECTS = [
       hero_shot: "images/greatbasin-hero.jpg",
       thumbnail: "images/greatbasin-hero.jpg",
 
-      summary: "NPS-brochure-style reference map of Great Basin National Park — hypsometric relief, trails, and visitor facilities styled after the National Park Service map standard.",
+      summary: "NPS-brochure-style reference map of Great Basin National Park, with hypsometric relief, trails, and visitor facilities styled after the National Park Service map standard.",
       overview: "A cartographic design exercise reproducing the visual language of official National Park Service brochure maps: hypsometric tinting and hillshade for terrain, a restrained NPS palette, and a full symbology set for trails, campgrounds, visitor centers, and points of interest across the park and the surrounding Snake and Spring Valley context. Peaks, ranges, and the Highland Ridge Wilderness boundary are labeled to NPS typographic conventions.",
-      key_technical_challenge: "Matching the NPS house style — typography hierarchy, terrain shading, and feature symbology — while keeping a dense set of recreation features legible.",
+      key_technical_challenge: "Matching the NPS house style (typography hierarchy, terrain shading, and feature symbology) while keeping a dense set of recreation features legible.",
 
       flight: null,
       processing: { software: "ArcGIS Pro" },
@@ -514,7 +514,7 @@ export const PROJECTS = [
       hero_shot: "images/denver-hero.jpg",
       thumbnail: "images/denver-hero.jpg",
 
-      summary: "A block-group choropleth atlas of Denver — population density, age, ethnicity, gender, and housing — sharing one classification and layout system across the series.",
+      summary: "A block-group choropleth atlas of Denver covering population density, age, ethnicity, gender, and housing, all sharing one classification and layout system across the series.",
       overview: "A demographic atlas mapping U.S. Census variables across Denver block groups in NAD 1983 State Plane Colorado Central (feet). Each sheet uses a shared classification approach, legend structure, and layout so the maps read as a coherent series, with parks and interstates included for orientation.",
       key_technical_challenge: "Designing one classification and layout template that stays legible and comparable across five different demographic variables.",
 
@@ -566,7 +566,7 @@ export const PROJECTS = [
       hero_shot: "images/ustemp-hero.jpg",
       thumbnail: "images/ustemp-hero.jpg",
 
-      summary: "Three-panel isarithmic map of 1991–2020 U.S. temperature normals — 30-year mean, January, and July — at a 5°C isotherm interval.",
+      summary: "Three-panel isarithmic map of 1991–2020 U.S. temperature normals (30-year mean, January, and July) at a 5°C isotherm interval.",
       overview: "An isarithmic mapping exercise interpolating NOAA 1991–2020 climate normals into smooth temperature surfaces for the contiguous United States, presented as three coordinated panels (annual mean, January, July) at a 5°C isotherm interval in NAD 1983 Contiguous USA Albers. A diverging color scheme is keyed to temperature bands.",
       key_technical_challenge: "Producing clean, continuous isotherms from station-based normals while keeping the three panels visually consistent.",
 
