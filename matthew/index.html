@@ -225,7 +225,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ---- CONTACT ---- */
   .lsc-contact {
     margin-top: 5rem; padding-top: 3rem;
-    border-top: 2px solid var(--golden);
+    border-top: 1px solid var(--golden);
     text-align: center;
   }
   .lsc-contact h2 {
@@ -233,6 +233,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     font-size: 1.75rem; letter-spacing: 0.04em; margin: 0 0 0.5rem;
   }
   .lsc-contact p { color: var(--ink-muted); max-width: 48ch; margin: 0 auto 1.75rem; }
+
+  /* ---- FOOTER ---- */
+  .lsc-footer {
+    margin-top: 3.5rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.06em; color: var(--ink-muted);
+  }
   .lsc-contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
   .lsc-contact-cta {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -251,14 +260,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     gap: 3rem;
     align-items: center;
     padding-bottom: 3rem;
-    border-bottom: 2px solid var(--golden);
+    border-bottom: 1px solid var(--golden);
     margin-bottom: 4rem;
   }
 
   .lsc-headshot {
     width: 280px; height: 280px;
     background: var(--linen-warm);
-    border: 1px solid var(--rule);
+    border: 1px solid var(--rule); border-radius: 4px;
     position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
   }
@@ -287,7 +296,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   .lsc-eyebrow {
     font-family: 'Alata', sans-serif;
-    font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+    font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--golden-ink);
     margin-bottom: 1rem;
   }
@@ -320,7 +329,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .lsc-meta span strong {
     display: block; color: var(--golden-ink);
     font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    font-size: 0.62rem; margin-bottom: 0.2rem;
+    font-size: 0.62rem; margin-bottom: 0.4rem;
   }
 
   /* ---- SECTION HEADER + FILTERS ---- */
@@ -873,6 +882,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="lsc-contact-cta sec" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
   </div>
 </section>
+
+<!-- ==== FOOTER ==== -->
+<footer class="lsc-footer">© 2026 Matthew Gissentanna · Brighton, Colorado · Liquid Sun Creative</footer>
 
 <!-- ==== MODAL ==== -->
 <div class="lsc-modal-backdrop" id="lsc-modal-backdrop">
