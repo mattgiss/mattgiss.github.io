@@ -81,3 +81,7 @@ html[data-theme="deskmate"] .crumbs a:hover{ border-bottom-color:#0000aa; }
 html[data-theme="night"] #mg-theme-toggle{ color:#E6E8EB; border-color:#3a4150; background:rgba(40,45,55,.65); }
 html[data-theme="deskmate"] #mg-theme-toggle{ font-family:'VT323',monospace; font-size:18px; letter-spacing:0; text-transform:none; background:#cfd3d5; color:#000; border:2px solid #000; border-radius:0; box-shadow:3px 3px 0 #000; backdrop-filter:none; }
 html[data-theme="deskmate"] #mg-theme-toggle:hover{ background:#0000aa; color:#fff; }
+/* CRT power-on overlay */
+.dm-boot{ position:fixed; inset:0; z-index:99999; pointer-events:none; transform-origin:center; background:#dafcff; animation:dm-crt .66s ease-out forwards; }
+@keyframes dm-crt{ 0%{transform:scaleY(.004);opacity:1;filter:brightness(2.4)} 16%{transform:scaleY(.012);opacity:1} 34%{transform:scaleY(1);opacity:1;filter:brightness(1.9)} 46%{opacity:.85;background:#fff} 58%{opacity:.25} 66%{opacity:.55} 100%{transform:scaleY(1);opacity:0} }
+@media (prefers-reduced-motion: reduce){ .dm-boot{ display:none } }
