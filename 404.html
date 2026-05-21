@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found | Matthew Gissentanna</title>
   <meta name="robots" content="noindex">
-  <script>(function(){function n(){try{if(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)return true;var d=new Date(),h=d.getHours()+d.getMinutes()/60,doy=Math.floor((d-new Date(d.getFullYear(),0,0))/86400000),s=Math.sin(2*Math.PI*(doy-80)/365);return h>=18.25+2*s||h<6.25-2*s;}catch(e){return false;}}function a(){var e=document.documentElement;e.classList.add('theme-transition');e.setAttribute('data-theme',n()?'night':'day');clearTimeout(window.__tt);window.__tt=setTimeout(function(){e.classList.remove('theme-transition')},520);}a();setInterval(a,3e5);if(window.matchMedia){try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',a);}catch(e){}}})();</script>
+  <script>(function(){function n(){try{if(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)return true;var d=new Date(),h=d.getHours()+d.getMinutes()/60,doy=Math.floor((d-new Date(d.getFullYear(),0,0))/86400000),s=Math.sin(2*Math.PI*(doy-80)/365);return h>=18.25+2*s||h<6.25-2*s;}catch(e){return false;}}function ch(){try{return localStorage.getItem('mg-theme');}catch(e){return null;}}function pk(){var c=ch();if(c==='deskmate'||c==='day'||c==='night')return c;return n()?'night':'day';}function lf(){if(document.getElementById('mg-pixel-font'))return;var l=document.createElement('link');l.id='mg-pixel-font';l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap';document.head.appendChild(l);}function a(){var e=document.documentElement,t=pk();if(t==='deskmate')lf();e.classList.add('theme-transition');e.setAttribute('data-theme',t);clearTimeout(window.__tt);window.__tt=setTimeout(function(){e.classList.remove('theme-transition')},520);if(window.__sy)window.__sy();}window.__setTheme=function(v){try{if(v==='auto')localStorage.removeItem('mg-theme');else localStorage.setItem('mg-theme',v);}catch(e){}a();};a();setInterval(a,3e5);if(window.matchMedia){try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',a);}catch(e){}}document.addEventListener('DOMContentLoaded',function(){var b=document.createElement('button');b.id='mg-theme-toggle';b.type='button';window.__sy=function(){var on=document.documentElement.getAttribute('data-theme')==='deskmate';b.setAttribute('data-on',on?'1':'0');b.textContent=on?'Exit DeskMate':'▸ DeskMate';};window.__sy();b.addEventListener('click',function(){var dm=document.documentElement.getAttribute('data-theme')==='deskmate';window.__setTheme(dm?'auto':'deskmate');});document.body.appendChild(b);});})();</script>
   <link rel="canonical" href="https://gissentanna.com/matthew/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,16 @@
     html[data-theme="night"] p{ color:#99a2ac; }
     html[data-theme="night"] a{ background:#F23861; border-color:#F23861; color:#fff; }
     html[data-theme="night"] a:hover{ background:#262b36; border-color:#262b36; }
+    /* DeskMate theme (opt-in retro) */
+    html[data-theme="deskmate"], html[data-theme="deskmate"] body{ background:#00a8a8; color:#000; font-family:'VT323',monospace; }
+    html[data-theme="deskmate"] .code{ color:#0000aa; }
+    html[data-theme="deskmate"] h1{ color:#000; }
+    html[data-theme="deskmate"] p{ color:#1e2630; }
+    html[data-theme="deskmate"] a{ background:#cfd3d5; color:#000; border:2px solid #000; border-radius:0; box-shadow:3px 3px 0 #000; }
+    html[data-theme="deskmate"] a:hover{ background:#0000aa; color:#fff; }
+    #mg-theme-toggle{ position:fixed; right:14px; bottom:14px; z-index:9999; font:600 11px/1 system-ui,sans-serif; letter-spacing:.1em; text-transform:uppercase; padding:8px 12px; cursor:pointer; border-radius:7px; color:inherit; border:1px solid rgba(128,128,128,.45); background:rgba(128,128,128,.14); }
+    html[data-theme="night"] #mg-theme-toggle{ color:#E6E8EB; border-color:#3a4150; }
+    html[data-theme="deskmate"] #mg-theme-toggle{ font-family:'VT323',monospace; font-size:18px; text-transform:none; letter-spacing:0; background:#cfd3d5; color:#000; border:2px solid #000; border-radius:0; box-shadow:3px 3px 0 #000; }
     @media (prefers-reduced-motion: no-preference){
       html.theme-transition, html.theme-transition *{ transition: background-color .45s ease, color .45s ease, border-color .45s ease !important; }
     }

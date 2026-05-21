@@ -59,3 +59,25 @@ ul.list li:last-child{border-bottom:none;}
 .back{display:inline-block;margin-top:2.5rem;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;
   color:var(--ink-muted);text-decoration:none;}
 .back:hover{color:var(--ink);}
+
+/* ---- DeskMate theme (opt-in retro) ---- */
+html[data-theme="deskmate"]{ --ink:#0a0a0a; --ink-muted:#1e2630; --linen:#00a8a8; --linen-warm:#bfc4c7; --golden:#000; --golden-ink:#0000aa; --gamma:#0000aa; --rule:#000; --white:#e7eaec; }
+html[data-theme="deskmate"] body{ background:#00a8a8; }
+html[data-theme="deskmate"] .wrap, html[data-theme="deskmate"] .wrap *{ font-family:'VT323',monospace !important; }
+html[data-theme="deskmate"] h1{ color:#000; }
+html[data-theme="deskmate"] h2{ background:#0000aa; color:#fff; padding:3px 10px; font-family:'Silkscreen',monospace !important; font-size:.95rem; }
+html[data-theme="deskmate"] .tag{ background:#0000aa; color:#fff; }
+html[data-theme="deskmate"] .specs, html[data-theme="deskmate"] .crs{ background:#bfc4c7; border:2px solid #000; box-shadow:4px 4px 0 #000; }
+html[data-theme="deskmate"] .hero-img{ border:2px solid #000; }
+html[data-theme="deskmate"] .btn{ background:#cfd3d5; color:#000; border:2px solid #000; border-radius:0; box-shadow:2px 2px 0 #000; }
+html[data-theme="deskmate"] .btn.sec{ background:#cfd3d5; color:#000; }
+html[data-theme="deskmate"] .btn:hover{ background:#0000aa; color:#fff; }
+html[data-theme="deskmate"] a{ color:#0000aa; }
+html[data-theme="deskmate"] .crumbs a:hover{ border-bottom-color:#0000aa; }
+
+/* ---- Injected theme toggle ---- */
+#mg-theme-toggle{ position:fixed; right:14px; bottom:14px; z-index:9999; font:600 11px/1 system-ui,sans-serif; letter-spacing:.1em; text-transform:uppercase; padding:8px 12px; cursor:pointer; border-radius:7px; color:inherit; border:1px solid rgba(128,128,128,.45); background:rgba(128,128,128,.14); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); }
+#mg-theme-toggle:hover{ border-color:currentColor; }
+html[data-theme="night"] #mg-theme-toggle{ color:#E6E8EB; border-color:#3a4150; background:rgba(40,45,55,.65); }
+html[data-theme="deskmate"] #mg-theme-toggle{ font-family:'VT323',monospace; font-size:18px; letter-spacing:0; text-transform:none; background:#cfd3d5; color:#000; border:2px solid #000; border-radius:0; box-shadow:3px 3px 0 #000; backdrop-filter:none; }
+html[data-theme="deskmate"] #mg-theme-toggle:hover{ background:#0000aa; color:#fff; }

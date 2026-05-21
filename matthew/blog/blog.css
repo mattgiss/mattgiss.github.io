@@ -160,3 +160,21 @@ body {
 @media (max-width: 600px) {
   .blog-wrap { padding: 2.5rem 1.1rem 4rem; }
 }
+
+/* ---- DeskMate theme (opt-in retro) ---- */
+html[data-theme="deskmate"]{ --ink:#0a0a0a; --ink-muted:#1e2630; --linen:#00a8a8; --linen-warm:#bfc4c7; --golden:#000; --gamma:#0000aa; --dusk:#0000aa; --rule:#000; }
+html[data-theme="deskmate"] body{ background:#00a8a8; }
+html[data-theme="deskmate"] .blog-wrap, html[data-theme="deskmate"] .blog-wrap *{ font-family:'VT323',monospace !important; }
+html[data-theme="deskmate"] .blog-h1, html[data-theme="deskmate"] .post-title{ color:#000; }
+html[data-theme="deskmate"] .blog-eyebrow{ color:#0000aa; }
+html[data-theme="deskmate"] .post-tag{ background:#0000aa; color:#fff; font-family:'Silkscreen',monospace !important; }
+html[data-theme="deskmate"] .post-body h2{ background:#0000aa; color:#fff; padding:3px 10px; font-family:'Silkscreen',monospace !important; font-size:1rem; }
+html[data-theme="deskmate"] .post-body a, html[data-theme="deskmate"] .post-readmore, html[data-theme="deskmate"] .blog-foot a{ color:#0000aa; }
+html[data-theme="deskmate"] .post-callout, html[data-theme="deskmate"] .post-body blockquote, html[data-theme="deskmate"] .post-body code{ background:#bfc4c7; border:2px solid #000; box-shadow:3px 3px 0 #000; color:#000; }
+
+/* ---- Injected theme toggle ---- */
+#mg-theme-toggle{ position:fixed; right:14px; bottom:14px; z-index:9999; font:600 11px/1 system-ui,sans-serif; letter-spacing:.1em; text-transform:uppercase; padding:8px 12px; cursor:pointer; border-radius:7px; color:inherit; border:1px solid rgba(128,128,128,.45); background:rgba(128,128,128,.14); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); }
+#mg-theme-toggle:hover{ border-color:currentColor; }
+html[data-theme="night"] #mg-theme-toggle{ color:#E6E8EB; border-color:#3a4150; background:rgba(40,45,55,.65); }
+html[data-theme="deskmate"] #mg-theme-toggle{ font-family:'VT323',monospace; font-size:18px; letter-spacing:0; text-transform:none; background:#cfd3d5; color:#000; border:2px solid #000; border-radius:0; box-shadow:3px 3px 0 #000; backdrop-filter:none; }
+html[data-theme="deskmate"] #mg-theme-toggle:hover{ background:#0000aa; color:#fff; }
