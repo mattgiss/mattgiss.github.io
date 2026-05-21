@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
+  <title>Interactive UAS Map — Liquid Sun Creative | Matthew Gissentanna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="Interactive MapLibre GL viewer for Liquid Sun Creative drone mapping deliverables — orthomosaic, parcel boundaries, and 5 ft contours." />
+  <link rel="canonical" href="https://gissentanna.com/matthew/map/" />
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <style>
+    :root { --panel-bg: rgba(20, 24, 28, 0.88); --accent: #ffb000; --text: #f2f4f6; }
+    html, body { margin: 0; height: 100%; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    #map { position: absolute; inset: 0; }
+
+    .panel {
+      position: absolute; z-index: 2; background: var(--panel-bg); color: var(--text);
+      border-radius: 10px; padding: 14px 16px; backdrop-filter: blur(6px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.35); font-size: 13px; line-height: 1.45;
+    }
+    #info { top: 12px; left: 12px; max-width: 280px; }
+    #info nav { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; font-size: 12px; }
+    #info nav a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    #info nav a:hover { text-decoration: underline; }
+    #info nav .sep { color: #5a626a; }
+    #info h1 { margin: 0 0 2px; font-size: 15px; letter-spacing: 0.2px; }
+    #info .sub { color: var(--accent); font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+    #info dl { margin: 8px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; }
+    #info dt { color: #9aa4ad; }
+    #info dd { margin: 0; }
+
+    #controls { top: 12px; right: 12px; width: 200px; }
+    #controls h2 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #9aa4ad; }
+    .row { display: flex; align-items: center; justify-content: space-between; margin: 7px 0; gap: 8px; }
+    .row label { flex: 1; }
+    select, input[type=range] { width: 100%; }
+    .seg { display: flex; border: 1px solid #3a4148; border-radius: 7px; overflow: hidden; margin-top: 4px; }
+    .seg button { flex: 1; background: transparent; color: var(--text); border: 0; padding: 6px 4px; font-size: 12px; cursor: pointer; }
+    .seg button.active { background: var(--accent); color: #1a1a1a; font-weight: 700; }
+    .switch { position: relative; display: inline-block; width: 38px; height: 20px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; inset: 0; background: #4a525a; border-radius: 20px; transition: .15s; }
+    .slider:before { content: ""; position: absolute; height: 14px; width: 14px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: .15s; }
+    input:checked + .slider { background: var(--accent); }
+    input:checked + .slider:before { transform: translateX(18px); }
+
+    #legend { bottom: 28px; left: 12px; padding: 10px 12px; }
+    #legend .grad { height: 10px; width: 180px; border-radius: 5px; margin: 6px 0 4px;
+      background: linear-gradient(to right, #2c7bb6, #abd9e9, #ffffbf, #fdae61, #d7191c); }
+    #legend .scale { display: flex; justify-content: space-between; font-size: 11px; color: #c8ced3; }
+
+    .maplibregl-popup-content { background: var(--panel-bg); color: var(--text); border-radius: 8px; padding: 10px 12px; }
+    .maplibregl-popup-content b { color: var(--accent); }
+    .maplibregl-popup-anchor-top .maplibregl-popup-tip { border-bottom-color: var(--panel-bg); }
+    .maplibregl-popup-anchor-bottom .maplibregl-popup-tip { border-top-color: var(--panel-bg); }
+    @media (max-width: 600px) { #controls { display: none; } #info { max-width: 220px; } }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div id="map"></div>
+
+  <div id="info" class="panel">
+    <nav>
+      <a href="/matthew/">← Portfolio</a>
+      <span class="sep">/</span>
+      <a href="/matthew/blog/">Field Notes ↗</a>
+    </nav>
+    <h1 id="proj-name">Loading…</h1>
+    <div class="sub">Liquid Sun Creative · UAS Mapping</div>
+    <dl id="proj-meta"></dl>
+  </div>
+
+  <div id="controls" class="panel">
+    <h2>Layers</h2>
+    <div class="row">
+      <label for="proj-select">Project</label>
+    </div>
+    <select id="proj-select"></select>
+
+    <div class="row" style="margin-top:12px;">
+      <label>Basemap</label>
+    </div>
+    <div class="seg" id="basemap-seg">
+      <button data-base="satellite" class="active">Satellite</button>
+      <button data-base="topo">Topo</button>
+    </div>
+
+    <div class="row" style="margin-top:12px;">
+      <label for="ortho-toggle">Orthomosaic</label>
+      <span class="switch"><input type="checkbox" id="ortho-toggle" checked><span class="slider"></span></span>
+    </div>
+    <div class="row">
+      <label for="parcel-toggle">Parcel boundary</label>
+      <span class="switch"><input type="checkbox" id="parcel-toggle" checked><span class="slider"></span></span>
+    </div>
+    <div class="row">
+      <label for="contour-toggle">Contours (5 ft)</label>
+      <span class="switch"><input type="checkbox" id="contour-toggle" checked><span class="slider"></span></span>
+    </div>
+    <div class="row">
+      <label for="opacity">Opacity</label>
+    </div>
+    <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.9" />
+  </div>
+
+  <div id="legend" class="panel">
+    <div style="font-weight:600;font-size:12px;">Elevation (ft, NAVD88)</div>
+    <div class="grad"></div>
+    <div class="scale"><span id="ele-min">—</span><span id="ele-max">—</span></div>
+  </div>
+
+  <script>
+    // ── Project registry ───────────────────────────────────────────────
+    // Add a new drone job by dropping its GeoJSON into data/<code>/ and
+    // appending an entry here. No other code changes needed.
+    const PROJECTS = [
+      {
+        code: "CCR953",
+        name: "CCR953 — Orangeburg County, SC",
+        meta: {
+          "Captured": "2025-11-25",
+          "Sensor": "DJI (RGB)",
+          "Datum": "NAD83(2011) SC State Plane / NAVD88",
+          "GSD": "0.111 ft/px",
+          "Deliverables": "Ortho, DSM, DTM, contours, point cloud"
+        },
+        contours: {
+          url: "data/ccr953/contours.geojson",
+          field: "Contour",
+          interval: 5,
+          indexEvery: 25,   // bolder index contours every 25 ft
+          range: [245, 280] // [min, max] elevation for color ramp
+        },
+        parcel: { url: "data/ccr953/parcel.geojson" },
+        ortho: {
+          url: "data/ccr953/ortho.webp",
+          // image-source corners: TL, TR, BR, BL ([lng, lat])
+          coordinates: [
+            [-81.1037443, 33.486507],
+            [-81.0938857, 33.486507],
+            [-81.0938857, 33.4805617],
+            [-81.1037443, 33.4805617]
+          ]
+        }
+      }
+    ];
+
+    const ESRI_ATTR = "Imagery © Esri, Maxar, Earthstar Geographics";
+    const baseStyle = () => ({
+      version: 8,
+      glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+      sources: {
+        satellite: {
+          type: "raster", tileSize: 256, attribution: ESRI_ATTR,
+          tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"]
+        },
+        topo: {
+          type: "raster", tileSize: 256, attribution: "Map © Esri",
+          tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"]
+        }
+      },
+      layers: [
+        { id: "satellite", type: "raster", source: "satellite", layout: { visibility: "visible" } },
+        { id: "topo", type: "raster", source: "topo", layout: { visibility: "none" } }
+      ]
+    });
+
+    const map = new maplibregl.Map({
+      container: "map",
+      style: baseStyle(),
+      center: [-81.0988, 33.4834],
+      zoom: 15,
+      maxZoom: 21,
+      attributionControl: { compact: true }
+    });
+    map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "bottom-right");
+    map.addControl(new maplibregl.ScaleControl({ unit: "imperial" }), "bottom-left");
+
+    let current = null;
+
+    function rampExpr(field, [lo, hi]) {
+      const mid = (a, b, t) => a + (b - a) * t;
+      return [
+        "interpolate", ["linear"], ["get", field],
+        lo,            "#2c7bb6",
+        mid(lo,hi,.25), "#abd9e9",
+        mid(lo,hi,.5),  "#ffffbf",
+        mid(lo,hi,.75), "#fdae61",
+        hi,            "#d7191c"
+      ];
+    }
+
+    function loadProject(proj) {
+      current = proj;
+      document.getElementById("proj-name").textContent = proj.name;
+      const dl = document.getElementById("proj-meta");
+      dl.innerHTML = Object.entries(proj.meta)
+        .map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+      document.getElementById("ele-min").textContent = proj.contours.range[0] + " ft";
+      document.getElementById("ele-max").textContent = proj.contours.range[1] + " ft";
+
+      ["ortho", "parcel-fill", "parcel-outline", "contour-line", "contour-index"].forEach(id => { if (map.getLayer(id)) map.removeLayer(id); });
+      ["contours", "parcel", "ortho"].forEach(s => { if (map.getSource(s)) map.removeSource(s); });
+
+      // Orthomosaic overlay (drawn first, beneath parcel + contours)
+      if (proj.ortho) {
+        map.addSource("ortho", { type: "image", url: proj.ortho.url, coordinates: proj.ortho.coordinates });
+        map.addLayer({ id: "ortho", type: "raster", source: "ortho", paint: { "raster-opacity": 1, "raster-fade-duration": 0 } });
+      }
+
+      // Parcel boundary (added first so contours draw on top)
+      if (proj.parcel) {
+        map.addSource("parcel", { type: "geojson", data: proj.parcel.url });
+        map.addLayer({
+          id: "parcel-fill", type: "fill", source: "parcel",
+          paint: { "fill-color": "#ffb000", "fill-opacity": 0.06 }
+        });
+        map.addLayer({
+          id: "parcel-outline", type: "line", source: "parcel",
+          paint: { "line-color": "#ffb000", "line-width": 2.5, "line-dasharray": [2, 1.5] }
+        });
+      }
+
+      const c = proj.contours;
+      map.addSource("contours", { type: "geojson", data: c.url });
+
+      map.addLayer({
+        id: "contour-line", type: "line", source: "contours",
+        paint: {
+          "line-color": rampExpr(c.field, c.range),
+          "line-width": ["interpolate", ["linear"], ["zoom"], 13, 0.4, 17, 1.2, 20, 2.5],
+          "line-opacity": +document.getElementById("opacity").value
+        }
+      });
+      // Bolder "index" contours at round intervals
+      map.addLayer({
+        id: "contour-index", type: "line", source: "contours",
+        filter: ["==", ["%", ["get", c.field], c.indexEvery], 0],
+        paint: {
+          "line-color": rampExpr(c.field, c.range),
+          "line-width": ["interpolate", ["linear"], ["zoom"], 13, 1.0, 17, 2.4, 20, 4.5],
+          "line-opacity": +document.getElementById("opacity").value
+        }
+      });
+
+      // Fit to data bounds once loaded (skip null/empty geometries)
+      fetch(c.url).then(r => r.json()).then(gj => {
+        const b = new maplibregl.LngLatBounds();
+        const walk = (coords) => {
+          if (typeof coords[0] === "number") { b.extend(coords); return; }
+          coords.forEach(walk);
+        };
+        for (const f of gj.features) {
+          if (f.geometry && Array.isArray(f.geometry.coordinates) && f.geometry.coordinates.length) {
+            walk(f.geometry.coordinates);
+          }
+        }
+        if (!b.isEmpty()) map.fitBounds(b, { padding: 60, duration: 800 });
+      });
+    }
+
+    // Interactions: popup + cursor on contour / parcel click
+    function wireInteractions() {
+      ["contour-line", "contour-index"].forEach(id => {
+        map.on("mouseenter", id, () => map.getCanvas().style.cursor = "pointer");
+        map.on("mouseleave", id, () => map.getCanvas().style.cursor = "");
+        map.on("click", id, (e) => {
+          const f = e.features[0];
+          const ele = f.properties[current.contours.field];
+          new maplibregl.Popup({ closeButton: false })
+            .setLngLat(e.lngLat)
+            .setHTML(`<b>${ele} ft</b> elevation<br><span style="color:#9aa4ad">${current.code} · 5 ft contour</span>`)
+            .addTo(map);
+        });
+      });
+      // Parcel popup (fill captures clicks anywhere inside the boundary)
+      map.on("mouseenter", "parcel-fill", () => map.getCanvas().style.cursor = "pointer");
+      map.on("mouseleave", "parcel-fill", () => map.getCanvas().style.cursor = "");
+      map.on("click", "parcel-fill", (e) => {
+        // Let the contour popup win if a line was clicked
+        if (map.queryRenderedFeatures(e.point, { layers: ["contour-line", "contour-index"] }).length) return;
+        const p = e.features[0].properties;
+        new maplibregl.Popup({ closeButton: false })
+          .setLngLat(e.lngLat)
+          .setHTML(`<b>Parcel ${p.PARCELID}</b><br>${p.Acres} acres<br><span style="color:#9aa4ad">${current.code}</span>`)
+          .addTo(map);
+      });
+    }
+
+    // ── UI wiring ──────────────────────────────────────────────────────
+    const sel = document.getElementById("proj-select");
+    PROJECTS.forEach((p, i) => {
+      const o = document.createElement("option");
+      o.value = i; o.textContent = p.code; sel.appendChild(o);
+    });
+    sel.addEventListener("change", () => loadProject(PROJECTS[+sel.value]));
+
+    document.getElementById("basemap-seg").addEventListener("click", (e) => {
+      const btn = e.target.closest("button"); if (!btn) return;
+      const base = btn.dataset.base;
+      document.querySelectorAll("#basemap-seg button").forEach(b => b.classList.toggle("active", b === btn));
+      map.setLayoutProperty("satellite", "visibility", base === "satellite" ? "visible" : "none");
+      map.setLayoutProperty("topo", "visibility", base === "topo" ? "visible" : "none");
+    });
+
+    document.getElementById("contour-toggle").addEventListener("change", (e) => {
+      const v = e.target.checked ? "visible" : "none";
+      ["contour-line", "contour-index"].forEach(id => map.getLayer(id) && map.setLayoutProperty(id, "visibility", v));
+    });
+
+    document.getElementById("parcel-toggle").addEventListener("change", (e) => {
+      const v = e.target.checked ? "visible" : "none";
+      ["parcel-fill", "parcel-outline"].forEach(id => map.getLayer(id) && map.setLayoutProperty(id, "visibility", v));
+    });
+
+    document.getElementById("ortho-toggle").addEventListener("change", (e) => {
+      const v = e.target.checked ? "visible" : "none";
+      if (map.getLayer("ortho")) map.setLayoutProperty("ortho", "visibility", v);
+    });
+
+    document.getElementById("opacity").addEventListener("input", (e) => {
+      const v = +e.target.value;
+      ["contour-line", "contour-index"].forEach(id => map.getLayer(id) && map.setPaintProperty(id, "line-opacity", v));
+    });
+
+    map.on("load", () => { loadProject(PROJECTS[0]); wireInteractions(); });
+  </script>
+</body>
+</html>
