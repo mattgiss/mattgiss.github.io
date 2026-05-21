@@ -16,7 +16,7 @@
   --rule:       #DCCFA8;
 }
 
-/* Night theme (MattGray brand) — after local sunset / OS dark */
+/* Night theme (dark palette) — after local sunset / OS dark */
 html[data-theme="night"] {
   --ink: #E6E8EB; --ink-muted: #99a2ac; --linen: #0D121A; --linen-warm: #262b36;
   --golden: #47B2C4; --gamma: #F23861; --dusk: #F23861; --rule: #2f3542;

@@ -3,7 +3,7 @@
   --ink:#1B1714; --ink-muted:#7a6e68; --linen:#fff; --linen-warm:#fafaf7;
   --golden:#D0A500; --golden-ink:#8a6e00; --gamma:#F85D00; --rule:#DCCFA8; --white:#fff;
 }
-/* Night theme (MattGray brand) — after local sunset / OS dark */
+/* Night theme (dark palette) — after local sunset / OS dark */
 html[data-theme="night"]{
   --ink:#E6E8EB; --ink-muted:#99a2ac; --linen:#0D121A; --linen-warm:#262b36;
   --golden:#47B2C4; --golden-ink:#5cc6d8; --gamma:#F23861; --rule:#2f3542; --white:#161b24;
