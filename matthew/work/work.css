@@ -59,6 +59,8 @@ ul.list li:last-child{border-bottom:none;}
 .back{display:inline-block;margin-top:2.5rem;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;
   color:var(--ink-muted);text-decoration:none;}
 .back:hover{color:var(--ink);}
+.disclaimer{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--rule);
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;line-height:1.6;color:var(--ink-muted);}
 
 /* ---- DeskMate theme (opt-in retro) ---- */
 html[data-theme="deskmate"]{ --ink:#0a0a0a; --ink-muted:#1e2630; --linen:#00a8a8; --linen-warm:#bfc4c7; --golden:#000; --golden-ink:#0000aa; --gamma:#0000aa; --rule:#000; --white:#e7eaec; }

@@ -104,7 +104,7 @@ export const PROJECTS = [
       thumbnail: "images/crash-hero.jpg",
 
       // Narrative
-      summary: "Aerial scene capture of a staged two-vehicle collision, processed into a survey-grade orthomosaic and 3D model for measurable forensic documentation.",
+      summary: "Aerial scene capture of a staged two-vehicle collision, processed into a high-resolution orthomosaic and 3D model for measurable forensic documentation.",
       overview: "Captured a controlled crash scene and processed 69 nadir images in PIX4Dmatic. Output included a 0.033 ft/px orthomosaic, dense point cloud, and DSM in NAD 1983 State Plane New Mexico Central. The deliverable supports measurable scene reconstruction without contaminating evidence on the ground.",
       key_technical_challenge: "Capturing distortion-free imagery at low altitude to preserve evidence-grade GSD while still achieving 5+ image overlap across the full scene.",
       lessons_learned: "Lower-altitude oblique passes around the primary impact zone would have improved 3D fidelity on vehicle damage. Plan a second elevation tier on future forensic captures.",

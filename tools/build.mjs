@@ -80,12 +80,14 @@ function projectPage(p) {
   if (p.deliverables?.length) sections.push(`<section><h2>Deliverables</h2><ul class="list">${p.deliverables.map((d) => `<li>${esc(d)}</li>`).join("")}</ul></section>`);
   if (p.key_technical_challenge) sections.push(`<section><h2>Key Technical Challenge</h2><p>${esc(p.key_technical_challenge)}</p></section>`);
   if (p.lessons_learned) sections.push(`<section><h2>Lessons Learned</h2><p>${esc(p.lessons_learned)}</p></section>`);
+  const isAerial = fr.length || p.processing?.avg_gsd_ft_per_pixel;
   if (p.links?.length) {
     sections.push(`<section><h2>Reports &amp; Files</h2><div class="links">${p.links.map((l) => {
       const href = l.url.startsWith("http") ? l.url : "../../" + l.url;
       return `<a class="btn ${l.primary ? "" : "sec"}" href="${esc(href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`;
     }).join("")}</div></section>`);
   }
+  if (isAerial) sections.push(`<p class="disclaimer">Aerial mapping and photogrammetry for documentation, context, and planning. This is not land surveying, not a boundary or land survey, and not a substitute for a licensed Professional Land Surveyor. &quot;Survey grade,&quot; where used, describes positional accuracy only.</p>`);
 
   const jsonld = {
     "@context": "https://schema.org",

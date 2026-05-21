@@ -23,6 +23,7 @@
   <meta property="og:url" content="https://gissentanna.com/matthew/blog/rtk-photogrammetry-without-gcps/">
   <meta property="og:image" content="https://gissentanna.com/matthew/images/ccr953-hero.jpg">
   <meta property="article:published_time" content="2026-05-20">
+  <meta property="article:modified_time" content="2026-05-21">
   <meta property="article:author" content="Matthew Gissentanna">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RTK Photogrammetry Without GCPs: When Network Corrections Are Enough">
@@ -38,7 +39,7 @@
     "description": "When can you skip ground control points in drone mapping? Lessons from a 66-acre RTK-only photogrammetry mission.",
     "image": "https://gissentanna.com/matthew/images/ccr953-hero.jpg",
     "datePublished": "2026-05-20",
-    "dateModified": "2026-05-20",
+    "dateModified": "2026-05-21",
     "author": {
       "@type": "Person",
       "name": "Matthew Gissentanna",
@@ -50,7 +51,7 @@
       "logo": { "@type": "ImageObject", "url": "https://gissentanna.com/matthew/images/headshot.jpg" }
     },
     "mainEntityOfPage": { "@type": "WebPage", "@id": "https://gissentanna.com/matthew/blog/rtk-photogrammetry-without-gcps/" },
-    "keywords": ["RTK photogrammetry", "ground control points", "GCP", "drone mapping", "aerial photogrammetry", "PIX4Dmatic", "orthomosaic"]
+    "keywords": ["RTK photogrammetry", "ground control points", "GCP", "drone mapping", "aerial photogrammetry", "PIX4Dmatic", "orthomosaic", "survey grade", "survey grade vs mapping grade", "RTK accuracy", "network RTK"]
   }
   </script>
   <script type="application/ld+json">
@@ -58,6 +59,13 @@
     {"@type":"ListItem","position":1,"name":"Portfolio","item":"https://gissentanna.com/matthew/"},
     {"@type":"ListItem","position":2,"name":"Field Notes","item":"https://gissentanna.com/matthew/blog/"},
     {"@type":"ListItem","position":3,"name":"RTK photogrammetry without GCPs","item":"https://gissentanna.com/matthew/blog/rtk-photogrammetry-without-gcps/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What does \"survey grade\" mean?","acceptedAnswer":{"@type":"Answer","text":"\"Survey grade\" is an informal accuracy tier, not a legal designation. It describes positioning good to roughly centimeter level — the kind of absolute accuracy RTK and PPK GNSS produce — as distinct from \"mapping grade\" (sub-meter to a few meters) and \"consumer grade\" GPS (several meters). The label describes how tightly each measured point ties to a known coordinate system; it does not make a deliverable a land survey, which only a licensed Professional Land Surveyor can perform and sign."}},
+    {"@type":"Question","name":"Can you skip ground control points (GCPs) with RTK?","acceptedAnswer":{"@type":"Answer","text":"Yes, when you have a strong network-RTK or PPK Fixed solution, good overlap (about 75% forward / 70% side or better), open terrain, and the deliverable tolerates roughly 0.1–0.2 ft absolute accuracy — for example property mapping, orthomosaics, and surface models for context. Network RTK supplies an absolute position for every camera, which is the job GCPs would otherwise do. Deploy GCPs when you must defend a specific accuracy claim, need independent checkpoints, RTK Fix is intermittent, or the work feeds a legal or engineering record."}},
+    {"@type":"Question","name":"Does RTK solve mapping under tree canopy?","acceptedAnswer":{"@type":"Answer","text":"No. Photogrammetry only reconstructs what the camera can see, and under closed canopy the camera never sees the actual ground. No RTK or GCP solution fixes that line-of-sight limitation; it is a flight-planning and expectations problem, not a georeferencing one."}}
+  ]}
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
