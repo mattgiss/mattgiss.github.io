@@ -22,6 +22,12 @@ html[data-theme="night"] {
   --golden: #47B2C4; --gamma: #F23861; --dusk: #F23861; --rule: #2f3542;
 }
 html[data-theme="night"] body { background: #0D121A; }
+/* Smooth day<->night fade, only during the switch */
+@media (prefers-reduced-motion: no-preference){
+  html.theme-transition, html.theme-transition *, html.theme-transition *::before, html.theme-transition *::after{
+    transition: background-color .45s ease, color .45s ease, border-color .45s ease, fill .45s ease !important;
+  }
+}
 
 * , *::before, *::after { box-sizing: border-box; }
 
