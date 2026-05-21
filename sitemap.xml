@@ -1,27 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://gissentanna.com/matthew/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gissentanna.com/matthew/map/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gissentanna.com/matthew/blog/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gissentanna.com/matthew/blog/rtk-photogrammetry-without-gcps/</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/ccr953-2025-11/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/ccr953-hero.jpg</image:loc><image:title>953 Calvary Church Road Aerial Mapping</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/crash-2026-04/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/crash-hero.jpg</image:loc><image:title>Crash Scene Reconstruction</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/ecsc-2023-xx/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/ecsc-hero.jpg</image:loc><image:title>ECSC Service Road Orthomosaic</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/tioga-2026-05/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/tioga-hero.jpg</image:loc><image:title>Tioga Community Hall — Project Alignment</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/aval-2025-11/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/aval-hero.jpg</image:loc><image:title>Crested Butte Avalanche Zone Mapping</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/tongass-2025-11/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/tongass-hero.jpg</image:loc><image:title>Tongass Timber Stand Valuation</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/poway-2025-11/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/poway-hero.jpg</image:loc><image:title>Poway Fire Station Siting Analysis</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/fba-2025-12/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/fba-hero.jpg</image:loc><image:title>Birthplaces of Foundational Black American Innovators</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/grba-2026-02/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/greatbasin-hero.jpg</image:loc><image:title>Great Basin National Park Reference Map</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/dccr-2026-01/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/dccrime-hero.jpg</image:loc><image:title>Washington D.C. Burglary Mapping</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/dnvr-2026-02/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/denver-hero.jpg</image:loc><image:title>Denver Block-Group Demographic Atlas</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://gissentanna.com/matthew/work/ustemp-2026-02/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/ustemp-hero.jpg</image:loc><image:title>Lower 48 Temperature Isotherms (1991–2020)</image:title></image:image>
   </url>
 </urlset>
