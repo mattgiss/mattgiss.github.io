@@ -82,16 +82,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="post-header">
     <span class="post-tag">Photogrammetry</span>
     <h1 class="post-title">RTK photogrammetry without GCPs: when network corrections are enough</h1>
-    <div class="post-byline">By Matthew Gissentanna · FAA Part 107 · 20 May 2026 · 6 min read</div>
+    <div class="post-byline">By Matthew Gissentanna · FAA Part 107 · 20 May 2026 · 7 min read</div>
   </header>
 
   <article class="post-body">
-    <p>Ground control points are the default answer to "how do I trust a drone map?" Survey in a handful of targets, tie the photogrammetric block to them, and your deliverable inherits their accuracy. But GCPs cost time in the field, and on some sites they're impractical to place at all. The question I keep coming back to is narrower and more useful: <strong>when is network RTK alone good enough to skip ground control?</strong></p>
+    <p>Ground control points are the default answer to "how do I trust a drone map?" Set out a handful of ground targets, measure their positions, tie the photogrammetric block to them, and your deliverable inherits that accuracy. But GCPs cost time in the field, and on some sites they're impractical to place at all. The question I keep coming back to is narrower and more useful: <strong>when is network RTK alone good enough to skip ground control?</strong></p>
 
     <p>A recent 66-acre rural mapping mission gave me a clean test case. No GCPs were deployed. The aircraft logged a network-RTK Fixed solution for every image, and that was the only source of georeferencing. Here is what held up, and where the approach has hard limits.</p>
 
     <h2>The setup</h2>
-    <p>A DJI Matrice 4E flew a nadir grid at 390 ft AGL with 80% forward and 70% side overlap, 270 images, under diffuse overcast light. Corrections came from a Point One Navigation network RTK service, with no base station of my own and no surveyed targets. Processing ran through PIX4Dmatic, with DTM, contour, and zonal-statistics work finished in ArcGIS Pro.</p>
+    <p>A DJI Matrice 4E flew a nadir grid at 390 ft AGL with 80% forward and 70% side overlap, 270 images, under diffuse overcast light. Corrections came from a Point One Navigation network RTK service, with no base station of my own and no measured ground targets. Processing ran through PIX4Dmatic, with DTM, contour, and zonal-statistics work finished in ArcGIS Pro.</p>
 
     <div class="post-callout">
       100% camera calibration · 0.111 ft/px GSD · 33.9M dense points · geolocation RMS Z ≈ 0.116 ft, with zero ground control points.
@@ -101,6 +101,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>For a property-scale orthomosaic and surface model, the RTK-only block was solid. Every image calibrated, the vertical geolocation RMS came in around a tenth of a foot, and the relative geometry across the parcel was internally consistent enough to generate 5-ft contours and parcel-clipped elevation statistics. For boundary context, volume estimates, and visual documentation, the absence of GCPs simply did not show up in the deliverable.</p>
 
     <p>The key enabler is that <em>network RTK gives you an absolute position for every camera</em>, not just a relative one. With a strong Fixed solution and good overlap, the bundle adjustment has real-world coordinates to anchor to at every exposure, which is exactly the job GCPs would otherwise do.</p>
+
+    <h2>What "survey grade" actually means</h2>
+    <p>People ask whether a deliverable like this is "survey grade," so it is worth being precise. <strong>"Survey grade" is an informal accuracy tier, not a legal designation.</strong> It describes positioning good to roughly centimeter level — the kind of absolute accuracy RTK and PPK GNSS produce — as distinct from "mapping grade" (sub-meter to a few meters) and "consumer grade" GPS (several meters). The label speaks only to how tightly each measured point ties to a known coordinate system. It says nothing about who produced the data or what it is legally fit for.</p>
+
+    <p>That distinction matters because of a separate word: <em>survey</em>. In most states, land surveying is a licensed profession, and a "survey" — a boundary survey, an ALTA/NSPS land title survey, a certified topographic survey — is a legal instrument that only a licensed Professional Land Surveyor (PLS) can perform, stamp, and sign. Calling data "survey grade" describes its <em>accuracy</em>; it does not make the deliverable a <em>survey</em>, and I am careful not to blur the two. The work described here is photogrammetric mapping for documentation, context, and planning. It is not a boundary determination and is not a substitute for a licensed land survey.</p>
+
+    <div class="post-callout">
+      Plain-English version: "survey grade" = centimeter-class positional accuracy. A "survey" = a licensed, stamped legal product. The first describes how good the numbers are; only a licensed surveyor can deliver the second.
+    </div>
 
     <h2>Where it broke down: the canopy problem</h2>
     <p>The limit wasn't horizontal accuracy. It was ground classification under dense tree canopy. Photogrammetry only reconstructs what the camera can see, and under closed canopy the camera never sees the actual ground. No RTK solution fixes a line-of-sight problem. I had to iterate ground classification from a 5-ft DEM resolution down to 1 ft to tease apart bare earth from low vegetation, and even then the canopy areas are the weakest part of the model.</p>
@@ -126,6 +135,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="/matthew/">Drone mapping &amp; photogrammetry portfolio</a></li>
     </ul>
   </aside>
+
+  <p class="blog-foot">Disclaimer: This post and the work it describes are aerial mapping and photogrammetry for documentation and planning. They are not land surveying, do not constitute a boundary or land survey, and are not a substitute for the services of a licensed Professional Land Surveyor. "Survey grade" is used here only as an accuracy descriptor.</p>
 
   <p class="blog-foot">Liquid Sun Creative · <a href="/matthew/blog/">More field notes</a></p>
 </div>
