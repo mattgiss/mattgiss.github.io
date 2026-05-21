@@ -208,6 +208,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .lsc-portfolio *::before,
   .lsc-portfolio *::after { box-sizing: border-box; }
 
+  /* Visible keyboard focus (accessibility) */
+  .lsc-portfolio a:focus-visible,
+  .lsc-card:focus-visible,
+  .lsc-filter:focus-visible,
+  .lsc-contact-cta:focus-visible,
+  .lsc-modal-close:focus-visible,
+  #mg-theme-toggle:focus-visible {
+    outline: 2px solid var(--golden-ink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
   /* ---- TOP NAV ---- */
   .lsc-nav {
     display: flex; justify-content: flex-end; gap: 1.5rem;
@@ -321,7 +333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .lsc-intro { font-size: 1rem; max-width: 56ch; color: var(--ink); margin: 0 0 1.5rem; line-height: 1.7; }
 
   .lsc-meta {
-    display: flex; flex-wrap: wrap; gap: 1.25rem 2rem;
+    display: flex; flex-wrap: wrap; gap: 1.5rem 2rem;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.78rem; color: var(--ink-muted);
   }
@@ -352,7 +364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   .lsc-filters {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.7rem;
     margin-bottom: 2.5rem;
   }
 
