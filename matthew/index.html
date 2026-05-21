@@ -9,6 +9,26 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
   <!-- End Google Tag Manager -->
+  <!-- Night theme: switch to the MattGray dark palette after the visitor's local sunset
+       (and when the OS prefers dark). Set in <head> so there is no flash of the light theme. -->
+  <script>
+  (function(){
+    function nightNow(){
+      try{
+        if(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) return true;
+        var d=new Date(), h=d.getHours()+d.getMinutes()/60;
+        var doy=Math.floor((d-new Date(d.getFullYear(),0,0))/86400000);
+        var s=Math.sin(2*Math.PI*(doy-80)/365);          // seasonal term, peaks at summer solstice
+        var sunset=18.25+2*s, sunrise=6.25-2*s;           // approx for mid-northern latitudes, no geolocation
+        return h>=sunset || h<sunrise;
+      }catch(e){ return false; }
+    }
+    function apply(){ document.documentElement.setAttribute('data-theme', nightNow() ? 'night' : 'day'); }
+    apply();
+    setInterval(apply, 300000);
+    if(window.matchMedia){ try{ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', apply); }catch(e){} }
+  })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Matthew Gissentanna | Geospatial Analyst & Drone Mapping Specialist</title>
   <meta name="description" content="Geospatial analyst and FAA Part 107 drone pilot. RTK photogrammetry, ArcGIS Pro, and AI-augmented geospatial tooling. Off-road and public-lands mapping. Brighton, Colorado.">
@@ -41,7 +61,7 @@
         "url": "https://gissentanna.com/matthew/",
         "image": "https://gissentanna.com/matthew/images/headshot.jpg",
         "email": "mailto:matt@gissentanna.com",
-        "sameAs": ["https://www.linkedin.com/in/matthewgissentanna/"],
+        "sameAs": ["https://www.linkedin.com/in/matthewgissentanna/", "https://github.com/mattgiss"],
         "jobTitle": "Geospatial Analyst & UAS Pilot",
         "hasCredential": "FAA Part 107 Remote Pilot",
         "knowsAbout": ["Geospatial analysis", "Drone mapping", "Aerial photogrammetry", "Orthomosaic generation", "Point cloud classification", "GIS", "ArcGIS Pro", "PIX4Dmatic", "RTK", "Python", "GDAL", "geopandas", "AI-augmented development", "Off-road recreation mapping", "Trail networks", "Public lands access (BLM, USFS)"],
@@ -71,6 +91,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Alata&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     html, body { margin: 0; padding: 0; background: #ffffff; }
+    html[data-theme="night"], html[data-theme="night"] body { background: #0D121A; }
   </style>
 </head>
 <body>
@@ -588,6 +609,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   body.lsc-modal-open { overflow: hidden; }
+
+  /* ---- NIGHT THEME — MattGray brand palette (after local sunset / OS dark) ---- */
+  /* Backgrounds: Dark Matter #0D121A / Space Gray. Accents: Cyan #47B2C4, Nebula #F23861. */
+  html[data-theme="night"] .lsc-portfolio {
+    --ink:         #E6E8EB;
+    --ink-muted:   #99a2ac;
+    --linen:       #0D121A;   /* Dark Matter — page + modal bg */
+    --linen-warm:  #262b36;   /* elevated panels */
+    --white:       #161b24;   /* card surface */
+    --golden:      #47B2C4;   /* Cyan — rules / borders */
+    --golden-soft: #47B2C4;
+    --golden-ink:  #5cc6d8;   /* brighter cyan for accent text */
+    --gamma:       #F23861;   /* Nebula — primary CTA */
+    --dusk:        #F23861;
+    --rule:        #2f3542;
+    --tag-personal:   #F23861; /* Nebula */
+    --tag-coursework: #47B2C4; /* Cyan */
+  }
+  html[data-theme="night"] .lsc-link:not(.secondary),
+  html[data-theme="night"] .lsc-contact-cta:not(.sec) { color: #fff; }
+  html[data-theme="night"] .lsc-modal-backdrop { background: rgba(5, 8, 13, 0.8); }
+  html[data-theme="night"] .lsc-headshot { background: #262b36; }
 </style>
 
 <!-- ==== TOP NAV ==== -->
@@ -652,6 +695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="lsc-contact-links">
     <a class="lsc-contact-cta" href="mailto:matt@gissentanna.com">Email</a>
     <a class="lsc-contact-cta sec" href="https://www.linkedin.com/in/matthewgissentanna/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="lsc-contact-cta sec" href="https://github.com/mattgiss" target="_blank" rel="noopener">GitHub</a>
     <a class="lsc-contact-cta sec" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
   </div>
 </section>
