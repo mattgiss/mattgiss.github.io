@@ -110,7 +110,7 @@
       <label class="switch"><input type="checkbox" id="contour-toggle" checked><span class="slider"></span></label>
     </div>
     <div class="row">
-      <label for="opacity">Opacity</label>
+      <label for="opacity">Contour opacity</label>
     </div>
     <input type="range" id="opacity" min="0" max="1" step="0.05" value="0.9" />
   </div>
@@ -163,11 +163,11 @@
       glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
       sources: {
         satellite: {
-          type: "raster", tileSize: 256, attribution: ESRI_ATTR,
+          type: "raster", tileSize: 256, maxzoom: 19, attribution: ESRI_ATTR,
           tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"]
         },
         topo: {
-          type: "raster", tileSize: 256, attribution: "Map © Esri",
+          type: "raster", tileSize: 256, maxzoom: 19, attribution: "Map © Esri",
           tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"]
         }
       },

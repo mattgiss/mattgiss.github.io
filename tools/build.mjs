@@ -40,7 +40,9 @@ function procRows(pr) {
   if (pr.avg_gsd_ft_per_pixel) a.push({ l: "Avg GSD", v: pr.avg_gsd_ft_per_pixel + " ft/px" });
   if (pr.dense_point_count) a.push({ l: "Dense Points", v: fmt(pr.dense_point_count) });
   if (pr.median_2d_keypoint_matches) a.push({ l: "Median Keypoint Matches", v: fmt(pr.median_2d_keypoint_matches) });
+  if (pr.camera_optimization_pct !== undefined && pr.camera_optimization_pct !== "" && pr.camera_optimization_pct !== null) a.push({ l: "Camera Optimization", v: pr.camera_optimization_pct + "%" });
   if (pr.geolocation_rms_z_ft) a.push({ l: "Geoloc RMS Z", v: pr.geolocation_rms_z_ft + " ft" });
+  if (pr.workstation) a.push({ l: "Workstation", v: pr.workstation });
   return a;
 }
 function parcelRows(ps) {
@@ -51,6 +53,7 @@ function parcelRows(ps) {
   if (ps.dtm_min_ft && ps.dtm_max_ft) a.push({ l: "Elevation Range", v: ps.dtm_min_ft + " – " + ps.dtm_max_ft + " ft" });
   if (ps.dtm_mean_ft) a.push({ l: "Mean Elevation", v: ps.dtm_mean_ft + " ft" });
   if (ps.slope_mean_deg) a.push({ l: "Mean Slope", v: ps.slope_mean_deg + "°" });
+  if (ps.slope_max_deg) a.push({ l: "Max Slope", v: ps.slope_max_deg + "°" });
   return a;
 }
 
@@ -60,7 +63,8 @@ function projectPage(p) {
   const hero = p.hero_shot || p.thumbnail || "";
   const heroAbs = hero ? `${BASE}/matthew/${hero}` : `${BASE}/matthew/images/headshot.jpg`;
   const title = `${p.project_name} | ${p.category} | Matthew Gissentanna`;
-  const desc = (p.summary || p.overview || "").slice(0, 200);
+  const descRaw = (p.summary || p.overview || "");
+  const desc = descRaw.length > 200 ? descRaw.slice(0, 200).replace(/\s+\S*$/, "") + "…" : descRaw;
   const metaParts = [loc(p), p.delivery_date && "Delivered " + p.delivery_date, p.owner_name && "Owner: " + p.owner_name, p.coverage_acres && p.coverage_acres + " ac coverage"].filter(Boolean);
 
   const sections = [];

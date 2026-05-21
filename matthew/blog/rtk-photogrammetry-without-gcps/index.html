@@ -12,21 +12,21 @@
   <script>(function(){function n(){try{if(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)return true;var d=new Date(),h=d.getHours()+d.getMinutes()/60,doy=Math.floor((d-new Date(d.getFullYear(),0,0))/86400000),s=Math.sin(2*Math.PI*(doy-80)/365);return h>=18.25+2*s||h<6.25-2*s;}catch(e){return false;}}function ch(){try{return localStorage.getItem('mg-theme');}catch(e){return null;}}function pk(){var c=ch();if(c==='deskmate'||c==='day'||c==='night')return c;return n()?'night':'day';}function lf(){if(document.getElementById('mg-pixel-font'))return;var l=document.createElement('link');l.id='mg-pixel-font';l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap';document.head.appendChild(l);}function bt(){try{if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;}catch(e){}if(!document.body)return;var o=document.createElement('div');o.className='dm-boot';document.body.appendChild(o);setTimeout(function(){if(o.parentNode)o.parentNode.removeChild(o)},720);}function a(){var e=document.documentElement,t=pk(),pv=window.__lt;window.__lt=t;if(t==='deskmate')lf();e.classList.add('theme-transition');e.setAttribute('data-theme',t);clearTimeout(window.__tt);window.__tt=setTimeout(function(){e.classList.remove('theme-transition')},520);if(t==='deskmate'&&pv&&pv!=='deskmate')bt();if(window.__sy)window.__sy();}window.__setTheme=function(v){try{if(v==='auto')localStorage.removeItem('mg-theme');else localStorage.setItem('mg-theme',v);}catch(e){}a();};a();setInterval(a,3e5);if(window.matchMedia){try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',a);}catch(e){}}document.addEventListener('DOMContentLoaded',function(){var b=document.createElement('button');b.id='mg-theme-toggle';b.type='button';window.__sy=function(){var on=document.documentElement.getAttribute('data-theme')==='deskmate';b.setAttribute('data-on',on?'1':'0');b.textContent=on?'Exit DeskMate':'▸ DeskMate';};window.__sy();b.addEventListener('click',function(){var dm=document.documentElement.getAttribute('data-theme')==='deskmate';window.__setTheme(dm?'auto':'deskmate');});document.body.appendChild(b);function tk(){var c=document.getElementById('dm-clock');if(!c)return;var d=new Date(),h=d.getHours(),m=d.getMinutes(),ap=h<12?'AM':'PM';h=h%12||12;c.textContent=h+':'+(m<10?'0':'')+m+' '+ap;}tk();setInterval(tk,1000);});})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RTK Photogrammetry Without GCPs: When Network Corrections Are Enough</title>
-  <meta name="description" content="When can you skip ground control points in drone mapping? Lessons from a 66-acre RTK-only photogrammetry mission: accuracy results, the canopy problem, and where GCPs are still required.">
+  <meta name="description" content="When can you skip ground control points in drone mapping? Lessons from a 67.26-acre RTK-only photogrammetry mission: accuracy results, the canopy problem, and where GCPs are still required.">
   <link rel="canonical" href="https://gissentanna.com/matthew/blog/rtk-photogrammetry-without-gcps/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="RTK Photogrammetry Without GCPs: When Network Corrections Are Enough">
-  <meta property="og:description" content="Lessons from a 66-acre RTK-only drone mapping mission: accuracy, the canopy problem, and where ground control is still required.">
+  <meta property="og:description" content="Lessons from a 67.26-acre RTK-only drone mapping mission: accuracy, the canopy problem, and where ground control is still required.">
   <meta property="og:url" content="https://gissentanna.com/matthew/blog/rtk-photogrammetry-without-gcps/">
   <meta property="og:image" content="https://gissentanna.com/matthew/images/ccr953-hero.jpg">
   <meta property="article:published_time" content="2026-05-20">
   <meta property="article:author" content="Matthew Gissentanna">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RTK Photogrammetry Without GCPs: When Network Corrections Are Enough">
-  <meta name="twitter:description" content="Lessons from a 66-acre RTK-only drone mapping mission: accuracy, the canopy problem, and where ground control is still required.">
+  <meta name="twitter:description" content="Lessons from a 67.26-acre RTK-only drone mapping mission: accuracy, the canopy problem, and where ground control is still required.">
   <meta name="twitter:image" content="https://gissentanna.com/matthew/images/ccr953-hero.jpg">
 
   <!-- Structured data: BlogPosting -->
@@ -35,7 +35,7 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "RTK Photogrammetry Without GCPs: When Network Corrections Are Enough",
-    "description": "When can you skip ground control points in drone mapping? Lessons from a 66-acre RTK-only photogrammetry mission.",
+    "description": "When can you skip ground control points in drone mapping? Lessons from a 67.26-acre RTK-only photogrammetry mission.",
     "image": "https://gissentanna.com/matthew/images/ccr953-hero.jpg",
     "datePublished": "2026-05-20",
     "dateModified": "2026-05-20",
@@ -88,7 +88,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <article class="post-body">
     <p>Ground control points are the default answer to "how do I trust a drone map?" Survey in a handful of targets, tie the photogrammetric block to them, and your deliverable inherits their accuracy. But GCPs cost time in the field, and on some sites they're impractical to place at all. The question I keep coming back to is narrower and more useful: <strong>when is network RTK alone good enough to skip ground control?</strong></p>
 
-    <p>A recent 66-acre rural mapping mission gave me a clean test case. No GCPs were deployed. The aircraft logged a network-RTK Fixed solution for every image, and that was the only source of georeferencing. Here is what held up, and where the approach has hard limits.</p>
+    <p>A recent 67.26-acre rural mapping mission gave me a clean test case. No GCPs were deployed. The aircraft logged a network-RTK Fixed solution for every image, and that was the only source of georeferencing. Here is what held up, and where the approach has hard limits.</p>
 
     <h2>The setup</h2>
     <p>A DJI Matrice 4E flew a nadir grid at 390 ft AGL with 80% forward and 70% side overlap, 270 images, under diffuse overcast light. Corrections came from a Point One Navigation network RTK service, with no base station of my own and no surveyed targets. Processing ran through PIX4Dmatic, with DTM, contour, and zonal-statistics work finished in ArcGIS Pro.</p>

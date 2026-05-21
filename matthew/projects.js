@@ -24,7 +24,7 @@ export const PROJECTS = [
       thumbnail: "images/ccr953-hero.jpg",
 
       // Narrative
-      summary: "First end-to-end RTK photogrammetric deliverable for a 66-acre rural property in Orangeburg County, SC. Includes orthomosaic, DSM, DTM, classified point cloud, and 5-ft contours packaged into a 26-page Delivery Report.",
+      summary: "First end-to-end RTK photogrammetric deliverable for a 67.26-acre rural property in Orangeburg County, SC. Includes orthomosaic, DSM, DTM, classified point cloud, and 5-ft contours packaged into a 26-page Delivery Report.",
       overview: "End-to-end UAS photogrammetry mission over two parcels totaling 67.26 county-record acres. The Matrice 4E flew 270 images at 390 ft AGL with 80/70% forward/side overlap under diffuse overcast conditions using Point One Navigation network RTK Fixed, with no GCPs deployed. PIX4Dmatic v2.5.1 returned 100% camera calibration, 1.77M automatic tie points, and 33.9M dense points at 0.111 ft/px GSD. ArcGIS Pro post-processing produced a 0.5 ft/px DTM, 5-ft contours clipped to the parcel boundary, and parcel-aligned zonal statistics. This project serves as the baseline template for the Liquid Sun Creative 26-page Delivery Report format.",
       key_technical_challenge: "Ground classification under dense canopy required iterative refinement from 5 ft to 1 ft DEM resolution.",
       lessons_learned: "Photogrammetry has real line-of-sight limits under canopy. Iterative classification at progressively finer DEM resolution significantly improves ground/canopy separation. RTK Fixed without GCPs is reliable for property-scale mapping but precludes ASPRS class assignment.",
@@ -94,7 +94,7 @@ export const PROJECTS = [
       portfolio_worthy: "Yes",
       confidential: "No",
       delivery_date: "20 April 2026",
-      site_address: "Staged scene, New Mexico",
+      site_address: "Staged scene",
       county: "",
       state: "NM",
       owner_name: "",
@@ -679,4 +679,4 @@ export const CATEGORIES = {
     "Forensic":               "tag-forensic",
     "Coursework":             "tag-coursework",
     "Internship":             "tag-internship"
-  };;
+  };
