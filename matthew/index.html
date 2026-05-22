@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  <!-- Google Tag Manager (deferred until first interaction or ~4s after load, for performance) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];function g(){if(w.__gtm)return;w.__gtm=1;
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;
+  f.parentNode.insertBefore(j,f);}var e=['scroll','mousemove','touchstart','keydown','click'],
+  fire=function(){g();e.forEach(function(x){w.removeEventListener(x,fire)});};
+  e.forEach(function(x){w.addEventListener(x,fire,{passive:true})});
+  w.addEventListener('load',function(){setTimeout(g,4000);});
   })(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
   <!-- End Google Tag Manager -->
   <!-- Night theme: switch to the dark palette after the visitor's local sunset
@@ -118,7 +121,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alata&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alata&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alata&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
   <style>
     html, body { margin: 0; padding: 0; background: #ffffff; }
     html[data-theme="night"], html[data-theme="night"] body { background: #0D121A; }
@@ -838,7 +842,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ==== HERO ==== -->
 <section class="lsc-hero">
   <div class="lsc-headshot" id="lsc-headshot">
-    <span class="lsc-headshot-label">Headshot</span>
+    <img src="images/headshot.webp" width="280" height="280" fetchpriority="high" decoding="async" alt="Matthew Gissentanna">
   </div>
   <div class="lsc-hero-text">
     <div class="lsc-eyebrow">Geospatial Analyst · Part 107 Drone Pilot · Brighton, Colorado</div>
@@ -913,7 +917,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ==========================================================
      SETTINGS
      ========================================================== */
-  const HEADSHOT_URL = "images/headshot.jpg";
+  // Headshot is a static <img> in the hero markup (images/headshot.webp) — no JS-set src.
 
   /* ==========================================================
      PROJECTS — field names mirror project_inputs_template.yaml
@@ -927,11 +931,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      Render — generally no need to edit below.
      ========================================================== */
 
-  // Headshot
-  if (HEADSHOT_URL) {
-    document.getElementById('lsc-headshot').innerHTML =
-      '<img src="' + HEADSHOT_URL + '" alt="Matthew Gissentanna">';
-  }
+  // Headshot renders from static HTML markup in the hero (better LCP) — no JS injection.
 
   // Filter visible projects: portfolio_worthy must be "Yes"
   const VISIBLE = PROJECTS.filter(function(p) {
