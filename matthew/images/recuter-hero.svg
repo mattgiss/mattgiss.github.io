@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Recuter — AI agent that auto-applies to GIS jobs">
+  <defs>
+    <linearGradient id="rc-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161a2e"/>
+      <stop offset="0.6" stop-color="#23284a"/>
+      <stop offset="1" stop-color="#33305f"/>
+    </linearGradient>
+    <radialGradient id="rc-glow" cx="0.82" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#F85D00" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#F85D00" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .ey{font-family:'Helvetica Neue',Arial,sans-serif;font-size:30px;letter-spacing:8px;fill:#9fb0ff;font-weight:700;}
+      .ti{font-family:'Helvetica Neue',Arial,sans-serif;font-size:140px;fill:#F6F0E0;font-weight:800;letter-spacing:-2px;}
+      .su{font-family:'Helvetica Neue',Arial,sans-serif;font-size:42px;fill:#e2e6ff;font-weight:400;}
+      .ch{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:30px;fill:#F6F0E0;font-weight:500;}
+    </style>
+  </defs>
+  <rect width="1200" height="900" fill="url(#rc-bg)"/>
+  <rect width="1200" height="900" fill="url(#rc-glow)"/>
+  <!-- speed lines -->
+  <g stroke="#F85D00" stroke-width="6" stroke-linecap="round" opacity="0.5">
+    <line x1="760" y1="250" x2="1080" y2="250"/>
+    <line x1="700" y1="300" x2="1040" y2="300"/>
+    <line x1="800" y1="350" x2="1100" y2="350"/>
+  </g>
+  <!-- Apply button motif with cursor -->
+  <g transform="translate(820,430)">
+    <rect x="0" y="0" width="280" height="92" rx="10" fill="#F85D00"/>
+    <text x="140" y="60" text-anchor="middle" font-family="'Helvetica Neue',Arial,sans-serif" font-size="40" font-weight="700" fill="#161a2e">Apply</text>
+    <path d="M250 96 l40 16 l-15 6 l12 26 l-12 6 l-12 -26 l-15 12 Z" fill="#F6F0E0" stroke="#161a2e" stroke-width="3"/>
+  </g>
+  <text class="ey" x="110" y="318">AI AGENT &#183; GIS JOBS</text>
+  <text class="ti" x="104" y="448">recuter</text>
+  <text class="su" x="110" y="508">Wins the race to Apply, in seconds</text>
+  <!-- chips -->
+  <g>
+    <rect x="110" y="568" width="270" height="58" rx="8" fill="#ffffff" opacity="0.10"/>
+    <text class="ch" x="135" y="606">Relevance scoring</text>
+    <rect x="402" y="568" width="330" height="58" rx="8" fill="#ffffff" opacity="0.10"/>
+    <text class="ch" x="427" y="606">Headless automation</text>
+  </g>
+  <rect x="0" y="884" width="1200" height="16" fill="#F85D00"/>
+</svg>

@@ -70,6 +70,8 @@ function projectPage(p) {
   const sections = [];
   if (hero) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}">`);
   if (p.overview) sections.push(`<section><h2>Overview</h2><p>${esc(p.overview)}</p></section>`);
+  if (p.stack?.length) sections.push(`<section><h2>Stack</h2><div class="stack">${p.stack.map((t) => `<span>${esc(t)}</span>`).join("")}</div></section>`);
+  if (p.features?.length) sections.push(`<section><h2>Features</h2><ul class="list">${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>`);
   const fr = flightRows(p.flight); if (fr.length) sections.push(`<section><h2>Flight</h2>${specsHTML(fr)}</section>`);
   const prr = procRows(p.processing); if (prr.length) sections.push(`<section><h2>Processing</h2>${specsHTML(prr)}</section>`);
   if (p.crs) {
@@ -85,7 +87,7 @@ function projectPage(p) {
   if (p.key_technical_challenge) sections.push(`<section><h2>Key Technical Challenge</h2><p>${esc(p.key_technical_challenge)}</p></section>`);
   if (p.lessons_learned) sections.push(`<section><h2>Lessons Learned</h2><p>${esc(p.lessons_learned)}</p></section>`);
   if (p.links?.length) {
-    sections.push(`<section><h2>Reports &amp; Files</h2><div class="links">${p.links.map((l) => {
+    sections.push(`<section><h2>${p.category === "Software" ? "Links" : "Reports &amp; Files"}</h2><div class="links">${p.links.map((l) => {
       const href = l.url.startsWith("http") ? l.url : "../../" + l.url;
       return `<a class="btn ${l.primary ? "" : "sec"}" href="${esc(href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`;
     }).join("")}</div></section>`);

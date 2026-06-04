@@ -41,6 +41,8 @@ p{margin:0 0 .8rem;}
 .spec{font-family:'IBM Plex Mono',monospace;font-size:.85rem;}
 .spec .l{display:block;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:.25rem;}
 .spec .v{color:var(--ink);font-weight:500;}
+.stack{display:flex;flex-wrap:wrap;gap:.5rem;}
+.stack span{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.02em;padding:.35rem .7rem;background:var(--linen-warm);border:1px solid var(--rule);color:var(--ink);}
 ul.list{margin:0;padding:0;list-style:none;}
 ul.list li{padding:.5rem 0;border-bottom:1px dotted var(--rule);display:flex;gap:.75rem;}
 ul.list li::before{content:'\2192';color:var(--gamma);flex-shrink:0;}
@@ -68,6 +70,7 @@ html[data-theme="deskmate"] h1{ color:#000; }
 html[data-theme="deskmate"] h2{ background:#0000aa; color:#fff; padding:3px 10px; font-family:'Silkscreen',monospace !important; font-size:.95rem; }
 html[data-theme="deskmate"] .tag{ background:#0000aa; color:#fff; }
 html[data-theme="deskmate"] .specs, html[data-theme="deskmate"] .crs{ background:#bfc4c7; border:2px solid #000; box-shadow:4px 4px 0 #000; }
+html[data-theme="deskmate"] .stack span{ background:#bfc4c7; border:2px solid #000; box-shadow:2px 2px 0 #000; border-radius:0; }
 html[data-theme="deskmate"] .hero-img{ border:2px solid #000; }
 html[data-theme="deskmate"] .btn{ background:#cfd3d5; color:#000; border:2px solid #000; border-radius:0; box-shadow:2px 2px 0 #000; }
 html[data-theme="deskmate"] .btn.sec{ background:#cfd3d5; color:#000; }

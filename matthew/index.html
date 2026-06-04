@@ -194,6 +194,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     --tag-forensic:     #EB701E;   /* Dusk    */
     --tag-coursework:   #1B1714;   /* Ink     */
     --tag-internship:   #5a6b3a;
+    --tag-software:     #46568c;   /* Slate-indigo — software / apps */
 
     background: var(--linen);
     color: var(--ink);
@@ -626,6 +627,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   .lsc-spec-value { color: var(--ink); font-weight: 500; }
 
+  /* Stack chips — software projects */
+  .lsc-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .lsc-stack span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.02em;
+    padding: 0.35rem 0.7rem;
+    background: var(--linen-warm);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+  }
+
   /* CRS table */
   .lsc-crs {
     background: var(--linen-warm);
@@ -703,6 +715,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     --rule:        #2f3542;
     --tag-personal:   #F23861; /* Nebula */
     --tag-coursework: #47B2C4; /* Cyan */
+    --tag-software:   #8b9bff; /* brighter indigo for dark bg */
   }
   html[data-theme="night"] .lsc-link:not(.secondary),
   html[data-theme="night"] .lsc-contact-cta:not(.sec) { color: #fff; }
@@ -720,7 +733,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   html[data-theme="deskmate"] .lsc-portfolio {
     --ink:#0a0a0a; --ink-muted:#1e2630; --linen:#00a8a8; --linen-warm:#bfc4c7;
     --white:#e7eaec; --golden:#000; --golden-ink:#0000aa; --gamma:#0000aa; --dusk:#0000aa;
-    --rule:#000; --tag-personal:#0000aa; --tag-coursework:#0000aa;
+    --rule:#000; --tag-personal:#0000aa; --tag-coursework:#0000aa; --tag-software:#0000aa;
     background:#00a8a8; max-width:1080px; line-height:1.35;
     padding-top:3.4rem; padding-bottom:4rem;
   }
@@ -882,6 +895,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li><a href="work/dccr-2026-01/">Washington D.C. Burglary Mapping</a>: Choropleth of 2019 residential burglaries by Metropolitan Police district, overlaid with station, substation, and community-liaison locations.</li>
   <li><a href="work/dnvr-2026-02/">Denver Block-Group Demographic Atlas</a>: A block-group choropleth atlas of Denver covering population density, age, ethnicity, gender, and housing, all sharing one classification and layout system across the series.</li>
   <li><a href="work/ustemp-2026-02/">Lower 48 Temperature Isotherms (1991–2020)</a>: Three-panel isarithmic map of 1991–2020 U.S. temperature normals (30-year mean, January, and July) at a 5°C isotherm interval.</li>
+  <li><a href="work/gyatt-2025-12/">GyattChores</a>: A full-stack progressive web app that turns family chores into a points-based game. Kids log chores, parents approve them, and points convert to real money on a tiered monthly payout. Built with React, Supabase, and PostgreSQL.</li>
+  <li><a href="work/recuter-2026-06/">Recuter</a>: An AI agent that auto-applies to GIS job postings within seconds of publication, beating applicant caps. The public landing page and waitlist are live; the agent itself is in active development.</li>
 </ul>
 </noscript>
 <!-- PROJECTS-FALLBACK:END -->
@@ -1115,6 +1130,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     if (p.overview) body += '<div class="lsc-modal-section"><h4>Overview</h4><p>' + p.overview + '</p></div>';
 
+    if (p.stack && p.stack.length) {
+      body += '<div class="lsc-modal-section"><h4>Stack</h4><div class="lsc-stack">'
+            + p.stack.map(function(t) { return '<span>' + t + '</span>'; }).join('')
+            + '</div></div>';
+    }
+
+    if (p.features && p.features.length) {
+      body += '<div class="lsc-modal-section"><h4>Features</h4><ul>';
+      p.features.forEach(function(f) { body += '<li>' + f + '</li>'; });
+      body += '</ul></div>';
+    }
+
     const fSpecs = flightSpecs(p.flight);
     if (fSpecs.length) body += '<div class="lsc-modal-section"><h4>Flight</h4>' + buildSpecGrid(fSpecs) + '</div>';
 
@@ -1148,7 +1175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     if (p.links && p.links.length) {
-      body += '<div class="lsc-modal-section"><h4>Reports &amp; Files</h4><div class="lsc-links">';
+      body += '<div class="lsc-modal-section"><h4>' + (p.category === 'Software' ? 'Links' : 'Reports &amp; Files') + '</h4><div class="lsc-links">';
       p.links.forEach(function(l) {
         const cls = l.primary ? 'lsc-link' : 'lsc-link secondary';
         body += '<a class="' + cls + '" href="' + l.url + '" target="_blank" rel="noopener">' + l.label + '</a>';

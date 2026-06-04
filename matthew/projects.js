@@ -592,6 +592,72 @@ export const PROJECTS = [
       links: [
         { label: "Map (PDF)", url: "reports/USTEMP_Report.pdf", primary: true }
       ]
+    },
+
+    {
+      // ---- GYATT-2025-12 — GyattChores ----
+      // Software project. Uses the optional `stack` + `features` fields
+      // (rendered by index.html and tools/build.mjs) instead of the drone blocks.
+      project_id: "GYATT-2025-12",
+      project_name: "GyattChores",
+      category: "Software",
+      status: "Live",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+
+      hero_shot: "images/gyattchores-hero.svg",
+      thumbnail: "images/gyattchores-hero.svg",
+
+      summary: "A full-stack progressive web app that turns family chores into a points-based game. Kids log chores, parents approve them, and points convert to real money on a tiered monthly payout. Built with React, Supabase, and PostgreSQL.",
+      overview: "A single-page React 18 app, compiled in the browser with Babel Standalone and backed by Supabase and PostgreSQL for auth, real-time scoring, and the approval workflow. Children log completed chores, parents approve them, and points convert to real money on a tiered monthly payout. It installs to an iOS home screen as a PWA and ships a weekly GOAT leaderboard, achievement badges, a weather and daily-quote dashboard, and a dark and light theme.",
+      key_technical_challenge: "Designing a points economy and approval workflow that kids cannot game, while keeping real-time leaderboards in sync across several devices on Supabase.",
+      lessons_learned: "Most of the iteration lived in the rules, not the code. Cooldowns, payout tiers, and approval states drove more revisions than the UI did.",
+
+      stack: ["React 18", "Babel Standalone", "Supabase", "PostgreSQL", "PWA / iOS install", "GitHub Pages"],
+      features: [
+        "Points economy: 250 points = $1, with tiered payouts on the last Friday of each month",
+        "Parent approval workflow that keeps scoring honest",
+        "Weekly GOAT leaderboard plus achievement badges for milestones and streaks",
+        "19+ configurable chores with per-chore cooldowns",
+        "Dashboard with weather widget, daily quote, and pull-to-refresh",
+        "Installable PWA with dark and light themes"
+      ],
+      knowsAbout: ["React", "Supabase", "PostgreSQL", "progressive web app", "full-stack development"],
+      links: [
+        { label: "Live App", url: "https://gyattchores.com", primary: true },
+        { label: "Source on GitHub", url: "https://github.com/mattgiss/gyattchores" }
+      ]
+    },
+
+    {
+      // ---- RECUTER-2026-06 — Recuter ----
+      project_id: "RECUTER-2026-06",
+      project_name: "Recuter",
+      category: "Software",
+      status: "In Development",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+
+      hero_shot: "images/recuter-hero.svg",
+      thumbnail: "images/recuter-hero.svg",
+
+      summary: "An AI agent that auto-applies to GIS job postings within seconds of publication, beating applicant caps. The public landing page and waitlist are live; the agent itself is in active development.",
+      overview: "Recuter targets a speed problem in hiring: strong roles hit their applicant cap within minutes of posting, so a good fit can lose simply by applying late. The planned agent scores new postings against a candidate profile, tailors a resume and cover letter to each description, and submits through headless browser automation across LinkedIn, Indeed, Greenhouse, and Workday, with human-in-the-loop review for edge cases like CAPTCHAs. The public site is a static landing page with a Supabase-backed waitlist on Vercel; the agent is being built separately. The initial target market is GIS professionals, which ties the project back to my own field.",
+      key_technical_challenge: "Reliable, low-latency form automation across very different application portals, with CAPTCHA handling and human review so every submission stays accurate.",
+
+      stack: ["Static HTML / CSS", "Supabase", "Vercel", "Headless browser automation"],
+      features: [
+        "Relevance scoring of new postings against a candidate profile",
+        "Automated resume and cover-letter tailoring per job",
+        "Headless submission across LinkedIn, Indeed, Greenhouse, and Workday",
+        "CAPTCHA handling with human-in-the-loop review",
+        "Supabase-backed waitlist on a static Vercel landing page"
+      ],
+      knowsAbout: ["AI agents", "automation", "Supabase", "Vercel", "GIS careers"],
+      links: [
+        { label: "Live Site", url: "https://recuter.com", primary: true },
+        { label: "Source on GitHub", url: "https://github.com/mattgiss/recuter" }
+      ]
     }
 
     /* ---- TEMPLATE — copy this whole block (with the comma) and paste above ----
@@ -678,5 +744,6 @@ export const CATEGORIES = {
     "Construction":           "tag-construction",
     "Forensic":               "tag-forensic",
     "Coursework":             "tag-coursework",
-    "Internship":             "tag-internship"
+    "Internship":             "tag-internship",
+    "Software":               "tag-software"
   };
