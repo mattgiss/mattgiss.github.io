@@ -605,8 +605,8 @@ export const PROJECTS = [
       portfolio_worthy: "Yes",
       confidential: "No",
 
-      hero_shot: "images/gyattchores-hero.svg",
-      thumbnail: "images/gyattchores-hero.svg",
+      hero_shot: "images/gyattchores-logo.svg",
+      thumbnail: "images/gyattchores-logo.svg",
 
       summary: "A full-stack progressive web app that turns family chores into a points-based game. Kids log chores, parents approve them, and points convert to real money on a tiered monthly payout. Built with React, Supabase, and PostgreSQL.",
       overview: "A single-page React 18 app, compiled in the browser with Babel Standalone and backed by Supabase and PostgreSQL for auth, real-time scoring, and the approval workflow. Children log completed chores, parents approve them, and points convert to real money on a tiered monthly payout. It installs to an iOS home screen as a PWA and ships a weekly GOAT leaderboard, achievement badges, a weather and daily-quote dashboard, and a dark and light theme.",
