@@ -688,7 +688,9 @@ export const PROJECTS = [
         "One-click 'Dump Cards' buttons plus an Apple Shortcuts action for menu-bar / Siri triggering"
       ],
       knowsAbout: ["Python", "SQLite", "data pipelines", "metadata / EXIF", "automation", "photo and video archival"],
-      links: []
+      links: [
+        { label: "Source on GitHub", url: "https://github.com/mattgiss/photo-archive-plugin", primary: true }
+      ]
     }
 
     /* ---- TEMPLATE — copy this whole block (with the comma) and paste above ----
