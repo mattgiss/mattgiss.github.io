@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo &amp; Video Archive Toolkit | Software | Matthew Gissentanna</title>
+  <meta name="description" content="A copy-only, hash-verified media pipeline that ingests camera cards and drives, date-sorts every photo and video by EXIF capture date, and indexes the whole collection into a searchable SQLite…">
+  <link rel="canonical" href="https://gissentanna.com/matthew/work/archive-2026-06/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Photo &amp; Video Archive Toolkit">
+  <meta property="og:description" content="A copy-only, hash-verified media pipeline that ingests camera cards and drives, date-sorts every photo and video by EXIF capture date, and indexes the whole collection into a searchable SQLite…">
+  <meta property="og:url" content="https://gissentanna.com/matthew/work/archive-2026-06/">
+  <meta property="og:image" content="https://gissentanna.com/matthew/images/archive-hero.svg">
+  <meta property="og:site_name" content="Liquid Sun Creative">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://gissentanna.com/matthew/images/archive-hero.svg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Portfolio","item":"https://gissentanna.com/matthew/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://gissentanna.com/matthew/#work"},{"@type":"ListItem","position":3,"name":"Photo & Video Archive Toolkit","item":"https://gissentanna.com/matthew/work/archive-2026-06/"}]},{"@type":"CreativeWork","name":"Photo & Video Archive Toolkit","headline":"Photo & Video Archive Toolkit","description":"A copy-only, hash-verified media pipeline that ingests camera cards and drives, date-sorts every photo and video by EXIF capture date, and indexes the whole collection into a searchable SQLite…","image":"https://gissentanna.com/matthew/images/archive-hero.svg","url":"https://gissentanna.com/matthew/work/archive-2026-06/","creator":{"@type":"Person","name":"Matthew Gissentanna","url":"https://gissentanna.com/matthew/"},"keywords":"Python, SQLite, data pipelines, metadata / EXIF, automation, photo and video archival"}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../work.css">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="wrap">
+  <nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span>Photo &amp; Video Archive Toolkit</nav>
+  <span class="tag">Software</span>
+  <h1>Photo &amp; Video Archive Toolkit</h1>
+  <div class="pid">ARCHIVE-2026-06 · Built</div>
+  
+  <img class="hero-img" src="../../images/archive-hero.svg" alt="Photo &amp; Video Archive Toolkit, Software">
+  <section><h2>Overview</h2><p>A personal media-archival system that turns a chaotic 90k-file photo and video collection into one date-sorted, integrity-checked, instantly searchable archive. The core engine reads each file's EXIF capture date, files it under PhotoArchive or VideoArchive by date, BLAKE2b-hashes every copy to prove it is byte-perfect, skips anything already backed up, and records it in a SQLite catalog so the drive never needs rescanning. Sidecars (Lightroom .xmp, .aae, DJI .lrf/.srt) travel with their media. A pull → cull → project-SSD workflow then queries the catalog by camera, GPS, orientation, drone, or 4K duration, pulls a hash-verified selection onto a working drive, and promotes the keepers to a project SSD. One-click .command buttons and an Apple Shortcuts action make 'dump my cards' a single tap.</p></section>
+  <section><h2>Stack</h2><div class="stack"><span>Python 3</span><span>SQLite</span><span>exiftool</span><span>BLAKE2b hashing</span><span>rsync</span><span>Bash</span><span>Czkawka</span><span>osxphotos</span><span>Apple Shortcuts</span></div></section>
+  <section><h2>Features</h2><ul class="list"><li>Copy-only, hash-verified ingest — BLAKE2b-checksums every file; originals are never modified</li><li>Date-sorts photos and videos into PhotoArchive / VideoArchive by EXIF capture date</li><li>Idempotent dedup: re-running only copies what is new, never duplicates</li><li>Self-cataloging SQLite index of 90,484 files, queryable by camera, GPS, orientation, drone, and 4K duration</li><li>Pull → cull → project-SSD workflow with saved query presets and hash-verified selections</li><li>One-click 'Dump Cards' buttons plus an Apple Shortcuts action for menu-bar / Siri triggering</li></ul></section>
+  <section><h2>Key Technical Challenge</h2><p>Making the pipeline safe to trust and safe to re-run: every copy is hash-verified against its source, the whole process is idempotent (re-running only copies what is new), and sources are never modified — so a card can be formatted only after the tool confirms a byte-perfect, cataloged copy exists.</p></section>
+  <section><h2>Lessons Learned</h2><p>When the data is irreplaceable, copy-only, verify-before-trust, and idempotent re-runs matter more than speed. A self-cataloging archive — index on write, never rescan — is what makes 90k files actually usable: the SQLite catalog turns 'find the 4K geotagged drone clips over 30 seconds' into a single SQL query.</p></section>
+  <a class="back" href="/matthew/">← Back to portfolio</a>
+</main>
+</body>
+</html>
