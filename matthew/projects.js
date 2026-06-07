@@ -608,21 +608,22 @@ export const PROJECTS = [
       hero_shot: "images/gyattchores-logo.svg",
       thumbnail: "images/gyattchores-logo.svg",
 
-      summary: "A full-stack progressive web app that turns family chores into a points-based game. Kids log chores, parents approve them, and points convert to real money on a tiered monthly payout. Built with React, Supabase, and PostgreSQL.",
-      overview: "A single-page React 18 app, compiled in the browser with Babel Standalone and backed by Supabase and PostgreSQL for auth, real-time scoring, and the approval workflow. Children log completed chores, parents approve them, and points convert to real money on a tiered monthly payout. It installs to an iOS home screen as a PWA and ships a weekly GOAT leaderboard, achievement badges, a weather and daily-quote dashboard, and a dark and light theme.",
-      key_technical_challenge: "Designing a points economy and approval workflow that kids cannot game, while keeping real-time leaderboards in sync across several devices on Supabase.",
-      lessons_learned: "Most of the iteration lived in the rules, not the code. Cooldowns, payout tiers, and approval states drove more revisions than the UI did.",
+      summary: "A local-first, gamified family chore tracker. Kids log chores and parents approve them with a PIN; points feed daily and weekly leaderboards where the week's leader wears the 👑. Built as a single-file React 18 PWA that writes to localStorage first and syncs to Supabase only when the network allows — with a native SwiftUI companion for iPhone and Apple Watch.",
+      overview: "GyattChores began as a cloud-dependent React app and was rebuilt around a local-first architecture: every chore is written to the browser's localStorage instantly, so logging never blocks on the network and the app keeps working fully offline. When the shared Supabase backend is reachable, logs sync across devices in the background — local storage stays the source of truth and the cloud is a best-effort sync layer. The web app is a single self-contained HTML file (React 18 via CDN, Babel Standalone, hand-written Material-inspired dark CSS) installable as a PWA on iOS and Android, and a native SwiftUI app brings the same chore-logging to iPhone and Apple Watch. The repository is run under a lightweight, ITIL 4-aligned service-management system with change-control and incident documentation.",
+      key_technical_challenge: "Re-architecting from a network-blocking, cloud-first design to a local-first store that writes instantly and reconciles with Supabase in the background — keeping the parent-approval workflow trustworthy across devices without ever blocking a kid's tap on connectivity.",
+      lessons_learned: "Three things stuck. Logging should never block on the network, so localStorage became the source of truth and the cloud a best-effort sync layer. Perfect business rules on paper don't survive contact with real users — watching kids game the easy chores forced the real iteration. And enable row-level security from day one: it takes ten minutes and prevents disasters. Architecture should follow team size and timeline, not dogma — a single-file app was the right call for a solo, fast-moving project.",
 
-      stack: ["React 18", "Babel Standalone", "Supabase", "PostgreSQL", "PWA / iOS install", "GitHub Pages"],
+      stack: ["React 18", "Babel Standalone", "localStorage (offline-first)", "Supabase (optional sync)", "PostgreSQL + RLS", "SwiftUI (iPhone + Apple Watch)", "PWA / iOS + Android install", "GitHub Pages"],
       features: [
-        "Points economy: 250 points = $1, with tiered payouts on the last Friday of each month",
-        "Parent approval workflow that keeps scoring honest",
-        "Weekly GOAT leaderboard plus achievement badges for milestones and streaks",
-        "19+ configurable chores with per-chore cooldowns",
-        "Dashboard with weather widget, daily quote, and pull-to-refresh",
-        "Installable PWA with dark and light themes"
+        "Local-first: every chore writes to localStorage instantly, so logging works fully offline and never blocks on the network",
+        "Best-effort Supabase sync in the background when the shared backend is reachable, with local storage as the source of truth",
+        "PIN-protected parent approval (with an 'approve all' shortcut) so points can't be self-awarded",
+        "Daily and weekly point tallies per player, with a 👑 for the week's leader",
+        "17 customizable chores with tunable point values",
+        "Installable PWA for iOS and Android, plus a native SwiftUI app for iPhone and Apple Watch",
+        "Run under a lightweight, ITIL 4-aligned service-management system (change control, incident docs)"
       ],
-      knowsAbout: ["React", "Supabase", "PostgreSQL", "progressive web app", "full-stack development"],
+      knowsAbout: ["React", "offline-first architecture", "Supabase", "PostgreSQL", "SwiftUI", "watchOS", "progressive web app", "ITIL service management"],
       links: [
         { label: "Live App", url: "https://gyattchores.com", primary: true },
         { label: "Source on GitHub", url: "https://github.com/mattgiss/gyattchores" }
@@ -641,19 +642,21 @@ export const PROJECTS = [
       hero_shot: "images/recuter-hero.svg",
       thumbnail: "images/recuter-hero.svg",
 
-      summary: "An AI agent that auto-applies to GIS job postings within seconds of publication, beating applicant caps. The public landing page and waitlist are live; the agent itself is in active development.",
-      overview: "Recuter targets a speed problem in hiring: strong roles hit their applicant cap within minutes of posting, so a good fit can lose simply by applying late. The planned agent scores new postings against a candidate profile, tailors a resume and cover letter to each description, and submits through headless browser automation across LinkedIn, Indeed, Greenhouse, and Workday, with human-in-the-loop review for edge cases like CAPTCHAs. The public site is a static landing page with a Supabase-backed waitlist on Vercel; the agent is being built separately. The initial target market is GIS professionals, which ties the project back to my own field.",
-      key_technical_challenge: "Reliable, low-latency form automation across very different application portals, with CAPTCHA handling and human review so every submission stays accurate.",
+      summary: "An AI agent that applies to GIS jobs at the speed of a sneaker bot — it watches your job alerts, scores every new posting against your profile, tailors your resume and cover letter, and submits before the listing caps out. The landing page and Supabase-backed waitlist are live; the agent and a public job board are in active development.",
+      overview: "Recuter targets a speed problem in hiring: a strong role can open at 9:02 and be capped at 150 applicants by 9:14, so a good fit loses simply by applying late — LinkedIn's applicant cap is 'functionally a sneaker drop.' The agent scores incoming postings against a candidate profile, auto-tailors resume bullets and cover letters to each description, and submits through headless browser automation across LinkedIn, Indeed, Greenhouse, and Workday-style portals, with human-in-the-loop review for edge cases like CAPTCHAs. A public job board surfaces a rolling shortlist of matched GIS roles tagged by pipeline status. The frontend is a static, dark-themed site (navy with mint-green accents) on Vercel and GitHub Pages; behind it sit a TypeScript agent and a Supabase backend with row-level security, where the browser only ever reads a curated 'board' view and Discord notifications are wired to GitHub activity. The initial market is entry- to mid-level GIS professionals, which ties the project back to my own field.",
+      key_technical_challenge: "Reliable, low-latency form automation across very different application portals — with CAPTCHA handling and human review so every submission stays accurate — behind a Supabase schema whose row-level security exposes only a safe, curated board view to the public frontend.",
 
-      stack: ["Static HTML / CSS", "Supabase", "Vercel", "Headless browser automation"],
+      stack: ["TypeScript", "Static HTML job board", "Supabase + Row-Level Security", "Vercel / GitHub Pages", "Headless browser automation", "Discord notifications"],
       features: [
-        "Relevance scoring of new postings against a candidate profile",
-        "Automated resume and cover-letter tailoring per job",
-        "Headless submission across LinkedIn, Indeed, Greenhouse, and Workday",
-        "CAPTCHA handling with human-in-the-loop review",
-        "Supabase-backed waitlist on a static Vercel landing page"
+        "Relevance scoring of every new posting against a candidate profile",
+        "Automated resume-bullet and cover-letter tailoring per job description",
+        "First-in-line headless submission across LinkedIn, Indeed, Greenhouse, and Workday-style portals",
+        "Human-in-the-loop review for CAPTCHAs and edge cases",
+        "Public job board with a rolling shortlist of matched GIS roles tagged by pipeline status (new, recommended, interviewing, applied, offer, closed)",
+        "Supabase backend with row-level security; the frontend reads only a curated 'board' view",
+        "Discord notifications tied to GitHub activity"
       ],
-      knowsAbout: ["AI agents", "automation", "Supabase", "Vercel", "GIS careers"],
+      knowsAbout: ["AI agents", "TypeScript", "automation", "Supabase", "row-level security", "Vercel", "GIS careers"],
       links: [
         { label: "Live Site", url: "https://recuter.com", primary: true },
         { label: "Source on GitHub", url: "https://github.com/mattgiss/recuter" }
