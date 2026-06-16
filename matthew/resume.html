@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew Gissentanna — Résumé</title>
+<style>
+  /* ----------------------------------------------------------------
+     Editable résumé source. Open in a browser and File ▸ Print ▸
+     "Save as PDF" (Letter, default margins, Background graphics ON)
+     to regenerate matthew/resume.pdf. This is the single source of
+     truth for the résumé — edit here, not the PDF.
+     ----------------------------------------------------------------*/
+  :root{
+    --ink:#1a1d21; --muted:#5b6470; --rule:#1a1d21; --accent:#11141a;
+    --maxw:7.3in;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); line-height:1.26; font-size:9.6pt;
+    background:#f3f4f6;
+  }
+  .page{
+    max-width:var(--maxw); margin:24px auto; background:#fff; padding:0.45in 0.6in;
+    box-shadow:0 2px 14px rgba(0,0,0,.12);
+  }
+  /* Header */
+  header{text-align:center; margin-bottom:6px;}
+  h1{font-size:21pt; letter-spacing:1.5px; margin:0 0 3px; font-weight:700;}
+  .tagline{font-size:10.5pt; font-weight:600; margin:0 0 4px;}
+  .contact{font-size:9.4pt; color:var(--muted);}
+  .contact a{color:var(--muted); text-decoration:none;}
+  /* Section headings */
+  h2{
+    font-size:10.5pt; text-transform:uppercase; letter-spacing:1px;
+    border-bottom:1.5px solid var(--rule); padding-bottom:2px;
+    margin:8px 0 5px;
+  }
+  /* Entry rows */
+  .entry{margin-bottom:5px;}
+  .entry-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
+  .role{font-weight:700;}
+  .date{color:var(--muted); font-size:9.3pt; white-space:nowrap;}
+  .place{font-style:italic; color:var(--muted); font-size:9.4pt; margin:0 0 2px;}
+  ul{margin:2px 0 0; padding-left:17px;}
+  li{margin:0 0 1.5px;}
+  p{margin:0 0 2px;}
+  .lead li{margin-bottom:2px;}
+  .lead b, .proj b{color:var(--ink);}
+  .comp p{margin:0 0 4px;}
+  .comp b{display:inline;}
+  .proj .entry-head .role{font-weight:700;}
+  .meta{color:var(--muted); font-size:9.2pt; font-weight:400;}
+  .proj p{margin:1px 0 0;}
+  a{color:inherit;}
+  /* Print */
+  @page{ size:Letter; margin:0.5in; }
+  @media print{
+    body{background:#fff; font-size:10pt;}
+    .page{box-shadow:none; margin:0; max-width:none; padding:0;}
+    .entry, .proj-item{ break-inside:avoid; }
+    h2{ break-after:avoid; }
+    a{ text-decoration:none; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header>
+    <h1>MATTHEW GISSENTANNA</h1>
+    <p class="tagline">GIS &amp; Geospatial &nbsp;|&nbsp; Product &amp; Program Management &nbsp;|&nbsp; Full-Stack &amp; AI Tooling &nbsp;|&nbsp; FAA Part 107 Remote Pilot</p>
+    <p class="contact">Brighton, CO &nbsp;|&nbsp; <a href="mailto:matt@gissentanna.com">matt@gissentanna.com</a> &nbsp;|&nbsp; linkedin.com/in/matthewgissentanna &nbsp;|&nbsp; gissentanna.com/matthew</p>
+  </header>
+
+  <section>
+    <h2>Profile</h2>
+    <ul class="lead">
+      <li><b>I ship product.</b> Owned product release and lifecycle work at Amazon (AWS &amp; Devices) and customer-facing delivery at Rubrik — intake, requirements, roadmap, release readiness, and post-launch enablement of sales, services, support, and training.</li>
+      <li><b>I build software.</b> Solo full-stack developer shipping a live local-first React PWA, an AI job-application agent in TypeScript, and Python data pipelines — built with Claude Code as a daily co-pilot, pairing model output with human validation rather than accepting generated code blindly.</li>
+      <li><b>I live in ArcGIS Pro.</b> Daily user for cartography, multi-source data integration, conflation, feature extraction, and large-scale QA/QC across an active geospatial portfolio (gissentanna.com/matthew).</li>
+      <li><b>I fly and map.</b> FAA Part 107 Remote Pilot in Command operating a DJI Matrice 4E (RTK) — flight planning, LAANC authorization, ground control, photogrammetry, and survey-grade deliverables.</li>
+      <li><b>I lead and communicate.</b> Briefed Directors and VPs at Amazon, ran $10M+ enterprise engagements at Rubrik, and translate technical detail into business value. 18+ years bridging engineering, customers, and stakeholders to deliver outcomes.</li>
+    </ul>
+  </section>
+
+  <section class="proj">
+    <h2>Selected Software Projects</h2>
+
+    <div class="proj-item entry">
+      <div class="entry-head">
+        <span class="role">GyattChores <span class="meta">— Full-stack PWA · gyattchores.com</span></span>
+        <span class="date">Live</span>
+      </div>
+      <p>Local-first, gamified family chore tracker. Single-file React 18 PWA where the browser's localStorage is the source of truth and Supabase is a best-effort background sync layer, so logging works fully offline and never blocks on the network. PIN-protected parent approval, a native SwiftUI companion for iPhone and Apple Watch, and a lightweight ITIL 4-aligned change/incident process.</p>
+    </div>
+
+    <div class="proj-item entry">
+      <div class="entry-head">
+        <span class="role">Recuter <span class="meta">— AI job-application agent · recuter.com</span></span>
+        <span class="date">In development</span>
+      </div>
+      <p>AI agent that scores new GIS job postings against a candidate profile, tailors resume bullets and cover letters to each description, and submits via headless browser automation with human-in-the-loop review. TypeScript agent plus a Supabase backend with row-level security and a public, status-tagged job board.</p>
+    </div>
+
+    <div class="proj-item entry">
+      <div class="entry-head">
+        <span class="role">Photo &amp; Video Archive Toolkit <span class="meta">— Python data pipeline</span></span>
+        <span class="date">Built</span>
+      </div>
+      <p>Copy-only, hash-verified media pipeline that cataloged 90,484 photos and videos into one date-sorted, integrity-checked archive: BLAKE2b checksums on every copy, idempotent re-runs, EXIF-based date sorting, and a queryable SQLite catalog (by camera, GPS, orientation, drone, or 4K duration).</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Professional Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="role">Senior Technical Program Manager — Amazon (AWS &amp; Devices)</span>
+        <span class="date">Jul 2022 – Jan 2026</span>
+      </div>
+      <p class="place">Denver, CO</p>
+      <ul>
+        <li>Owned the product lifecycle for internal security and OS-lifecycle programs from intake through GA release and post-launch validation; ran an end-of-life OS program to 95% on-time completion across the device portfolio.</li>
+        <li>Gathered, documented, and prioritized requirements across 400+ stakeholders, translating ambiguous customer needs into release-ready specifications and roadmap milestones.</li>
+        <li>Drove internal launch readiness with engineering, security, support, customer service, and training counterparts — release notes, configuration guides, training enablement, and escalation paths.</li>
+        <li>Designed and automated end-to-end data pipelines that turned 200+ raw signals into quarterly business-review reporting consumed by Directors and VPs; communicated roadmap progress, risks, and trade-offs to senior leadership.</li>
+        <li>Built CVE tracking and QA systems that improved remediation efficiency 50% and reduced backlog 80%, with dashboards monitoring data health and release metrics.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="role">Project Manager, Professional Services — Rubrik</span>
+        <span class="date">May 2021 – Jul 2022</span>
+      </div>
+      <p class="place">Palo Alto, CA (Remote)</p>
+      <ul>
+        <li>Led two of the largest enterprise deployments in company history ($10M+ budgets, 200+ team members), partnering directly with customer executives to scope requirements and steer mission-critical projects.</li>
+        <li>Coordinated across Professional Services, Sales, Partners, and Engineering to deliver new product capabilities; improved project efficiency 35% and on-time delivery 20%.</li>
+        <li>Surfaced field-driven product feedback to Product and Engineering, influencing roadmap and release priorities for the deployment workflow.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="role">Founder / Geospatial Analyst &amp; UAS Pilot — Liquid Sun Creative</span>
+        <span class="date">2021 – Present</span>
+      </div>
+      <p class="place">Brighton, CO</p>
+      <ul>
+        <li>Run end-to-end GIS workflows in ArcGIS Pro and PIX4Dmatic: aerial capture, photogrammetry, conflation, feature extraction, classification, and shapefile/GeoJSON deliverables with proper coordinate reference systems and geospatial metadata.</li>
+        <li>Execute large-scale QA/QC across photogrammetry deliverables — analyze quality reports, resolve multi-block calibration issues, and surface data-quality risks before client delivery.</li>
+        <li>Plan and fly drone mapping missions with the DJI Matrice 4E (RTK) under FAA Part 107, including RTK/GNSS ground control, airspace authorization, and operations near controlled airspace.</li>
+        <li>Build internal tools and automation (full-stack web apps and Python pipelines) and maintain GitHub-hosted scripts and templates for repeatable, audit-ready geospatial workflows.</li>
+        <li>Author client-facing delivery reports, methods write-ups, and product documentation that communicate technical decisions to non-technical buyers; ship and document an evolving portfolio at gissentanna.com/matthew.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="role">Earlier Career</span>
+        <span class="date">2007 – 2021</span>
+      </div>
+      <ul>
+        <li>IT Supervisor at Synovus Financial (Jira Center of Excellence administration, cross-functional leadership); Scrum Master and Business Systems Analyst roles at Omega Financial, Delta Data Software, and Aflac. Consistent pattern of bridging engineering, customers, and stakeholders to deliver software outcomes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education &amp; Certifications</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="role">University of Denver</span>
+        <span class="date">Sep 2025 – Mar 2027</span>
+      </div>
+      <p>Graduate Certificate in GIS and Unmanned Aircraft Systems (in progress). Coursework: Cartography and Map Design, GIS Fundamentals, Remote Sensing, UAS Operations, Geospatial Data Analysis, Photogrammetry.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="role">Troy University</span>
+        <span class="date">2010 – 2019</span>
+      </div>
+      <p>B.S., Business Administration — Global Business.</p>
+    </div>
+    <p><b>Certifications:</b> FAA Part 107 Remote Pilot in Command (current) &nbsp;|&nbsp; PMP — Project Management Institute (2017) &nbsp;|&nbsp; Certified ScrumMaster — Scrum Alliance (2015) &nbsp;|&nbsp; CompTIA Server+ (2014)</p>
+  </section>
+
+  <section class="comp">
+    <h2>Core Competencies</h2>
+    <p><b>GIS &amp; Cartography:</b> ArcGIS Pro (primary), PIX4Dmatic, QGIS, Global Mapper; multi-source data integration, conflation, feature extraction and classification, large-scale QA/QC, dataset audits and refreshes, shapefile and GeoJSON workflows, coordinate reference systems, geospatial metadata.</p>
+    <p><b>Aviation &amp; UAS:</b> FAA Part 107 Remote Pilot in Command, airspace classification and LAANC authorization, sectional and chart interpretation, RTK / GPS / GNSS, ground control points, DJI Matrice 4E (RTK), aerial imagery acquisition, photogrammetry, LiDAR processing.</p>
+    <p><b>Software &amp; Data Engineering:</b> Python, SQL, TypeScript, React, SwiftUI, Supabase / PostgreSQL, SQLite, GDAL and geopandas (familiarity), data pipeline design, API integration, Git and GitHub, AI-augmented development with Claude Code, full-stack and PWA development.</p>
+    <p><b>Product &amp; Program Management:</b> requirements gathering and prioritization, roadmap planning, release readiness, go-to-market enablement, customer briefings and conference presentations, executive communication, market-problem framing in the Pragmatic Marketing style.</p>
+    <p><b>Tools:</b> AWS, Jira, Confluence, Microsoft Office Suite, Adobe Creative Suite.</p>
+    <!-- end competencies -->
+  </section>
+
+  <section>
+    <h2>Additional</h2>
+    <ul>
+      <li>Board President, Foundations Academy (NHA Charter School), Brighton, CO.</li>
+      <li>Willing and able to travel for customer engagements, conferences, and field work.</li>
+      <li>Active overlander documenting trail networks and public-lands access across the western U.S. (@mattecruiser).</li>
+    </ul>
+  </section>
+
+</main>
+</body>
+</html>
