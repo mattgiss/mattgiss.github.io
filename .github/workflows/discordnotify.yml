@@ -28,7 +28,8 @@ jobs:
             --arg thread_name "[$REPO] Push to $REF_NAME" \
             --arg desc "**$ACTOR** pushed to \`$REF_NAME\`\n$COMMIT_MSG\n\n$COMPARE_URL" \
             '{username:"GitHub",thread_name:$thread_name,embeds:[{description:$desc,color:3066993}]}')
-          curl -sf -X POST "$DISCORD_WEBHOOK?wait=true" -H "Content-Type: application/json" -d "$PAYLOAD"
+          if [ -z "$DISCORD_WEBHOOK" ]; then echo "DISCORD_WEBHOOK not set; skipping notification"; exit 0; fi
+          curl -s -o /dev/null -w 'Discord webhook responded HTTP %{http_code}\n' -X POST "$DISCORD_WEBHOOK?wait=true" -H "Content-Type: application/json" -d "$PAYLOAD" || echo "Discord notification failed (ignored; not failing the build)"
 
       - name: Notify on pull request
         if: github.event_name == 'pull_request'
@@ -56,7 +57,8 @@ jobs:
             --arg desc "by **$ACTOR**\n\n$PR_URL" \
             --argjson color "$COLOR" \
             '{username:"GitHub",thread_name:$thread_name,embeds:[{description:$desc,color:$color}]}')
-          curl -sf -X POST "$DISCORD_WEBHOOK?wait=true" -H "Content-Type: application/json" -d "$PAYLOAD"
+          if [ -z "$DISCORD_WEBHOOK" ]; then echo "DISCORD_WEBHOOK not set; skipping notification"; exit 0; fi
+          curl -s -o /dev/null -w 'Discord webhook responded HTTP %{http_code}\n' -X POST "$DISCORD_WEBHOOK?wait=true" -H "Content-Type: application/json" -d "$PAYLOAD" || echo "Discord notification failed (ignored; not failing the build)"
 
       - name: Notify on issue
         if: github.event_name == 'issues'
@@ -80,7 +82,8 @@ jobs:
             --arg desc "by **$ACTOR**\n\n$ISSUE_URL" \
             --argjson color "$COLOR" \
             '{username:"GitHub",thread_name:$thread_name,embeds:[{description:$desc,color:$color}]}')
-          curl -sf -X POST "$DISCORD_WEBHOOK?wait=true" -H "Content-Type: application/json" -d "$PAYLOAD"
+          if [ -z "$DISCORD_WEBHOOK" ]; then echo "DISCORD_WEBHOOK not set; skipping notification"; exit 0; fi
+          curl -s -o /dev/null -w 'Discord webhook responded HTTP %{http_code}\n' -X POST "$DISCORD_WEBHOOK?wait=true" -H "Content-Type: application/json" -d "$PAYLOAD" || echo "Discord notification failed (ignored; not failing the build)"
 
       - name: Notify on release
         if: github.event_name == 'release'
@@ -95,4 +98,5 @@ jobs:
             --arg thread_name "[$REPO] New release: $RELEASE_NAME" \
             --arg desc "Published by **$ACTOR**\n\n$RELEASE_URL" \
             '{username:"GitHub",thread_name:$thread_name,embeds:[{description:$desc,color:16766720}]}')
-          curl -sf -X POST "$DISCORD_WEBHOOK?wait=true" -H "Content-Type: application/json" -d "$PAYLOAD"
+          if [ -z "$DISCORD_WEBHOOK" ]; then echo "DISCORD_WEBHOOK not set; skipping notification"; exit 0; fi
+          curl -s -o /dev/null -w 'Discord webhook responded HTTP %{http_code}\n' -X POST "$DISCORD_WEBHOOK?wait=true" -H "Content-Type: application/json" -d "$PAYLOAD" || echo "Discord notification failed (ignored; not failing the build)"
