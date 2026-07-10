@@ -166,15 +166,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .lsc-project-fallback { padding-left:1.1rem; }
   .lsc-project-fallback li { margin-bottom:0.6rem; font-size:0.9rem; }
 
+  /* ABOUT */
+  .lsc-about { margin-top:56px; }
+  .lsc-about p { max-width:62ch; color:#555049; font-size:0.98rem; line-height:1.7; margin:0 0 16px; }
+  .lsc-about p:last-child { margin-bottom:0; }
+  .lsc-about a { color:var(--text); text-decoration:underline; text-underline-offset:2px; text-decoration-color:var(--border); }
+  .lsc-about a:hover { text-decoration-color:var(--text); }
+
   /* CONTACT */
   .lsc-contact { margin-top:64px; padding-top:36px; border-top:1px solid var(--border); }
   .lsc-contact h2 { font-size:1.5rem; margin:0 0 10px; }
-  .lsc-contact p { color:#555049; margin:0 0 18px; font-size:0.95rem; }
+  .lsc-contact p { color:#555049; margin:0 0 18px; font-size:0.95rem; max-width:62ch; line-height:1.6; }
+  .lsc-contact-note { font-size:0.9rem; color:var(--muted); }
   .lsc-contact-links { display:flex; flex-wrap:wrap; gap:10px; }
   .lsc-contact-cta { text-decoration:none; font-size:0.85rem; padding:8px 16px; border-radius:6px; background:var(--text); color:#fff; border:1px solid var(--text); }
   .lsc-contact-cta:hover { opacity:0.86; }
   .lsc-contact-cta.sec { background:#fff; color:var(--text); border-color:var(--border); }
   .lsc-contact-cta.sec:hover { background:var(--hover); opacity:1; }
+  /* .lsc-portfolio a { color:inherit } out-specifies the single-class primary CTA; keep its label white */
+  .lsc-contact-links .lsc-contact-cta:not(.sec) { color:#fff; }
 
   /* FOOTER */
   .lsc-footer { margin-top:56px; padding-top:24px; border-top:1px solid var(--border); color:var(--faint); font-size:0.8rem; }
@@ -237,6 +247,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ==== TOP NAV ==== -->
 <nav class="lsc-nav">
+  <a href="#about">About</a>
   <a href="map/">Interactive Map</a>
   <a href="blog/">Field Notes</a>
   <a href="#contact">Contact</a>
@@ -251,7 +262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="lsc-eyebrow">Geospatial Analyst · Part 107 Drone Pilot · Brighton, Colorado</div>
     <h1 class="lsc-name">Matthew Gissentanna</h1>
     <p class="lsc-tagline">Geospatial analysis, drone mapping, and AI-augmented tooling.</p>
-    <p class="lsc-intro">FAA Part 107 pilot running the full geospatial stack: RTK drone capture, Pix4D, and ArcGIS Pro, plus AI-augmented geospatial tooling built with Claude Code. 18+ years leading data pipelines and large-scale QA at Amazon and Rubrik. An active overlander mapping trail networks and public-lands access (BLM/USFS) across the western US. Currently studying GIS &amp; UAS at the University of Denver.</p>
+    <p class="lsc-intro">FAA Part 107 pilot running the full geospatial stack — RTK drone capture, PIX4Dmatic, and ArcGIS Pro — plus AI-augmented geospatial tooling built with Claude Code. Survey-grade orthomosaics, terrain models, and classified point clouds for off-road, overland, and public-lands work.</p>
     <div class="lsc-meta">
       <span><strong>Based</strong>Brighton, Colorado</span>
       <span><strong>Cert.</strong>FAA Part 107 · PMP · CSM</span>
@@ -259,6 +270,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span><strong>Domain</strong>Off-road / overland · Public lands</span>
     </div>
   </div>
+</section>
+
+<!-- ==== ABOUT ==== -->
+<section class="lsc-about" id="about">
+  <div class="lsc-section-head">
+    <h2>About</h2>
+    <span class="lsc-rule"></span>
+  </div>
+  <p>I spent 18+ years inside the data machine at companies like Amazon and Rubrik — leading pipelines and large-scale QA, where the whole job was making sure enormous, messy datasets could be trusted. It turns out that's also what mapping is: turning something sprawling and unruly into a picture people can act on.</p>
+  <!-- TODO: swap in a real anecdote — the specific trip, trail, or moment overlanding turned into mapping -->
+  <p>The shift happened off the pavement. As an overlander picking my way across BLM and USFS land in the western US, I kept running into the same problem: the map was wrong, or missing, or years out of date. So I started making my own — first for the fun of it, then seriously enough to earn an FAA Part 107 certificate, fly RTK photogrammetry, and enroll in GIS &amp; UAS at the University of Denver. What began as a way to find the next trail became <strong>Liquid Sun Creative</strong>.</p>
+  <p>Today I fly a DJI Matrice 4E and turn the captures into survey-grade deliverables — orthomosaics, terrain models, classified point clouds, contours — and build AI-augmented tooling with Claude Code to move the tedious parts faster. If you have ground that needs mapping, or a geospatial problem that needs someone who's spent two decades caring about data quality, <a href="#contact">let's talk</a>.</p>
 </section>
 
 <!-- ==== PROJECTS ==== -->
@@ -296,9 +319,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ==== CONTACT ==== -->
 <section class="lsc-contact" id="contact">
   <h2>Get in touch</h2>
-  <p>Available for drone mapping, aerial photogrammetry, and GIS work. Open to geospatial roles. Based in Brighton, Colorado.</p>
+  <p>I take on drone mapping, aerial photogrammetry, and GIS work, and I&rsquo;m open to geospatial roles. Best fit for off-road, overland, land-development, and public-lands projects around Colorado and the western US.</p>
+  <p class="lsc-contact-note">The email button opens a short template &mdash; a few lines about your project, location, deliverables, and timeline. Fill in what you can and I&rsquo;ll tell you whether it&rsquo;s a fit. <strong>I read every message and reply within two business days.</strong> Prefer not to email? Reach me on LinkedIn instead.</p>
   <div class="lsc-contact-links">
-    <a class="lsc-contact-cta" href="mailto:matt@gissentanna.com">Email</a>
+    <a class="lsc-contact-cta" href="mailto:matt@gissentanna.com?subject=Project%20inquiry&amp;body=Hi%20Matt,%0A%0AA%20bit%20about%20the%20project%20so%20you%20can%20tell%20me%20whether%20it%20fits:%0A%0A-%20Project%20type%20(drone%20mapping,%20photogrammetry,%20GIS%20analysis,%20other):%0A-%20Location%20(city/state%20or%20coordinates):%0A-%20What%20you%20need%20delivered%20(orthomosaic,%20DSM/DTM,%20point%20cloud,%20contours,%20analysis):%0A-%20Timeline%20or%20target%20date:%0A-%20Anything%20else%20worth%20knowing:%0A%0AThanks,">Email me your project</a>
     <a class="lsc-contact-cta sec" href="https://www.linkedin.com/in/matthewgissentanna/" target="_blank" rel="noopener">LinkedIn</a>
     <a class="lsc-contact-cta sec" href="https://github.com/mattgiss" target="_blank" rel="noopener">GitHub</a>
     <a class="lsc-contact-cta sec" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
