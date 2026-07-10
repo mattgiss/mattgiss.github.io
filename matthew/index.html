@@ -95,6 +95,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .lsc-portfolio {
     --text:#37352f; --muted:#787774; --faint:#9b9a97;
     --border:#e9e9e7; --hover:#f7f7f5; --panel:#fbfbfa; --tag-bg:#f1f0ee;
+    /* Liquid Sun brand accents (from favicon.svg): dark, gold, orange.
+       --accent-link is a darkened orange that clears WCAG AA on white for text. */
+    --brand:#1b1714; --accent:#f85d00; --accent-gold:#d0a500; --accent-link:#b0480a;
     --gamma:#37352f; /* inline links in the render script resolve to this */
     --tag-personal:var(--tag-bg); --tag-agriculture:var(--tag-bg); --tag-telecom:var(--tag-bg);
     --tag-thermal:var(--tag-bg); --tag-lidar:var(--tag-bg); --tag-construction:var(--tag-bg);
@@ -117,12 +120,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* NAV */
   .lsc-nav { display:flex; gap:22px; flex-wrap:wrap; padding-bottom:40px; font-size:0.92rem; }
   .lsc-nav a { color:var(--muted); text-decoration:none; }
-  .lsc-nav a:hover { color:var(--text); text-decoration:underline; text-underline-offset:3px; }
+  .lsc-nav a:hover { color:var(--text); text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--accent); }
 
   /* HERO */
   .lsc-hero { display:flex; align-items:flex-start; gap:28px; padding-bottom:40px; }
   .lsc-headshot { flex:0 0 auto; }
-  .lsc-headshot img { width:88px; height:88px; border-radius:50%; object-fit:cover; display:block; border:1px solid var(--border); }
+  .lsc-headshot img { width:88px; height:88px; border-radius:50%; object-fit:cover; display:block; border:1px solid var(--border); box-shadow:0 0 0 3px #fff, 0 0 0 4px rgba(208,165,0,0.55); }
   .lsc-hero-text { flex:1 1 auto; min-width:0; }
   .lsc-eyebrow { font-size:0.8rem; color:var(--muted); margin-bottom:10px; }
   .lsc-name { font-size:2.6rem; line-height:1.08; margin:0 0 10px; }
@@ -135,7 +138,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* SECTION HEAD */
   .lsc-section-head { display:flex; align-items:baseline; gap:14px; margin:8px 0 18px; }
   .lsc-section-head h2 { font-size:1.5rem; margin:0; }
-  .lsc-rule { display:none; }
+  /* recurring brand motif: a thin gold ray fading out, echoing the favicon rings */
+  .lsc-rule { display:block; flex:1 1 auto; align-self:center; height:2px; border-radius:2px;
+    background:linear-gradient(90deg, var(--accent-gold), rgba(208,165,0,0)); }
   .lsc-count { font-size:0.8rem; color:var(--faint); margin-left:auto; }
 
   /* FILTERS */
@@ -148,7 +153,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .lsc-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
   .lsc-card { border:1px solid var(--border); border-radius:6px; overflow:hidden; cursor:pointer; background:#fff; transition:background 0.12s ease, border-color 0.12s ease; }
   .lsc-card:hover { background:var(--hover); border-color:#dcdcd8; }
-  .lsc-card:focus-visible, .lsc-filter:focus-visible { outline:2px solid #2383e2; outline-offset:2px; }
+  .lsc-card:hover .lsc-card-arrow { color:var(--accent-link); }
+  .lsc-card:focus-visible, .lsc-filter:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
   .lsc-card-img { aspect-ratio:16/9; background:var(--panel) center/cover no-repeat; border-bottom:1px solid var(--border); position:relative; }
   .lsc-card-img.placeholder::before { content:''; position:absolute; inset:0; background:var(--panel); }
   .lsc-card-tag { position:absolute; top:10px; left:10px; background:var(--tag-bg); color:var(--muted); font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase; padding:3px 8px; border-radius:4px; }
@@ -170,8 +176,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .lsc-about { margin-top:56px; }
   .lsc-about p { max-width:62ch; color:#555049; font-size:0.98rem; line-height:1.7; margin:0 0 16px; }
   .lsc-about p:last-child { margin-bottom:0; }
-  .lsc-about a { color:var(--text); text-decoration:underline; text-underline-offset:2px; text-decoration-color:var(--border); }
-  .lsc-about a:hover { text-decoration-color:var(--text); }
+  .lsc-about a { color:var(--accent-link); text-decoration:underline; text-underline-offset:2px; text-decoration-color:rgba(176,72,10,0.4); }
+  .lsc-about a:hover { text-decoration-color:var(--accent-link); }
 
   /* CONTACT */
   .lsc-contact { margin-top:64px; padding-top:36px; border-top:1px solid var(--border); }
@@ -180,7 +186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .lsc-contact-note { font-size:0.9rem; color:var(--muted); }
   .lsc-contact-links { display:flex; flex-wrap:wrap; gap:10px; }
   .lsc-contact-cta { text-decoration:none; font-size:0.85rem; padding:8px 16px; border-radius:6px; background:var(--text); color:#fff; border:1px solid var(--text); }
-  .lsc-contact-cta:hover { opacity:0.86; }
+  .lsc-contact-cta:hover { background:var(--accent-link); border-color:var(--accent-link); opacity:1; }
   .lsc-contact-cta.sec { background:#fff; color:var(--text); border-color:var(--border); }
   .lsc-contact-cta.sec:hover { background:var(--hover); opacity:1; }
   /* .lsc-portfolio a { color:inherit } out-specifies the single-class primary CTA; keep its label white */
@@ -226,7 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   .lsc-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:4px; }
   .lsc-link { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; background:var(--text); color:#fff; text-decoration:none; font-size:0.84rem; border:1px solid var(--text); border-radius:6px; }
-  .lsc-link:hover { opacity:0.86; }
+  .lsc-link:hover { background:var(--accent-link); border-color:var(--accent-link); opacity:1; }
   .lsc-link.secondary { background:#fff; color:var(--text); border-color:var(--border); }
   .lsc-link.secondary:hover { background:var(--hover); opacity:1; }
   .lsc-link::after { content:'\2197'; font-size:0.85em; color:inherit; }
