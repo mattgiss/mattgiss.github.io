@@ -643,6 +643,53 @@ export const PROJECTS = [
     },
 
     {
+      // ---- FLYSPOTS-2026-10 | Flying Spots Field Data Collection ----
+      // Coursework: GIS 4690, University of Denver
+      project_id: "FLYSPOTS-2026-10",
+      project_name: "Flying Spots Field Data Collection Map",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "4 October 2026",
+      site_address: "Brighton, CO 80601",
+      county: "Adams County",
+      state: "CO",
+      owner_name: "",
+
+      hero_shot: "",
+      thumbnail: "",
+
+      summary: "A field data collection map for recreational drone flying spots in Brighton, Colorado, with launch sites, linear hazards, and restricted areas, built for ArcGIS Field Maps.",
+      overview: "Built for GIS 4690 at the University of Denver in support of my UAS certificate work. The map organizes three feature layers for field collection: flying spots with surface type and LAANC ceilings, linear hazards such as power lines and tree rows, and restricted areas. It is published through a read-only public view layer so the web map can be shared without exposing the editable source data.",
+      key_technical_challenge: "Designing a field-ready data model that captures airspace ceilings, surface type, and linear hazards, then sharing the result publicly without opening the editable layers.",
+
+      flight: null,
+      processing: { software: "ArcGIS Field Maps, ArcGIS Online" },
+      crs: {
+        horizontal: "WGS 84 / Web Mercator",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Three-layer data model: flying spots, hazards, restricted areas",
+        "Launch sites record surface type and LAANC ceilings",
+        "Linear hazards digitized as lines (power lines, tree rows)",
+        "Read-only public view layer for sharing"
+      ],
+      deliverables: [
+        "Field Maps data collection web map",
+        "Public read-only view layer"
+      ],
+      links: [
+        { label: "Web map", url: "https://dugis.maps.arcgis.com/apps/mapviewer/index.html?webmap=876a2687e0b7474690fee9b3cd99b424", primary: true }
+      ]
+    },
+
+    {
       // ---- SAFESPOTS-2026-10 | Safe Drone Flying Spots ----
       // Coursework: GIS 4690, University of Denver
       project_id: "SAFESPOTS-2026-10",
