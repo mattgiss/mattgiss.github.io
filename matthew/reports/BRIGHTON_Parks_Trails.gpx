@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xalan="http://xml.apache.org/xalan" xsi="http://www.w3.org/2001/XMLSchema-instance" creator="Esri" version="1.1">
+  <wpt lon="-104.80971289999997" lat="39.99725530000006">
+    <ele>0</ele>
+    <name>Brighton Park</name>
+    <desc>Climb the three-level farm-themed playground next to the rec center</desc>
+  </wpt>
+  <wpt lon="-104.79930499999995" lat="39.98112900000007">
+    <ele>0</ele>
+    <name>Benedict Park</name>
+    <desc>Start at the practice basket for the 9-hole disc golf course east of the parking lot</desc>
+  </wpt>
+  <wpt lon="-104.83021499999995" lat="39.982623200000035">
+    <ele>0</ele>
+    <name>Colorado Park</name>
+    <desc>Covered trail parking and picnic shelter sit a couple of blocks before the playground</desc>
+  </wpt>
+  <wpt lon="-104.82868079999997" lat="39.98850660000005">
+    <ele>0</ele>
+    <name>Veterans Park</name>
+    <desc>Walk the path honoring each branch of the military</desc>
+  </wpt>
+  <wpt lon="-104.81518419999998" lat="39.978649500000074">
+    <ele>0</ele>
+    <name>Carmichael Park</name>
+    <desc>Find the big open lawn where the summer concert stage sets up</desc>
+  </wpt>
+  <wpt lon="-104.83623049999994" lat="39.97281730000003">
+    <ele>0</ele>
+    <name>Ken Mitchell Park</name>
+    <desc>Stand on the dock and look west over the lake toward the Front Range</desc>
+  </wpt>
+  <wpt lon="-104.74110159999998" lat="39.99840100000006">
+    <ele>0</ele>
+    <name>Brighton Crossings Volley Park</name>
+    <desc>The playground has a built-in hide-and-seek game on its equipment</desc>
+  </wpt>
+  <wpt lon="-104.83833799999996" lat="39.97181200000006">
+    <ele>0</ele>
+    <name>Colorado Front Range Trail (Brighton)</name>
+    <desc>Count the distance markers posted every 1/8 mile</desc>
+  </wpt>
+  <wpt lon="-104.87217209999994" lat="39.93018170000005">
+    <ele>0</ele>
+    <name>Riverdale Regional Park</name>
+    <desc>Scan the cottonwoods along the river trail for bald eagle nests</desc>
+  </wpt>
+  <wpt lon="-104.75153799999998" lat="39.93751380000003">
+    <ele>0</ele>
+    <name>Barr Lake Nature Center</name>
+    <desc>Follow the shore trail about 1.5 miles to the boardwalk and covered viewing platform</desc>
+  </wpt>
+  <wpt lon="-104.76062089999999" lat="39.96173500000003">
+    <ele>0</ele>
+    <name>Bruderlin Stone House Trail</name>
+    <desc>Look for the historic stone homestead near the trailhead parking</desc>
+  </wpt>
+</gpx>

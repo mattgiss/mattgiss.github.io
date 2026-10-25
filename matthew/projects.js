@@ -595,6 +595,103 @@ export const PROJECTS = [
     },
 
     {
+      // ---- BRIGHTON-2026-10 | Brighton Parks and Trails GPS Map ----
+      // Coursework: DU GIS and UAS certificate, GPS assignment
+      project_id: "BRIGHTON-2026-10",
+      project_name: "Brighton Parks and Trails GPS Map",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "11 October 2026",
+      site_address: "Brighton, CO",
+      county: "Adams County",
+      state: "CO",
+      owner_name: "",
+
+      hero_shot: "",
+      thumbnail: "",
+
+      summary: "Eleven parks and trails around Brighton, Colorado, each with a find-it hint, published as a GPX file for handheld GPS apps and as a public web map.",
+      overview: "Built for the GPS assignment in the University of Denver GIS and UAS certificate. Eleven public parks and trails around Brighton are recorded as points with a name, category (city park, neighborhood park, regional park, state park, or trail), description, find-it hint, and difficulty rating. The points were exported from ArcGIS Pro with Features To GPX so they load into phone and handheld GPS apps, and the same data is published as a web map symbolized by category with name labels and a trimmed popup.",
+      key_technical_challenge: "Getting clean GPX waypoints out of ArcGIS Pro, then publishing the same data online without exposing the editable source layer.",
+
+      flight: null,
+      processing: { software: "ArcGIS Pro, ArcGIS Online" },
+      crs: {
+        horizontal: "WGS 84 (GPX); Web Mercator (web map)",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Point features for eleven parks and trails with category, description, hint, and difficulty attributes",
+        "Features To GPX export in ArcGIS Pro for use in GPS apps",
+        "Hosted feature layer in ArcGIS Online, shared publicly as a read-only view layer",
+        "Web map symbolized by category with name labels and a trimmed popup"
+      ],
+      deliverables: [
+        "GPX file of eleven parks and trails",
+        "Public web map"
+      ],
+      links: [
+        { label: "Web map", url: "https://dugis.maps.arcgis.com/apps/mapviewer/index.html?webmap=9dffcc37fd2c417998cc5b4520fd454c", primary: true },
+        { label: "GPX file", url: "reports/BRIGHTON_Parks_Trails.gpx" }
+      ]
+    },
+
+    {
+      // ---- SAFESPOTS-2026-10 | Safe Drone Flying Spots ----
+      // Coursework: GIS 4690, University of Denver
+      project_id: "SAFESPOTS-2026-10",
+      project_name: "Safe Drone Flying Spots Survey",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "24 October 2026",
+      site_address: "Brighton, CO",
+      county: "Adams County",
+      state: "CO",
+      owner_name: "",
+
+      hero_shot: "",
+      thumbnail: "",
+
+      summary: "A Survey123 log of 14 places I have flown my drone, rated for safe recreational flying with field notes on hazards, published as a web map and an Instant App.",
+      overview: "Built for GIS 4690 at the University of Denver. A Survey123 form records recommended drone launch sites from personal flight history and field notes, including hazards at each site. All 14 sites sit in Class G airspace with no LAANC grid. The results are published through a read-only public view layer, a web map, and an Instant App with a sidebar for browsing the sites.",
+      key_technical_challenge: "Turning personal flight history into a consistent, repeatable survey that other pilots could use to judge a launch site.",
+
+      flight: null,
+      processing: { software: "ArcGIS Survey123, ArcGIS Online, ArcGIS Instant Apps" },
+      crs: {
+        horizontal: "WGS 84 / Web Mercator",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Survey123 form for launch site, safety rating, and hazard notes",
+        "Airspace check for each site (Class G, no LAANC grid)",
+        "Results published as a read-only public view layer",
+        "Web map and Instant App sidebar for browsing"
+      ],
+      deliverables: [
+        "Survey123 form and 14 survey results",
+        "Public web map",
+        "Instant App"
+      ],
+      links: [
+        { label: "Instant App", url: "https://dugis.maps.arcgis.com/apps/instant/sidebar/index.html?appid=77c787249c854caa8a0756db58354e94", primary: true },
+        { label: "Web map", url: "https://dugis.maps.arcgis.com/apps/mapviewer/index.html?webmap=43bdd9fdac3e4b67922b06dcf03c2467" }
+      ]
+    },
+
+    {
       // ---- GYATT-2025-12 — GyattChores ----
       // Software project. Uses the optional `stack` + `features` fields
       // (rendered by index.html and tools/build.mjs) instead of the drone blocks.
