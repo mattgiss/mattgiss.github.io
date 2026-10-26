@@ -23,6 +23,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../work.css">
+  <link rel="stylesheet" href="../../diagram.css">
+  <script src="../../diagrams.js" defer></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -32,6 +34,11 @@
   <h1>GyattChores</h1>
   <div class="pid">GYATT-2025-12 · Live</div>
   
+  <div class="bp bp-rule" data-bp aria-hidden="true"><svg viewBox="0 0 960 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<path id="bpr-p" class="ln draw" pathLength="1" style="--d:0s" d="M2 12 H958"/>
+<path class="ln fade" style="--d:.8s" d="M2 5 V19 M240 8 V16 M480 8 V16 M720 8 V16 M958 5 V19"/>
+<g class="drone fade" style="--d:1s"><circle r="3"/><animateMotion dur="9s" repeatCount="indefinite" begin="1s"><mpath href="#bpr-p"/></animateMotion></g>
+</svg></div>
   <img class="hero-img" src="../../images/gyattchores-logo.svg" alt="GyattChores, Software">
   <section><h2>Overview</h2><p>GyattChores began as a cloud-dependent React app and was rebuilt around a local-first architecture: every chore is written to the browser's localStorage instantly, so logging never blocks on the network and the app keeps working fully offline. When the shared Supabase backend is reachable, logs sync across devices in the background — local storage stays the source of truth and the cloud is a best-effort sync layer. The web app is a single self-contained HTML file (React 18 via CDN, Babel Standalone, hand-written Material-inspired dark CSS) installable as a PWA on iOS and Android, and a native SwiftUI app brings the same chore-logging to iPhone and Apple Watch. The repository is run under a lightweight, ITIL 4-aligned service-management system with change-control and incident documentation.</p></section>
   <section><h2>Stack</h2><div class="stack"><span>React 18</span><span>Babel Standalone</span><span>localStorage (offline-first)</span><span>Supabase (optional sync)</span><span>PostgreSQL + RLS</span><span>SwiftUI (iPhone + Apple Watch)</span><span>PWA / iOS + Android install</span><span>GitHub Pages</span></div></section>

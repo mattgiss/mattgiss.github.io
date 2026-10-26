@@ -23,6 +23,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../work.css">
+  <link rel="stylesheet" href="../../diagram.css">
+  <script src="../../diagrams.js" defer></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -32,6 +34,11 @@
   <h1>Recuter</h1>
   <div class="pid">RECUTER-2026-06 · In Development</div>
   
+  <div class="bp bp-rule" data-bp aria-hidden="true"><svg viewBox="0 0 960 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<path id="bpr-p" class="ln draw" pathLength="1" style="--d:0s" d="M2 12 H958"/>
+<path class="ln fade" style="--d:.8s" d="M2 5 V19 M240 8 V16 M480 8 V16 M720 8 V16 M958 5 V19"/>
+<g class="drone fade" style="--d:1s"><circle r="3"/><animateMotion dur="9s" repeatCount="indefinite" begin="1s"><mpath href="#bpr-p"/></animateMotion></g>
+</svg></div>
   <img class="hero-img" src="../../images/recuter-hero.svg" alt="Recuter, Software">
   <section><h2>Overview</h2><p>Recuter targets a speed problem in hiring: a strong role can open at 9:02 and be capped at 150 applicants by 9:14, so a good fit loses simply by applying late — LinkedIn's applicant cap is 'functionally a sneaker drop.' The agent scores incoming postings against a candidate profile, auto-tailors resume bullets and cover letters to each description, and submits through headless browser automation across LinkedIn, Indeed, Greenhouse, and Workday-style portals, with human-in-the-loop review for edge cases like CAPTCHAs. A public job board surfaces a rolling shortlist of matched GIS roles tagged by pipeline status. The frontend is a static, dark-themed site (navy with mint-green accents) on Vercel and GitHub Pages; behind it sit a TypeScript agent and a Supabase backend with row-level security, where the browser only ever reads a curated 'board' view and Discord notifications are wired to GitHub activity. The initial market is entry- to mid-level GIS professionals, which ties the project back to my own field.</p></section>
   <section><h2>Stack</h2><div class="stack"><span>TypeScript</span><span>Static HTML job board</span><span>Supabase + Row-Level Security</span><span>Vercel / GitHub Pages</span><span>Headless browser automation</span><span>Discord notifications</span></div></section>

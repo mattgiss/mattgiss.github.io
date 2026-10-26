@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { PROJECTS, CATEGORIES } from "../matthew/projects.js";
+import { pipelineSVG, ruleSVG } from "./diagrams.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "https://gissentanna.com";
@@ -68,7 +69,9 @@ function projectPage(p) {
   const metaParts = [loc(p), p.delivery_date && "Delivered " + p.delivery_date, p.owner_name && "Owner: " + p.owner_name, p.coverage_acres && p.coverage_acres + " ac coverage"].filter(Boolean);
 
   const sections = [];
+  const fig = p.flight ? `<figure class="fig" style="margin-left:0;margin-right:0">${pipelineSVG("bp")}<p class="bp-cap"><b>FIG. 1</b> Photogrammetry workflow behind this deliverable. Click to replay.</p></figure>` : "";
   if (hero) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}">`);
+  if (fig) sections.push(fig);
   if (p.overview) sections.push(`<section><h2>Overview</h2><p>${esc(p.overview)}</p></section>`);
   if (p.stack?.length) sections.push(`<section><h2>Stack</h2><div class="stack">${p.stack.map((t) => `<span>${esc(t)}</span>`).join("")}</div></section>`);
   if (p.features?.length) sections.push(`<section><h2>Features</h2><ul class="list">${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>`);
@@ -132,6 +135,8 @@ function projectPage(p) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../work.css">
+  <link rel="stylesheet" href="../../diagram.css">
+  <script src="../../diagrams.js" defer></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -141,6 +146,7 @@ function projectPage(p) {
   <h1>${esc(p.project_name)}</h1>
   <div class="pid">${esc(p.project_id)}${p.status ? " · " + esc(p.status) : ""}</div>
   ${metaParts.length ? `<div class="meta">${esc(metaParts.join(" · "))}</div>` : ""}
+  ${ruleSVG("bpr")}
   ${sections.join("\n  ")}
   <a class="back" href="/matthew/">← Back to portfolio</a>
 </main>
@@ -171,8 +177,21 @@ if (idx.includes(START) && idx.includes(END)) {
 } else {
   idx = idx.replace('<div class="lsc-grid" id="lsc-grid"></div>', `<div class="lsc-grid" id="lsc-grid"></div>\n  ${block}`);
 }
+const PS = "<!-- BP-PIPELINE:START -->", PE = "<!-- BP-PIPELINE:END -->";
+const pipeBlock = `${PS}
+<section class="lsc-pipeline" aria-label="From capture to map">
+  <div class="lsc-section-head"><h2>From capture to map</h2><span class="lsc-rule"></span></div>
+  ${pipelineSVG("bph")}
+  <p class="bp-cap"><b>FIG. 1</b> Typical RTK photogrammetry workflow. Click the diagram to replay.</p>
+</section>
+${PE}`;
+if (idx.includes(PS) && idx.includes(PE)) {
+  idx = idx.replace(new RegExp(`${PS}[\\s\\S]*?${PE}`), () => pipeBlock);
+} else {
+  idx = idx.replace("<!-- ==== ABOUT ==== -->", () => `${pipeBlock}\n\n<!-- ==== ABOUT ==== -->`);
+}
 fs.writeFileSync(idxPath, idx);
-console.log("injected noscript project fallback");
+console.log("injected noscript project fallback + pipeline figure");
 
 // 3) Regenerate sitemap.xml
 const today = new Date().toISOString().slice(0, 10);
