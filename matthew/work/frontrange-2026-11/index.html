@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Front Range Vegetation Indices and Seasonal Change | Coursework | Matthew Gissentanna</title>
+  <meta name="description" content="NDVI and Simple Ratio computed from June and September Landsat 5 scenes of the Colorado Front Range, measured over nine land-cover types to show what each index can and cannot tell you.">
+  <link rel="canonical" href="https://gissentanna.com/matthew/work/frontrange-2026-11/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Front Range Vegetation Indices and Seasonal Change">
+  <meta property="og:description" content="NDVI and Simple Ratio computed from June and September Landsat 5 scenes of the Colorado Front Range, measured over nine land-cover types to show what each index can and cannot tell you.">
+  <meta property="og:url" content="https://gissentanna.com/matthew/work/frontrange-2026-11/">
+  <meta property="og:image" content="https://gissentanna.com/matthew/images/frontrange-ndvi-hero.jpg">
+  <meta property="og:site_name" content="Liquid Sun Creative">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://gissentanna.com/matthew/images/frontrange-ndvi-hero.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Portfolio","item":"https://gissentanna.com/matthew/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://gissentanna.com/matthew/#work"},{"@type":"ListItem","position":3,"name":"Front Range Vegetation Indices and Seasonal Change","item":"https://gissentanna.com/matthew/work/frontrange-2026-11/"}]},{"@type":"CreativeWork","name":"Front Range Vegetation Indices and Seasonal Change","headline":"Front Range Vegetation Indices and Seasonal Change","description":"NDVI and Simple Ratio computed from June and September Landsat 5 scenes of the Colorado Front Range, measured over nine land-cover types to show what each index can and cannot tell you.","image":"https://gissentanna.com/matthew/images/frontrange-ndvi-hero.jpg","url":"https://gissentanna.com/matthew/work/frontrange-2026-11/","dateCreated":"7 November 2026","creator":{"@type":"Person","name":"Matthew Gissentanna","url":"https://gissentanna.com/matthew/"},"keywords":"remote sensing, NDVI, vegetation indices, Landsat, phenology, change detection, ENVI"}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../work.css">
+  <link rel="stylesheet" href="../../diagram.css">
+  <script src="../../diagrams.js" defer></script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="wrap">
+  <nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span>Front Range Vegetation Indices and Seasonal Change</nav>
+  <span class="tag">Coursework</span>
+  <h1>Front Range Vegetation Indices and Seasonal Change</h1>
+  <div class="pid">FRONTRANGE-2026-11 · Delivered</div>
+  <div class="meta">Boulder and the Front Range, CO · Delivered 7 November 2026</div>
+  <div class="bp bp-rule" data-bp aria-hidden="true"><svg viewBox="0 0 960 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<path id="bpr-p" class="ln draw" pathLength="1" style="--d:0s" d="M2 12 H958"/>
+<path class="ln fade" style="--d:.8s" d="M2 5 V19 M240 8 V16 M480 8 V16 M720 8 V16 M958 5 V19"/>
+<g class="drone fade" style="--d:1s"><circle r="3"/><animateMotion dur="9s" repeatCount="indefinite" begin="1s"><mpath href="#bpr-p"/></animateMotion></g>
+</svg></div>
+  <img class="hero-img" src="../../images/frontrange-ndvi-hero.jpg" alt="Front Range Vegetation Indices and Seasonal Change, Boulder and the Front Range, CO">
+  <section><h2>Overview</h2><p>A guided lab from Remote Sensing I at the University of Denver, using two Landsat 5 TM surface reflectance scenes of Boulder and the Front Range (21 June and 25 September 2010). The Simple Ratio (NIR divided by red) and NDVI were calculated in ENVI, then sampled with small regions of interest over nine land-cover types, from irrigated crops to downtown Denver. The chart above shows the September means. The two indices rank the classes the same way but behave differently at the ends of the range: NDVI spreads out sparse vegetation and separates vegetated from non-vegetated surfaces at about 0.2, while the Simple Ratio keeps climbing in dense canopies where NDVI flattens out. Comparing June with September then showed how harvest, leaf color change, clouds, and cloud shadow each move NDVI.</p></section>
+  <section><h2>Results</h2><ul class="list"><li>September NDVI ranged from 0.831 (irrigated crop) to 0.055 (water); senesced grass at 0.275 was the lowest vegetated class.</li><li>Simple Ratio ran from 10.9 down to 1.1, with all non-vegetated classes below about 1.5.</li><li>Field 1 rose from 0.391 in June to 0.719 in September (a late-season row crop); Field 2 fell from 0.686 to 0.168 (harvested, consistent with a small grain).</li><li>An aspen stand dropped from 0.734 to 0.610 as leaves turned; a June cloud drove NDVI to -0.360 over forest that read 0.544 in September.</li></ul></section>
+  <section><h2>Processing</h2><div class="specs"><div class="spec"><span class="l">Software</span><span class="v">ENVI 6.1</span></div></div></section>
+  <section><h2>Coordinate Reference Systems</h2><dl class="crs"><div class="row"><dt>Horizontal</dt><dd>Landsat 5 TM, path 34 row 32, 30 m pixels</dd></div></dl></section>
+  <section><h2>Methods</h2><ul class="list"><li>Simple Ratio by band math and NDVI from red (band 3) and NIR (band 4) surface reflectance</li><li>2D scatter plot of Simple Ratio against NDVI to show where each index saturates</li><li>Nine land-cover ROIs with mean index statistics</li><li>Sunlit and shaded slope comparison for the same land cover</li><li>June to September NDVI change, sorted into land-cover change, phenology, and atmospheric effects</li></ul></section>
+  <section><h2>Deliverables</h2><ul class="list"><li>Simple Ratio and NDVI rasters for two dates</li><li>Land-cover index table and scatter plot</li><li>Seasonal change table with pixel locations and causes</li></ul></section>
+  <section><h2>Key Technical Challenge</h2><p>Testing whether a ratio index cancels terrain shading. Two conifer pixels on opposite sides of a ridge gave NDVI of 0.447 (sunlit) and 0.599 (shaded). Part of that gap is real, since north-facing slopes carry denser forest, so shading and vegetation could not be fully separated from two pixels.</p></section>
+  <section><h2>Lessons Learned</h2><p>NDVI measures green leaf cover visible from above, not biomass or land use: an irrigated park scored higher than conifer forest. Use NDVI for sparse cover and vegetation masks, and an unbounded ratio where canopies are dense. Two dates beat one, because the seasonal curve identifies a crop better than any single value. Class means came from small hand-drawn samples, so they describe those samples, not the whole scene.</p></section>
+  <a class="back" href="/matthew/">← Back to portfolio</a>
+</main>
+</body>
+</html>
