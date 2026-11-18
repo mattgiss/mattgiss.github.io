@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
+  <title>Where Can I Fly? Drone Launch Sites Map | Matthew Gissentanna</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Interactive map of drone launch zones in north metro Adams County, Colorado, colored by legal status, with hazards, restricted areas, parking and access routes collected in ArcGIS Field Maps." />
+  <link rel="canonical" href="https://gissentanna.com/matthew/map/flyspots/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <style>
+    :root { --panel-bg: rgba(20, 24, 28, 0.9); --accent: #ffb000; --text: #f2f4f6; --muted: #9aa4ad; }
+    html, body { margin: 0; height: 100%; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    #map { position: absolute; inset: 0; }
+    .panel {
+      position: absolute; z-index: 2; background: var(--panel-bg); color: var(--text);
+      border-radius: 10px; padding: 14px 16px; backdrop-filter: blur(6px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.35); font-size: 13px; line-height: 1.45;
+    }
+    #info { top: 12px; left: 12px; width: 290px; max-width: calc(100vw - 24px); box-sizing: border-box; }
+    #info nav { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; font-size: 12px; }
+    #info nav a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    #info nav a:hover { text-decoration: underline; }
+    #info nav .sep { color: #5a626a; }
+    #info h1 { margin: 0 0 2px; font-size: 15px; letter-spacing: 0.2px; }
+    #info .sub { color: var(--accent); font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+    #info p { margin: 0 0 8px; color: #d5dade; }
+    h2 { margin: 12px 0 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+    .sites { display: grid; gap: 4px; }
+    .sites button {
+      display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; background: transparent;
+      color: var(--text); border: 1px solid #3a4148; border-radius: 7px; padding: 6px 8px; font: inherit; cursor: pointer;
+    }
+    .sites button:hover, .sites button:focus-visible { border-color: var(--accent); outline: none; }
+    .key { display: grid; gap: 4px; }
+    .key div { display: flex; align-items: center; gap: 8px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #fff; flex-shrink: 0; box-sizing: border-box; }
+    .sw { width: 18px; height: 0; border-top: 3px solid; flex-shrink: 0; }
+    .sw.dash { border-top-style: dashed; }
+    .seg { display: flex; border: 1px solid #3a4148; border-radius: 7px; overflow: hidden; margin-top: 4px; }
+    .seg button { flex: 1; background: transparent; color: var(--text); border: 0; padding: 6px 4px; font-size: 12px; cursor: pointer; }
+    .seg button.active { background: var(--accent); color: #1a1a1a; font-weight: 700; }
+    .note { color: var(--muted); font-size: 11.5px; margin-top: 10px; }
+    .maplibregl-popup { max-width: 300px !important; }
+    .maplibregl-popup-content { background: var(--panel-bg); color: var(--text); border-radius: 8px; padding: 12px 14px; font-size: 13px; line-height: 1.45; }
+    .maplibregl-popup-content b { color: var(--accent); }
+    .maplibregl-popup-content .st { display: inline-block; margin: 4px 0 6px; padding: 1px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 700; color: #14181c; }
+    .maplibregl-popup-content .kv { color: var(--muted); font-size: 12px; }
+    .maplibregl-popup-content a { color: var(--accent); }
+    .maplibregl-popup-close-button { color: var(--text); font-size: 18px; padding: 2px 8px; }
+    .maplibregl-popup-anchor-top .maplibregl-popup-tip { border-bottom-color: var(--panel-bg); }
+    .maplibregl-popup-anchor-bottom .maplibregl-popup-tip { border-top-color: var(--panel-bg); }
+    .maplibregl-popup-anchor-left .maplibregl-popup-tip { border-right-color: var(--panel-bg); }
+    .maplibregl-popup-anchor-right .maplibregl-popup-tip { border-left-color: var(--panel-bg); }
+    #toggle { display: none; }
+    @media (max-width: 640px) {
+      #info { top: 8px; left: 8px; width: calc(100vw - 16px); max-height: 46vh; overflow: auto; }
+      #info.collapsed .body { display: none; }
+      #toggle { display: inline-block; margin-left: auto; background: transparent; color: var(--accent); border: 1px solid #3a4148; border-radius: 6px; padding: 2px 8px; font: inherit; font-size: 12px; cursor: pointer; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div id="map"></div>
+
+  <div id="info" class="panel">
+    <nav>
+      <a href="/matthew/work/flyspots-2026-10/">← Case study</a>
+      <span class="sep">/</span>
+      <a href="/matthew/">Portfolio</a>
+      <button id="toggle" type="button" aria-expanded="true">Hide</button>
+    </nav>
+    <h1>Where Can I Fly?</h1>
+    <div class="sub">Drone launch sites · Adams County, CO</div>
+    <div class="body">
+      <p>Field data I collected with ArcGIS Field Maps on November 15, 2026. Click any feature for pilot notes and the official rule.</p>
+
+      <h2>Jump to a site</h2>
+      <div class="sites" id="sites"></div>
+
+      <h2>Launch zone legal status</h2>
+      <div class="key">
+        <div><span class="dot" style="background:#2e9e4f"></span>Allowed with conditions</div>
+        <div><span class="dot" style="background:#f5a623"></span>Roadside right-of-way, vertical flight only</div>
+        <div><span class="dot" style="background:#d7301f"></span>Closed</div>
+      </div>
+
+      <h2>Other layers</h2>
+      <div class="key">
+        <div><span class="sw" style="border-color:#ffe600"></span>Hazard</div>
+        <div><span class="sw dash" style="border-color:#ff5a5a"></span>Restricted area</div>
+        <div><span class="sw" style="border-color:#5fd38d"></span>Access route</div>
+        <div><span class="dot" style="background:#4aa3ff"></span>Parking</div>
+      </div>
+
+      <h2>Basemap</h2>
+      <div class="seg" id="basemap-seg">
+        <button data-base="satellite" class="active">Satellite</button>
+        <button data-base="topo">Topo</button>
+      </div>
+
+      <div class="note">Phone GNSS, about 8 ft horizontal accuracy. Rules change: check the linked source before flying. Not for locating property lines.</div>
+    </div>
+  </div>
+
+  <script>
+    const DATA_URL = "../data/flyspots/flyspots.geojson";
+    const STATUS_COLOR = {
+      "Allowed with conditions": "#2e9e4f",
+      "Roadside right-of-way": "#f5a623",
+      "Closed": "#d7301f"
+    };
+    const SITES = [
+      { name: "Aylor Open Space, Thornton", center: [-104.9093, 39.9443], zoom: 16.4, color: "#2e9e4f" },
+      { name: "Quebec St pull-off", center: [-104.9012, 39.9588], zoom: 15.6, color: "#f5a623" },
+      { name: "Brighton Rd pull-off", center: [-104.8284, 39.9696], zoom: 16.8, color: "#f5a623" },
+      { name: "Riverdale Regional Park", center: [-104.8763, 39.9273], zoom: 17.2, color: "#d7301f" }
+    ];
+    const ESRI_ATTR = "Imagery © Esri, Maxar, Earthstar Geographics";
+    const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+    const map = new maplibregl.Map({
+      container: "map",
+      style: {
+        version: 8,
+        sources: {
+          satellite: { type: "raster", tileSize: 256, maxzoom: 19, attribution: ESRI_ATTR,
+            tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"] },
+          topo: { type: "raster", tileSize: 256, maxzoom: 19, attribution: "Map © Esri",
+            tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"] }
+        },
+        layers: [
+          { id: "satellite", type: "raster", source: "satellite", layout: { visibility: "visible" } },
+          { id: "topo", type: "raster", source: "topo", layout: { visibility: "none" } }
+        ]
+      },
+      center: [-104.868, 39.948],
+      zoom: 11.6,
+      maxZoom: 20,
+      attributionControl: { compact: true }
+    });
+    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+    map.addControl(new maplibregl.ScaleControl({ unit: "imperial" }), "bottom-left");
+
+    const is = (layer) => ["==", ["get", "layer"], layer];
+    const statusColor = ["match", ["get", "status"],
+      "Allowed with conditions", STATUS_COLOR["Allowed with conditions"],
+      "Roadside right-of-way", STATUS_COLOR["Roadside right-of-way"],
+      "Closed", STATUS_COLOR["Closed"], "#8c8c8c"];
+
+    map.on("load", () => {
+      map.addSource("fs", { type: "geojson", data: DATA_URL });
+      map.addLayer({ id: "restricted-fill", type: "fill", source: "fs", filter: is("restricted"),
+        paint: { "fill-color": "#ff5a5a", "fill-opacity": 0.12 } });
+      map.addLayer({ id: "restricted-line", type: "line", source: "fs", filter: is("restricted"),
+        paint: { "line-color": "#ff5a5a", "line-width": 2, "line-dasharray": [2, 1.5] } });
+      map.addLayer({ id: "route", type: "line", source: "fs", filter: is("route"),
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": "#5fd38d", "line-width": ["interpolate", ["linear"], ["zoom"], 12, 2, 18, 5] } });
+      map.addLayer({ id: "hazard-case", type: "line", source: "fs", filter: is("hazard"),
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": "#14181c", "line-width": ["interpolate", ["linear"], ["zoom"], 12, 5, 18, 9] } });
+      map.addLayer({ id: "hazard", type: "line", source: "fs", filter: is("hazard"),
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": "#ffe600", "line-width": ["interpolate", ["linear"], ["zoom"], 12, 3, 18, 6] } });
+      map.addLayer({ id: "parking", type: "circle", source: "fs", filter: is("parking"),
+        paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 11, 0, 13.5, 5, 18, 8],
+                 "circle-color": "#4aa3ff", "circle-stroke-color": "#fff", "circle-stroke-width": 2 } });
+      map.addLayer({ id: "launch", type: "circle", source: "fs", filter: is("launch"),
+        paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 7, 18, 12],
+                 "circle-color": statusColor, "circle-stroke-color": "#fff", "circle-stroke-width": 2.5 } });
+
+      const CLICKABLE = ["launch", "parking", "hazard", "route", "restricted-fill"];
+      CLICKABLE.forEach((id) => {
+        map.on("mouseenter", id, () => (map.getCanvas().style.cursor = "pointer"));
+        map.on("mouseleave", id, () => (map.getCanvas().style.cursor = ""));
+      });
+      map.on("click", (e) => {
+        const hits = map.queryRenderedFeatures(
+          [[e.point.x - 6, e.point.y - 6], [e.point.x + 6, e.point.y + 6]], { layers: CLICKABLE });
+        if (!hits.length) return;
+        // CLICKABLE is in priority order: points beat lines, lines beat the polygon fill.
+        hits.sort((a, b) => CLICKABLE.indexOf(a.layer.id) - CLICKABLE.indexOf(b.layer.id));
+        new maplibregl.Popup({ closeButton: true }).setLngLat(e.lngLat).setHTML(popupHTML(hits[0].properties)).addTo(map);
+      });
+    });
+
+    const KIND = { launch: "Launch zone", hazard: "Hazard", restricted: "Restricted area", parking: "Parking", route: "Access route" };
+    function popupHTML(p) {
+      const kv = [];
+      if (p.owner) kv.push("Land owner: " + esc(p.owner));
+      if (p.surface) kv.push("Surface: " + esc(p.surface));
+      if (p.ceiling_ft) kv.push("Ceiling: " + esc(p.ceiling_ft) + " ft AGL");
+      if (p.height_ft) kv.push("Estimated height: " + esc(p.height_ft) + " ft");
+      if (p.reason) kv.push("Reason: " + esc(p.reason));
+      if (p.walk_min) kv.push("Walk: about " + esc(p.walk_min) + " min");
+      if (p.fee) kv.push("Fee: " + esc(p.fee));
+      if (p.site) kv.push("Site: " + esc(p.site));
+      let h = '<span class="kv">' + esc(KIND[p.layer] || "") + "</span><br><b>" + esc(p.name) + "</b>";
+      if (p.status) h += '<br><span class="st" style="background:' + (STATUS_COLOR[p.status] || "#8c8c8c") + '">' + esc(p.status) + "</span>";
+      if (kv.length) h += '<div class="kv">' + kv.join("<br>") + "</div>";
+      if (p.notes) h += '<div style="margin-top:6px">' + esc(p.notes) + "</div>";
+      if (p.rules && /^https:\/\//.test(p.rules)) h += '<div style="margin-top:6px"><a href="' + esc(p.rules) + '" target="_blank" rel="noopener">Official rule ↗</a></div>';
+      return h;
+    }
+
+    const sitesEl = document.getElementById("sites");
+    SITES.forEach((s) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.innerHTML = '<span class="dot" style="background:' + s.color + '"></span>' + esc(s.name);
+      b.addEventListener("click", () => map.flyTo({ center: s.center, zoom: s.zoom, duration: 1200 }));
+      sitesEl.appendChild(b);
+    });
+
+    document.getElementById("basemap-seg").addEventListener("click", (e) => {
+      const btn = e.target.closest("button"); if (!btn) return;
+      const base = btn.dataset.base;
+      document.querySelectorAll("#basemap-seg button").forEach((b) => b.classList.toggle("active", b === btn));
+      map.setLayoutProperty("satellite", "visibility", base === "satellite" ? "visible" : "none");
+      map.setLayoutProperty("topo", "visibility", base === "topo" ? "visible" : "none");
+    });
+
+    const info = document.getElementById("info"), toggle = document.getElementById("toggle");
+    toggle.addEventListener("click", () => {
+      const c = info.classList.toggle("collapsed");
+      toggle.textContent = c ? "Show" : "Hide";
+      toggle.setAttribute("aria-expanded", String(!c));
+    });
+  </script>
+</body>
+</html>
