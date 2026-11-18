@@ -68,9 +68,12 @@ function projectPage(p) {
   const desc = descRaw.length > 200 ? descRaw.slice(0, 200).replace(/\s+\S*$/, "") + "…" : descRaw;
   const metaParts = [loc(p), p.delivery_date && "Delivered " + p.delivery_date, p.owner_name && "Owner: " + p.owner_name, p.coverage_acres && p.coverage_acres + " ac coverage"].filter(Boolean);
 
+  // style: "storymap" keeps the same sections and order but swaps in the StoryMap-style
+  // stylesheet (work/story.css) and a full-width cover image above the title.
+  const story = p.style === "storymap";
   const sections = [];
   const fig = p.flight ? `<figure class="fig" style="margin-left:0;margin-right:0">${pipelineSVG("bp")}<p class="bp-cap"><b>FIG. 1</b> Photogrammetry workflow behind this deliverable. Click to replay.</p></figure>` : "";
-  if (hero) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}">`);
+  if (hero && !story) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}">`);
   if (fig) sections.push(fig);
   if (p.question) sections.push(`<section><h2>The Question</h2><p class="question">${esc(p.question)}</p></section>`);
   if (p.overview) sections.push(`<section><h2>Overview</h2><p>${esc(p.overview)}</p></section>`);
@@ -137,14 +140,27 @@ function projectPage(p) {
   <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../work.css">
+  ${story
+    ? `<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Nunito+Sans:opsz,wght@6..12,600;6..12,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../story.css">`
+    : `<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../work.css">`}
   <link rel="stylesheet" href="../../diagram.css">
   <script src="../../diagrams.js" defer></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+${story ? `<nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span><span class="here">${esc(p.project_name)}</span></nav>
+${hero ? `<div class="cover"><img src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}"></div>` : ""}
 <main class="wrap">
+  <header class="title-block">
+    <h1>${esc(p.project_name)}</h1>
+    ${p.summary ? `<p class="subtitle">${esc(p.summary)}</p>` : ""}
+    <div class="byline"><b>Matthew Gissentanna</b><span>${esc([p.delivery_date, loc(p)].filter(Boolean).join(" · "))}</span></div>
+  </header>
+  ${sections.join("\n  ")}
+  <a class="back" href="/matthew/">← Back to portfolio</a>
+</main>` : `<main class="wrap">
   <nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span>${esc(p.project_name)}</nav>
   ${p.category ? `<span class="tag">${esc(p.category)}</span>` : ""}
   <h1>${esc(p.project_name)}</h1>
@@ -153,7 +169,7 @@ function projectPage(p) {
   ${ruleSVG("bpr")}
   ${sections.join("\n  ")}
   <a class="back" href="/matthew/">← Back to portfolio</a>
-</main>
+</main>`}
 </body>
 </html>
 `;

@@ -599,6 +599,8 @@ export const PROJECTS = [
       // Coursework: GIS 4690 (GPS for GIS) final project, University of Denver.
       // Started October 2026 as the Field Maps lab; delivered as the course final on 15 Nov 2026.
       // Uses the optional case-study fields: question, findings, figures.
+      // style: "storymap" renders the project page with the StoryMap-style stylesheet.
+      style: "storymap",
       project_id: "FLYSPOTS-2026-10",
       project_name: "Where Can I Fly? Drone Launch Sites in Adams County",
       category: "Coursework",
