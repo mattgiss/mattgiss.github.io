@@ -36,6 +36,10 @@ Copy `matthew/blog/_post-template.html` to `matthew/blog/<slug>/index.html`, fil
 
 To add or update a project, edit the `PROJECTS` array near the top of the `<script>` block in `matthew/index.html`. Each project is a JS object whose fields mirror the `inputs.yaml` schema from the `drone-mapping-deliverable` skill. Empty fields don't render.
 
+Coursework and analysis projects can use three optional case-study fields, rendered on the project page and in the modal: `question` (the question the project answers), `findings` (array of results), and `figures` (array of `{ src, caption, alt, wide }` shown under "Evidence" on the project page). See `FLYSPOTS-2026-10` for an example. Adding `style: "storymap"` to a project keeps the same sections and order but renders its page with `matthew/work/story.css` (full-width cover image, bold sans headings, serif reading text) in place of the blueprint theme.
+
+Self-hosted interactive maps live under `matthew/map/`. `matthew/map/flyspots/` is a standalone MapLibre page that reads `matthew/map/data/flyspots/flyspots.geojson`, so it keeps working if the ArcGIS Online originals on the school account go away.
+
 Project hero images go in `matthew/images/`, then reference them as `images/your-file.jpg` (relative to the page).
 
 PDFs for new coursework go in `matthew/reports/`, referenced as `reports/your-file.pdf`.

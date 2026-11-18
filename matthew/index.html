@@ -369,8 +369,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li><a href="work/dccr-2026-01/">Washington D.C. Burglary Mapping</a>: Choropleth of 2019 residential burglaries by Metropolitan Police district, overlaid with station, substation, and community-liaison locations.</li>
   <li><a href="work/dnvr-2026-02/">Denver Block-Group Demographic Atlas</a>: A block-group choropleth atlas of Denver covering population density, age, ethnicity, gender, and housing, all sharing one classification and layout system across the series.</li>
   <li><a href="work/ustemp-2026-02/">Lower 48 Temperature Isotherms (1991–2020)</a>: Three-panel isarithmic map of 1991–2020 U.S. temperature normals (30-year mean, January, and July) at a 5°C isotherm interval.</li>
+  <li><a href="work/flyspots-2026-10/">Where Can I Fly? Drone Launch Sites in Adams County</a>: Final project for GPS for GIS at the University of Denver: 24 GPS-collected features that answer where a drone pilot can legally take off in north metro Adams County, delivered as a StoryMap and web map.</li>
   <li><a href="work/brighton-2026-10/">Brighton Parks and Trails GPS Map</a>: Eleven parks and trails around Brighton, Colorado, each with a find-it hint, published as a GPX file for handheld GPS apps and as a public web map.</li>
-  <li><a href="work/flyspots-2026-10/">Flying Spots Field Data Collection Map</a>: A field data collection map for recreational drone flying spots in Brighton, Colorado, with launch sites, linear hazards, and restricted areas, built for ArcGIS Field Maps.</li>
   <li><a href="work/safespots-2026-10/">Safe Drone Flying Spots Survey</a>: A Survey123 log of 14 places I have flown my drone, rated for safe recreational flying with field notes on hazards, published as a web map and an Instant App.</li>
   <li><a href="work/rondonia-2026-11/">Amazon Deforestation Land-Cover Classification</a>: Three classifiers run on one Landsat 7 scene of Amazon deforestation and checked against a published reference map: which ones separate forest, pasture, regrowth, and burn scars, and where each one fails.</li>
   <li><a href="work/manaus-2026-11/">Amazon Flood Mapping with Two-Date Radar</a>: Low-water and high-water L-band radar mosaics of the Amazon at Manaus combined into one change composite that shows where forest floods and where open water expands, through cloud cover that blocks optical sensors.</li>
@@ -610,7 +610,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (p.coverage_acres) metaParts.push(p.coverage_acres + ' ac coverage');
     if (metaParts.length) body += '<div class="lsc-modal-meta">' + metaParts.join(' · ') + '</div>';
 
+    if (p.question) body += '<div class="lsc-modal-section"><h4>The Question</h4><p>' + p.question + '</p></div>';
     if (p.overview) body += '<div class="lsc-modal-section"><h4>Overview</h4><p>' + p.overview + '</p></div>';
+
+    if (p.findings && p.findings.length) {
+      body += '<div class="lsc-modal-section"><h4>What I Found</h4><ul>';
+      p.findings.forEach(function(f) { body += '<li>' + f + '</li>'; });
+      body += '</ul></div>';
+    }
 
     if (p.results && p.results.length) {
       body += '<div class="lsc-modal-section"><h4>Results</h4><ul>';

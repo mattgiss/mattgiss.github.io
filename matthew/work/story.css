@@ -1,0 +1,90 @@
+/* StoryMap-style theme for project pages that set style: "storymap" in projects.js.
+   Same sections and order as work.css pages; only the look changes:
+   full-width cover image, bold sans headings, serif reading text, centered column. */
+:root{
+  --ink:#002625; --body:#1f3a39; --muted:#4f6665; --rule:#d5dedd; --paper:#ffffff; --wash:#f3f6f6;
+  --accent:#007a70; --accent-dark:#00544d;
+  --font-head:'Avenir Next','Avenir','Nunito Sans','Segoe UI',Helvetica,Arial,sans-serif;
+  --font-body:'Noto Serif',Georgia,'Times New Roman',serif;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--body);
+  font-family:var(--font-body);font-size:19px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+a{color:var(--accent-dark);}
+
+/* Slim story header, like the bar that stays at the top of a story */
+.crumbs{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.6rem;min-height:54px;padding:10px 32px;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);
+  font-family:var(--font-body);font-size:.74rem;color:var(--muted);white-space:nowrap;overflow:hidden;}
+.crumbs a{color:var(--muted);text-decoration:none;}
+.crumbs a:hover{color:var(--accent-dark);text-decoration:underline;}
+.crumbs .sep{color:var(--rule);}
+.crumbs .here{color:var(--ink);overflow:hidden;text-overflow:ellipsis;}
+
+/* Full-width cover image band above the title */
+.cover{width:100%;height:min(56vh,520px);min-height:240px;background:var(--wash);overflow:hidden;}
+.cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%;}
+
+.wrap{max-width:728px;margin:0 auto;padding:0 24px 120px;}
+.title-block{padding:56px 0 8px;margin-bottom:40px;}
+h1{font-family:var(--font-head);font-weight:800;font-size:clamp(2.1rem,5.4vw,3.3rem);line-height:1.12;letter-spacing:-0.01em;
+  color:var(--ink);margin:0 0 20px;text-wrap:balance;}
+.subtitle{font-size:1.28rem;line-height:1.55;color:var(--body);margin:0 0 22px;}
+.byline{display:flex;flex-direction:column;gap:2px;font-size:.84rem;color:var(--muted);}
+.byline b{color:var(--ink);font-weight:600;}
+
+section{margin:0 0 56px;}
+h2{font-family:var(--font-head);font-weight:800;font-size:1.62rem;line-height:1.25;color:var(--ink);margin:0 0 18px;}
+p{margin:0 0 1.15em;}
+
+/* The question reads like a StoryMap quote block */
+.question{font-size:1.5rem;line-height:1.5;font-style:italic;color:var(--ink);text-align:center;margin:0;padding:8px 12px;text-wrap:balance;}
+.question::before,.question::after{content:'';display:block;width:64px;height:3px;background:var(--accent);margin:0 auto 22px;}
+.question::after{margin:22px auto 0;}
+
+ul.list{margin:0;padding:0 0 0 1.3em;}
+ul.list li{margin:0 0 .7em;padding-left:.2em;}
+ul.list li::marker{color:var(--accent);}
+
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 28px;border-top:1px solid var(--rule);}
+.spec{padding:12px 0;border-bottom:1px solid var(--rule);font-size:.92rem;}
+.spec .l,.crs dt{display:block;font-family:var(--font-head);font-weight:600;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.spec .v,.crs dd{color:var(--ink);}
+.crs{margin:0;border-top:1px solid var(--rule);font-size:.92rem;}
+.crs .row{padding:12px 0;border-bottom:1px solid var(--rule);}
+.crs dd{margin:0;}
+.stack{display:flex;flex-wrap:wrap;gap:8px;}
+.stack span{font-family:var(--font-head);font-weight:600;font-size:.8rem;padding:4px 12px;border:1px solid var(--rule);border-radius:999px;color:var(--ink);}
+
+/* Media: wide figures break out of the reading column, captions sit centered beneath */
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px;}
+.shot{margin:0;}
+.shot.wide{grid-column:1 / -1;width:min(1000px,calc(100vw - 48px));margin-left:50%;transform:translateX(-50%);}
+.shot img{display:block;width:100%;height:auto;background:var(--wash);}
+.shot figcaption{margin:12px auto 0;max-width:680px;text-align:center;font-size:.8rem;line-height:1.55;color:var(--muted);}
+.shot figcaption b{font-family:var(--font-head);font-weight:800;font-size:.7rem;letter-spacing:.06em;color:var(--ink);margin-right:6px;}
+.fig{margin:0 0 56px;}
+
+.links{display:flex;flex-wrap:wrap;gap:12px;}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:10px 22px;background:var(--accent);color:#fff;text-decoration:none;
+  font-family:var(--font-head);font-weight:600;font-size:.9rem;border:2px solid var(--accent);border-radius:4px;}
+.btn:hover,.btn:focus-visible{background:var(--accent-dark);border-color:var(--accent-dark);}
+.btn.sec{background:transparent;color:var(--accent-dark);}
+.btn.sec:hover,.btn.sec:focus-visible{background:var(--wash);color:var(--accent-dark);}
+.back{display:inline-block;margin-top:8px;padding-top:28px;border-top:1px solid var(--rule);width:100%;
+  font-family:var(--font-head);font-weight:600;font-size:.9rem;color:var(--accent-dark);text-decoration:none;}
+.back:hover{text-decoration:underline;}
+
+@media (max-width:640px){
+  html,body{font-size:17px;}
+  .crumbs{padding:10px 16px;}
+  .cover{height:42vh;}
+  .wrap{padding:0 20px 88px;}
+  .title-block{padding-top:36px;margin-bottom:28px;}
+  .subtitle{font-size:1.14rem;}
+  .question{font-size:1.25rem;}
+  section{margin-bottom:44px;}
+  .figs{grid-template-columns:1fr;gap:32px;}
+  .shot.wide{width:100%;margin-left:0;transform:none;}
+}

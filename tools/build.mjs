@@ -68,13 +68,18 @@ function projectPage(p) {
   const desc = descRaw.length > 200 ? descRaw.slice(0, 200).replace(/\s+\S*$/, "") + "…" : descRaw;
   const metaParts = [loc(p), p.delivery_date && "Delivered " + p.delivery_date, p.owner_name && "Owner: " + p.owner_name, p.coverage_acres && p.coverage_acres + " ac coverage"].filter(Boolean);
 
+  // style: "storymap" keeps the same sections and order but swaps in the StoryMap-style
+  // stylesheet (work/story.css) and a full-width cover image above the title.
+  const story = p.style === "storymap";
   const sections = [];
   const fig = p.flight ? `<figure class="fig" style="margin-left:0;margin-right:0">${pipelineSVG("bp")}<p class="bp-cap"><b>FIG. 1</b> Photogrammetry workflow behind this deliverable. Click to replay.</p></figure>` : "";
-  if (hero) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}">`);
+  if (hero && !story) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}">`);
   if (fig) sections.push(fig);
+  if (p.question) sections.push(`<section><h2>The Question</h2><p class="question">${esc(p.question)}</p></section>`);
   if (p.overview) sections.push(`<section><h2>Overview</h2><p>${esc(p.overview)}</p></section>`);
+  if (p.findings?.length) sections.push(`<section><h2>What I Found</h2><ul class="list">${p.findings.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>`);
   if (p.results?.length) sections.push(`<section><h2>Results</h2><ul class="list">${p.results.map((r) => `<li>${esc(r)}</li>`).join("")}</ul></section>`);
-  if (p.figures?.length) sections.push(`<section><h2>Figures</h2>${p.figures.map((f, i) => `<figure class="fig shot"><img src="../../${esc(f.src)}" alt="${esc(f.caption)}" loading="lazy"><p class="bp-cap"><b>FIG. ${i + 1}</b> ${esc(f.caption)}</p></figure>`).join("")}</section>`);
+  if (p.figures?.length && !story) sections.push(`<section><h2>Figures</h2>${p.figures.map((f, i) => `<figure class="fig shot"><img src="../../${esc(f.src)}" alt="${esc(f.caption)}" loading="lazy"><p class="bp-cap"><b>FIG. ${i + 1}</b> ${esc(f.caption)}</p></figure>`).join("")}</section>`);
   if (p.stack?.length) sections.push(`<section><h2>Stack</h2><div class="stack">${p.stack.map((t) => `<span>${esc(t)}</span>`).join("")}</div></section>`);
   if (p.features?.length) sections.push(`<section><h2>Features</h2><ul class="list">${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>`);
   const fr = flightRows(p.flight); if (fr.length) sections.push(`<section><h2>Flight</h2>${specsHTML(fr)}</section>`);
@@ -88,6 +93,8 @@ function projectPage(p) {
   }
   const par = parcelRows(p.parcel_stats); if (par.length) sections.push(`<section><h2>Parcel Statistics</h2>${specsHTML(par)}</section>`);
   if (p.methods?.length) sections.push(`<section><h2>Methods</h2><ul class="list">${p.methods.map((m) => `<li>${esc(m)}</li>`).join("")}</ul></section>`);
+  if (p.figures?.length && story) sections.push(`<section><h2>Evidence</h2><div class="figs">${p.figures.map((f, i) =>
+    `<figure class="shot${f.wide ? " wide" : ""}"><img loading="lazy" src="../../${esc(f.src)}" alt="${esc(f.alt || f.caption || "")}"><figcaption><b>FIG. ${i + 1}</b> ${esc(f.caption || "")}</figcaption></figure>`).join("")}</div></section>`);
   if (p.deliverables?.length) sections.push(`<section><h2>Deliverables</h2><ul class="list">${p.deliverables.map((d) => `<li>${esc(d)}</li>`).join("")}</ul></section>`);
   if (p.key_technical_challenge) sections.push(`<section><h2>Key Technical Challenge</h2><p>${esc(p.key_technical_challenge)}</p></section>`);
   if (p.lessons_learned) sections.push(`<section><h2>Lessons Learned</h2><p>${esc(p.lessons_learned)}</p></section>`);
@@ -135,14 +142,27 @@ function projectPage(p) {
   <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../work.css">
+  ${story
+    ? `<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Nunito+Sans:opsz,wght@6..12,600;6..12,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../story.css">`
+    : `<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../work.css">`}
   <link rel="stylesheet" href="../../diagram.css">
   <script src="../../diagrams.js" defer></script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+${story ? `<nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span><span class="here">${esc(p.project_name)}</span></nav>
+${hero ? `<div class="cover"><img src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}"></div>` : ""}
 <main class="wrap">
+  <header class="title-block">
+    <h1>${esc(p.project_name)}</h1>
+    ${p.summary ? `<p class="subtitle">${esc(p.summary)}</p>` : ""}
+    <div class="byline"><b>Matthew Gissentanna</b><span>${esc([p.delivery_date, loc(p)].filter(Boolean).join(" · "))}</span></div>
+  </header>
+  ${sections.join("\n  ")}
+  <a class="back" href="/matthew/">← Back to portfolio</a>
+</main>` : `<main class="wrap">
   <nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span>${esc(p.project_name)}</nav>
   ${p.category ? `<span class="tag">${esc(p.category)}</span>` : ""}
   <h1>${esc(p.project_name)}</h1>
@@ -151,7 +171,7 @@ function projectPage(p) {
   ${ruleSVG("bpr")}
   ${sections.join("\n  ")}
   <a class="back" href="/matthew/">← Back to portfolio</a>
-</main>
+</main>`}
 </body>
 </html>
 `;
@@ -200,6 +220,7 @@ const today = new Date().toISOString().slice(0, 10);
 const urls = [
   { loc: `${BASE}/matthew/`, freq: "monthly", pri: "1.0" },
   { loc: `${BASE}/matthew/map/`, freq: "monthly", pri: "0.8" },
+  { loc: `${BASE}/matthew/map/flyspots/`, freq: "yearly", pri: "0.7" },
   { loc: `${BASE}/matthew/blog/`, freq: "weekly", pri: "0.8" },
   { loc: `${BASE}/matthew/blog/rtk-photogrammetry-without-gcps/`, freq: "yearly", pri: "0.6" },
   ...VISIBLE.map((p) => ({ loc: `${BASE}/matthew/work/${slug(p.project_id)}/`, freq: "yearly", pri: "0.7",

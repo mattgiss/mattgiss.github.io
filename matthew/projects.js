@@ -595,6 +595,80 @@ export const PROJECTS = [
     },
 
     {
+      // ---- FLYSPOTS-2026-10 | Where Can I Fly? Drone Launch Sites in Adams County ----
+      // Coursework: GIS 4690 (GPS for GIS) final project, University of Denver.
+      // Started October 2026 as the Field Maps lab; delivered as the course final on 15 Nov 2026.
+      // Uses the optional case-study fields: question, findings, figures.
+      // style: "storymap" renders the project page with the StoryMap-style stylesheet.
+      style: "storymap",
+      project_id: "FLYSPOTS-2026-10",
+      project_name: "Where Can I Fly? Drone Launch Sites in Adams County",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "15 November 2026",
+      site_address: "Brighton and Thornton, CO",
+      county: "Adams County",
+      state: "CO",
+      owner_name: "",
+
+      hero_shot: "images/flyspots-hero.jpg",
+      thumbnail: "images/flyspots-hero.jpg",
+
+      summary: "Final project for GPS for GIS at the University of Denver: 24 GPS-collected features that answer where a drone pilot can legally take off in north metro Adams County, delivered as a StoryMap and web map.",
+      question: "Where can a drone pilot legally take off in north metro Adams County, and what hazards and limits apply at each site?",
+      overview: "This was the final project for GIS 4690, GPS for GIS, in the University of Denver GIS and UAS certificate. As a Part 107 pilot I answer this question before every flight at a new site, and the answer has always been scattered across an airspace app, satellite imagery and a site visit. I designed a five-layer field database in ArcGIS Pro, scouted candidate sites with a QuickCapture project, then collected launch zones, hazards, restricted areas, parking and access routes in ArcGIS Field Maps. Each launch zone records its land owner, legal status, a link to the official rule and notes for the next pilot. The work is delivered as an ArcGIS StoryMap with an embedded web map.",
+      findings: [
+        "Legal launch sites are scarce. Of six launch zones surveyed, two are allowed with conditions, two are roadside right-of-way, one is closed and one is not permitted.",
+        "The land owner decides takeoff and landing, separately from the airspace. All four November sites sit outside the FAA UAS Facility Map grid, yet only one is a site I would send another pilot to today: Aylor Open Space in Thornton.",
+        "Adams County allows drone takeoff and landing on its park land only at one designated drop-in area, which was closed for construction when I surveyed it.",
+        "Brighton and Commerce City park rules do not mention drones. I treated silence as no permission and marked no site in those cities as allowed."
+      ],
+      key_technical_challenge: "Turning a legal question into a data model. Airspace, land ownership and local rules each come from a different source, so the launch zone layer needed fields that hold the answer and its evidence together: legal status, land owner and a link to the rule itself.",
+      lessons_learned: "Scout in daylight: my first look at one site was at night and I mistook a rise in the ground for a fence. Load an imagery basemap before leaving home, because lines are hard to place against a street map. Check layer settings before the field day, since photo attachments were disabled on my layers and that cost time at the first site. Phone GNSS at about 8 ft is enough to show which side of a road a launch zone is on, and it is not enough to locate a property line.",
+
+      flight: null,
+      processing: { software: "ArcGIS Pro, ArcGIS Field Maps, ArcGIS QuickCapture, ArcGIS Online, ArcGIS StoryMaps" },
+      crs: {
+        horizontal: "WGS 84 (collection); Web Mercator (web map)",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Scouting: 26 photo-documented points logged in a QuickCapture project (14 opportunities, 9 hazards, 3 airport or heliport rule checks) to pick the sites worth a full survey",
+        "Mission planning: satellite geometry for the collection window documented with Trimble GNSS Planning Online predictions (PDOP 0.75 to 0.93, more than 30 satellites in view)",
+        "Data model: five feature classes built in ArcGIS Pro covering points, lines and polygons, published as hosted feature layers",
+        "Collection: ArcGIS Field Maps on phone GNSS across two sessions (October 25 and November 15, 2026), with photo attachments and an airspace check at every site",
+        "Attribution: site name, land owner, legal status, official rule link and pilot notes recorded for each launch zone",
+        "Quality control: completeness, duplicate, position-over-imagery and logic checks, which caught and corrected an attribute shift between two sites after a row deletion",
+        "Delivery: StoryMap narrative, web map symbolized by legal status with FAA UAS Facility Map data as a reference layer, and file geodatabase exports"
+      ],
+      figures: [
+        { src: "images/flyspots-map.jpg", wide: true, alt: "Web map of north metro Adams County with launch zones colored by legal status over satellite imagery", caption: "Project area map. Launch zones are colored by legal status: green allowed with conditions, orange roadside right-of-way, red closed. The gray grid to the southeast is FAA UAS Facility Map data around Denver International Airport." },
+        { src: "images/flyspots-sats.jpg", wide: true, alt: "Stacked area chart of predicted satellites in view by constellation from 10:00 to 16:00", caption: "Predicted satellites in view near Brighton on November 15, 2026, 10:00 to 16:00 MST, 10 degree elevation cutoff. Source: Trimble GNSS Planning Online." },
+        { src: "images/flyspots-dop.jpg", wide: true, alt: "Line chart of predicted geometric, time, position, horizontal and vertical DOP values from 10:00 to 16:00", caption: "Predicted DOP values for the same window. Position DOP stays under 1.0, so satellite geometry was not a limiting factor. Source: Trimble GNSS Planning Online." },
+        { src: "images/flyspots-riverdale.jpg", wide: true, alt: "New picnic shelter and graded ground at Riverdale Regional Park during construction", caption: "Riverdale Regional Park on survey day. The county's designated drone drop-in area here was closed for construction, so the site is recorded as Closed." }
+      ],
+      deliverables: [
+        "ArcGIS StoryMap covering purpose, needs assessment, mission planning, methodology, processing, quality control, export, analysis and conclusions",
+        "Public web map with launch zones symbolized by legal status, plus hazards, restricted areas, parking and access routes",
+        "24 GPS-collected features: 6 launch zones, 6 hazards, 5 access routes, 4 parking points, 3 restricted areas",
+        "File geodatabase exports of both hosted feature layers",
+        "Self-hosted interactive map of the November survey on this site"
+      ],
+      knowsAbout: ["GPS data collection", "ArcGIS Field Maps", "UAS site assessment", "Part 107", "ArcGIS StoryMaps", "GIS", "Coursework"],
+      links: [
+        { label: "Read the StoryMap", url: "https://storymaps.arcgis.com/stories/320c424c7c514b118fa176b186defa00", primary: true },
+        { label: "Interactive map", url: "map/flyspots/" },
+        { label: "ArcGIS web map", url: "https://dugis.maps.arcgis.com/apps/mapviewer/index.html?webmap=c47a0d3d0a154607aac5115ee420b8d7" }
+      ]
+    },
+
+    {
       // ---- BRIGHTON-2026-10 | Brighton Parks and Trails GPS Map ----
       // Coursework: DU GIS and UAS certificate, GPS assignment
       project_id: "BRIGHTON-2026-10",
@@ -613,7 +687,7 @@ export const PROJECTS = [
       thumbnail: "",
 
       summary: "Eleven parks and trails around Brighton, Colorado, each with a find-it hint, published as a GPX file for handheld GPS apps and as a public web map.",
-      overview: "Built for the GPS assignment in the University of Denver GIS and UAS certificate. Eleven public parks and trails around Brighton are recorded as points with a name, category (city park, neighborhood park, regional park, state park, or trail), description, find-it hint, and difficulty rating. The points were exported from ArcGIS Pro with Features To GPX so they load into phone and handheld GPS apps, and the same data is published as a web map symbolized by category with name labels and a trimmed popup.",
+      overview: "An early lab in GIS 4690, GPS for GIS, in the University of Denver GIS and UAS certificate. Eleven public parks and trails around Brighton are recorded as points with a name, category (city park, neighborhood park, regional park, state park, or trail), description, find-it hint, and difficulty rating. The points were exported from ArcGIS Pro with Features To GPX so they load into phone and handheld GPS apps, and the same data is published as a web map symbolized by category with name labels and a trimmed popup.",
       key_technical_challenge: "Getting clean GPX waypoints out of ArcGIS Pro, then publishing the same data online without exposing the editable source layer.",
 
       flight: null,
@@ -638,54 +712,8 @@ export const PROJECTS = [
       ],
       links: [
         { label: "Web map", url: "https://dugis.maps.arcgis.com/apps/mapviewer/index.html?webmap=9dffcc37fd2c417998cc5b4520fd454c", primary: true },
-        { label: "GPX file", url: "reports/BRIGHTON_Parks_Trails.gpx" }
-      ]
-    },
-
-    {
-      // ---- FLYSPOTS-2026-10 | Flying Spots Field Data Collection ----
-      // Coursework: GIS 4690, University of Denver
-      project_id: "FLYSPOTS-2026-10",
-      project_name: "Flying Spots Field Data Collection Map",
-      category: "Coursework",
-      status: "Delivered",
-      portfolio_worthy: "Yes",
-      confidential: "No",
-      delivery_date: "4 October 2026",
-      site_address: "Brighton, CO 80601",
-      county: "Adams County",
-      state: "CO",
-      owner_name: "",
-
-      hero_shot: "",
-      thumbnail: "",
-
-      summary: "A field data collection map for recreational drone flying spots in Brighton, Colorado, with launch sites, linear hazards, and restricted areas, built for ArcGIS Field Maps.",
-      overview: "Built for GIS 4690 at the University of Denver in support of my UAS certificate work. The map organizes three feature layers for field collection: flying spots with surface type and LAANC ceilings, linear hazards such as power lines and tree rows, and restricted areas. It is published through a read-only public view layer so the web map can be shared without exposing the editable source data.",
-      key_technical_challenge: "Designing a field-ready data model that captures airspace ceilings, surface type, and linear hazards, then sharing the result publicly without opening the editable layers.",
-
-      flight: null,
-      processing: { software: "ArcGIS Field Maps, ArcGIS Online" },
-      crs: {
-        horizontal: "WGS 84 / Web Mercator",
-        vertical: "",
-        image: ""
-      },
-      parcel_stats: null,
-      coverage_acres: null,
-
-      methods: [
-        "Three-layer data model: flying spots, hazards, restricted areas",
-        "Launch sites record surface type and LAANC ceilings",
-        "Linear hazards digitized as lines (power lines, tree rows)",
-        "Read-only public view layer for sharing"
-      ],
-      deliverables: [
-        "Field Maps data collection web map",
-        "Public read-only view layer"
-      ],
-      links: [
-        { label: "Web map", url: "https://dugis.maps.arcgis.com/apps/mapviewer/index.html?webmap=876a2687e0b7474690fee9b3cd99b424", primary: true }
+        { label: "GPX file", url: "reports/BRIGHTON_Parks_Trails.gpx" },
+        { label: "Course final project", url: "work/flyspots-2026-10/" }
       ]
     },
 
@@ -708,7 +736,7 @@ export const PROJECTS = [
       thumbnail: "",
 
       summary: "A Survey123 log of 14 places I have flown my drone, rated for safe recreational flying with field notes on hazards, published as a web map and an Instant App.",
-      overview: "Built for GIS 4690 at the University of Denver. A Survey123 form records recommended drone launch sites from personal flight history and field notes, including hazards at each site. All 14 sites sit in Class G airspace with no LAANC grid. The results are published through a read-only public view layer, a web map, and an Instant App with a sidebar for browsing the sites.",
+      overview: "A mid-course lab in GIS 4690, GPS for GIS, at the University of Denver. A Survey123 form records recommended drone launch sites from personal flight history and field notes, including hazards at each site. All 14 sites sit in Class G airspace with no LAANC grid. The results are published through a read-only public view layer, a web map, and an Instant App with a sidebar for browsing the sites.",
       key_technical_challenge: "Turning personal flight history into a consistent, repeatable survey that other pilots could use to judge a launch site.",
 
       flight: null,
@@ -734,7 +762,8 @@ export const PROJECTS = [
       ],
       links: [
         { label: "Instant App", url: "https://dugis.maps.arcgis.com/apps/instant/sidebar/index.html?appid=77c787249c854caa8a0756db58354e94", primary: true },
-        { label: "Web map", url: "https://dugis.maps.arcgis.com/apps/mapviewer/index.html?webmap=43bdd9fdac3e4b67922b06dcf03c2467" }
+        { label: "Web map", url: "https://dugis.maps.arcgis.com/apps/mapviewer/index.html?webmap=43bdd9fdac3e4b67922b06dcf03c2467" },
+        { label: "Course final project", url: "work/flyspots-2026-10/" }
       ]
     },
 

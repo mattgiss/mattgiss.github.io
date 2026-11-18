@@ -13,6 +13,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://gissentanna.com/matthew/map/flyspots/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://gissentanna.com/matthew/blog/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -109,13 +115,14 @@
     <image:image><image:loc>https://gissentanna.com/matthew/images/ustemp-hero.jpg</image:loc><image:title>Lower 48 Temperature Isotherms (1991–2020)</image:title></image:image>
   </url>
   <url>
-    <loc>https://gissentanna.com/matthew/work/brighton-2026-10/</loc>
+    <loc>https://gissentanna.com/matthew/work/flyspots-2026-10/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/flyspots-hero.jpg</image:loc><image:title>Where Can I Fly? Drone Launch Sites in Adams County</image:title></image:image>
   </url>
   <url>
-    <loc>https://gissentanna.com/matthew/work/flyspots-2026-10/</loc>
+    <loc>https://gissentanna.com/matthew/work/brighton-2026-10/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
