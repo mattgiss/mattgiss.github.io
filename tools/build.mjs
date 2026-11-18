@@ -78,6 +78,8 @@ function projectPage(p) {
   if (p.question) sections.push(`<section><h2>The Question</h2><p class="question">${esc(p.question)}</p></section>`);
   if (p.overview) sections.push(`<section><h2>Overview</h2><p>${esc(p.overview)}</p></section>`);
   if (p.findings?.length) sections.push(`<section><h2>What I Found</h2><ul class="list">${p.findings.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>`);
+  if (p.results?.length) sections.push(`<section><h2>Results</h2><ul class="list">${p.results.map((r) => `<li>${esc(r)}</li>`).join("")}</ul></section>`);
+  if (p.figures?.length && !story) sections.push(`<section><h2>Figures</h2>${p.figures.map((f, i) => `<figure class="fig shot"><img src="../../${esc(f.src)}" alt="${esc(f.caption)}" loading="lazy"><p class="bp-cap"><b>FIG. ${i + 1}</b> ${esc(f.caption)}</p></figure>`).join("")}</section>`);
   if (p.stack?.length) sections.push(`<section><h2>Stack</h2><div class="stack">${p.stack.map((t) => `<span>${esc(t)}</span>`).join("")}</div></section>`);
   if (p.features?.length) sections.push(`<section><h2>Features</h2><ul class="list">${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>`);
   const fr = flightRows(p.flight); if (fr.length) sections.push(`<section><h2>Flight</h2>${specsHTML(fr)}</section>`);
@@ -91,7 +93,7 @@ function projectPage(p) {
   }
   const par = parcelRows(p.parcel_stats); if (par.length) sections.push(`<section><h2>Parcel Statistics</h2>${specsHTML(par)}</section>`);
   if (p.methods?.length) sections.push(`<section><h2>Methods</h2><ul class="list">${p.methods.map((m) => `<li>${esc(m)}</li>`).join("")}</ul></section>`);
-  if (p.figures?.length) sections.push(`<section><h2>Evidence</h2><div class="figs">${p.figures.map((f, i) =>
+  if (p.figures?.length && story) sections.push(`<section><h2>Evidence</h2><div class="figs">${p.figures.map((f, i) =>
     `<figure class="shot${f.wide ? " wide" : ""}"><img loading="lazy" src="../../${esc(f.src)}" alt="${esc(f.alt || f.caption || "")}"><figcaption><b>FIG. ${i + 1}</b> ${esc(f.caption || "")}</figcaption></figure>`).join("")}</div></section>`);
   if (p.deliverables?.length) sections.push(`<section><h2>Deliverables</h2><ul class="list">${p.deliverables.map((d) => `<li>${esc(d)}</li>`).join("")}</ul></section>`);
   if (p.key_technical_challenge) sections.push(`<section><h2>Key Technical Challenge</h2><p>${esc(p.key_technical_challenge)}</p></section>`);
