@@ -739,6 +739,183 @@ export const PROJECTS = [
     },
 
     {
+      // ---- RONDONIA-2026-11 | Amazon land-cover classification ----
+      // Coursework: DU GIS 4700 Remote Sensing I, Lab 8. Guided lab on course-provided data.
+      project_id: "RONDONIA-2026-11",
+      project_name: "Amazon Deforestation Land-Cover Classification",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "13 November 2026",
+      site_address: "Rondônia, Brazil",
+      county: "",
+      state: "",
+      owner_name: "",
+
+      hero_shot: "images/rondonia-hero.jpg",
+      thumbnail: "images/rondonia-hero.jpg",
+
+      summary: "Three classifiers run on one Landsat 7 scene of Amazon deforestation and checked against a published reference map: which ones separate forest, pasture, regrowth, and burn scars, and where each one fails.",
+      overview: "A guided lab from Remote Sensing I at the University of Denver, using a Landsat 7 ETM+ scene (24 August 2000) of fishbone-pattern clearing in Rondônia, Brazil. The question was practical: if you need a land-cover map of an active deforestation front, how much does the choice of classifier matter? Six training classes (primary forest, pasture, second-growth forest, urban and bare soil, water, burn scar) were digitized as regions of interest in ENVI, then used to run Minimum Distance and Maximum Likelihood classifications. ISODATA unsupervised clustering was run at 3, 5, and 8 clusters for comparison. Every result was compared with the reference classification from Roberts et al. (2002). The left half of the image above is the 5-4-3 false-color composite; the right half is the Maximum Likelihood result for the same ground.",
+      key_technical_challenge: "Second-growth forest and burn scars occur in small, irregular patches, so it is hard to find pure training and test pixels for them. An independent second-growth test area scored highest for burn scar, not second-growth, which showed the sample was mixed and that these two classes are the weak point of every method tried.",
+      lessons_learned: "Classifier choice matters most for the spectrally variable classes. A classifier that models class variance (Maximum Likelihood) held pasture together where a means-only classifier (Minimum Distance) broke it apart. Unsupervised clusters are spectral groupings, not land uses: the town and bright pasture never separated, even at 8 clusters. Area percentages here were measured over one screen extent and are approximate, and no formal accuracy assessment (confusion matrix) was part of the exercise.",
+
+      results: [
+        "Maximum Likelihood tracked the reference map best. Over the comparison extent it mapped about 22% pasture and 3% urban, against 29% and 2% in the reference.",
+        "Minimum Distance labeled about 11% of the area urban and only 12% pasture, because bright and dry pasture pixels sit closer to the urban mean than to the pasture mean.",
+        "Rule-image scores showed primary forest is most easily confused with second-growth (-5.2 vs. -10.1) and least with pasture (-80.0).",
+        "ISODATA needed 8 clusters before water separated, and never produced an urban cluster."
+      ],
+      figures: [
+        { src: "images/rondonia-543.jpg", caption: "Landsat 7 ETM+ 5-4-3 false-color composite. Forest is dark green, pasture is pink, burn scars are dark purple." },
+        { src: "images/rondonia-reference.jpg", caption: "Reference classification (Roberts et al. 2002) used as the benchmark." },
+        { src: "images/rondonia-mindist.jpg", caption: "Minimum Distance. Large pastures break into urban (thistle) and scattered water (blue)." },
+        { src: "images/rondonia-maxlike.jpg", caption: "Maximum Likelihood. Pastures hold together and urban is limited to the town and bare fields." },
+        { src: "images/rondonia-isodata8.jpg", caption: "ISODATA, 8 clusters, relabeled to the same legend. Forest and pasture are captured; urban is not." }
+      ],
+
+      flight: null,
+      processing: { software: "ENVI 6.1" },
+      crs: {
+        horizontal: "UTM Zone 20 South, South American 1969 (30 m pixels)",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "5-4-3 false-color composite for visual interpretation of the six classes",
+        "Six training ROIs, five small rectangles each, spread across the scene",
+        "Supervised classification: Minimum Distance and Maximum Likelihood, with rule images",
+        "Independent test ROIs and rule-image statistics to measure class confusion",
+        "ISODATA unsupervised clustering at 3, 5, and 8 clusters, each relabeled to the reference legend",
+        "Side-by-side comparison of every result with the reference classification"
+      ],
+      deliverables: [
+        "Two supervised classification rasters with rule images",
+        "Three ISODATA classification rasters",
+        "Training and test ROI files",
+        "Written analysis of class confusion and method comparison"
+      ],
+      knowsAbout: ["remote sensing", "land-cover classification", "Landsat", "ENVI", "supervised classification", "ISODATA", "deforestation mapping"],
+      links: []
+    },
+
+    {
+      // ---- MANAUS-2026-11 | Radar flood mapping ----
+      // Coursework: DU GIS 4700 Remote Sensing I, Lab 6. Guided lab on course-provided data.
+      project_id: "MANAUS-2026-11",
+      project_name: "Amazon Flood Mapping with Two-Date Radar",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "7 November 2026",
+      site_address: "Manaus, Amazonas, Brazil",
+      county: "",
+      state: "",
+      owner_name: "",
+
+      hero_shot: "images/manaus-hero.jpg",
+      thumbnail: "images/manaus-hero.jpg",
+
+      summary: "Low-water and high-water L-band radar mosaics of the Amazon at Manaus combined into one change composite that shows where forest floods and where open water expands, through cloud cover that blocks optical sensors.",
+      overview: "A guided lab from Remote Sensing I at the University of Denver. Two JERS-1 L-band SAR mosaics from the Global Rain Forest Mapping project cover the meeting of the Rio Negro and the Solimões at Manaus: one at low water (August to September 1995) and one at high water (May to June 1996). Loading the low-water image as red and the high-water image as green and blue turns seasonal change into color. Cyan marks forest that floods at high water. Red marks floodplain that becomes open water. Gray and pink tones are upland forest that does not change, and the river channels stay black. The same lab opened with an ERS-2 C-band scene of Salt Lake City, used to work out the sensor look direction and to identify foreshortening and layover in the Wasatch foothills.",
+      key_technical_challenge: "The two mosaics are not radiometrically matched, so brightness cannot be compared directly between dates. Each surface had to be read relative to its surroundings within one image, then confirmed with pixel values at seven sample targets.",
+      lessons_learned: "Radar brightness is about roughness, geometry, and moisture, not color. Flooded forest is brighter than dry forest because the signal bounces from the water surface to the trunks and back, while open water is dark because it reflects the signal away. A two-date color composite is a fast first-pass change map, and it works in the wet tropics where cloud-free optical imagery is rare.",
+
+      results: [
+        "Floodplain (várzea) forest stands out in cyan: it brightens at high water, when standing water under the canopy creates a double bounce off the trunks.",
+        "Floodplain at 957, 787 dropped from 158 to 37 as it went under open water, showing as red.",
+        "The city of Manaus stayed near saturation on both dates (255 and 177) from corner-reflector returns.",
+        "In the ERS-2 scene, bright west-facing slopes and building faces showed the sensor was looking west."
+      ],
+
+      flight: null,
+      processing: { software: "ENVI 6.1" },
+      crs: {
+        horizontal: "JERS-1 GRFM mosaics, about 100 m pixels; ERS-2 scene in slant range, not georeferenced",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Grayscale interpretation of backscatter for water, city, rain forest, and pasture",
+        "Linked displays to compare low-water and high-water mosaics",
+        "Two-date false-color composite: low water in red, high water in green and blue",
+        "Pixel-value sampling at seven targets to tie each color to a scattering mechanism",
+        "ERS-2 C-band scene: look direction, specular and double-bounce targets, foreshortening and layover"
+      ],
+      deliverables: [
+        "Two-date radar change composite",
+        "Target table linking color, backscatter values, and land-cover change",
+        "Written interpretation of radar geometry and scattering"
+      ],
+      knowsAbout: ["remote sensing", "synthetic aperture radar", "SAR", "JERS-1", "ERS-2", "flood mapping", "change detection", "ENVI"],
+      links: []
+    },
+
+    {
+      // ---- FRONTRANGE-2026-11 | Vegetation indices ----
+      // Coursework: DU GIS 4700 Remote Sensing I, Lab 7. Guided lab on course-provided data.
+      project_id: "FRONTRANGE-2026-11",
+      project_name: "Front Range Vegetation Indices and Seasonal Change",
+      category: "Coursework",
+      status: "Delivered",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+      delivery_date: "7 November 2026",
+      site_address: "Boulder and the Front Range",
+      county: "",
+      state: "CO",
+      owner_name: "",
+
+      hero_shot: "images/frontrange-ndvi-hero.jpg",
+      thumbnail: "images/frontrange-ndvi-hero.jpg",
+
+      summary: "NDVI and Simple Ratio computed from June and September Landsat 5 scenes of the Colorado Front Range, measured over nine land-cover types to show what each index can and cannot tell you.",
+      overview: "A guided lab from Remote Sensing I at the University of Denver, using two Landsat 5 TM surface reflectance scenes of Boulder and the Front Range (21 June and 25 September 2010). The Simple Ratio (NIR divided by red) and NDVI were calculated in ENVI, then sampled with small regions of interest over nine land-cover types, from irrigated crops to downtown Denver. The chart above shows the September means. The two indices rank the classes the same way but behave differently at the ends of the range: NDVI spreads out sparse vegetation and separates vegetated from non-vegetated surfaces at about 0.2, while the Simple Ratio keeps climbing in dense canopies where NDVI flattens out. Comparing June with September then showed how harvest, leaf color change, clouds, and cloud shadow each move NDVI.",
+      key_technical_challenge: "Testing whether a ratio index cancels terrain shading. Two conifer pixels on opposite sides of a ridge gave NDVI of 0.447 (sunlit) and 0.599 (shaded). Part of that gap is real, since north-facing slopes carry denser forest, so shading and vegetation could not be fully separated from two pixels.",
+      lessons_learned: "NDVI measures green leaf cover visible from above, not biomass or land use: an irrigated park scored higher than conifer forest. Use NDVI for sparse cover and vegetation masks, and an unbounded ratio where canopies are dense. Two dates beat one, because the seasonal curve identifies a crop better than any single value. Class means came from small hand-drawn samples, so they describe those samples, not the whole scene.",
+
+      results: [
+        "September NDVI ranged from 0.831 (irrigated crop) to 0.055 (water); senesced grass at 0.275 was the lowest vegetated class.",
+        "Simple Ratio ran from 10.9 down to 1.1, with all non-vegetated classes below about 1.5.",
+        "Field 1 rose from 0.391 in June to 0.719 in September (a late-season row crop); Field 2 fell from 0.686 to 0.168 (harvested, consistent with a small grain).",
+        "An aspen stand dropped from 0.734 to 0.610 as leaves turned; a June cloud drove NDVI to -0.360 over forest that read 0.544 in September."
+      ],
+
+      flight: null,
+      processing: { software: "ENVI 6.1" },
+      crs: {
+        horizontal: "Landsat 5 TM, path 34 row 32, 30 m pixels",
+        vertical: "",
+        image: ""
+      },
+      parcel_stats: null,
+      coverage_acres: null,
+
+      methods: [
+        "Simple Ratio by band math and NDVI from red (band 3) and NIR (band 4) surface reflectance",
+        "2D scatter plot of Simple Ratio against NDVI to show where each index saturates",
+        "Nine land-cover ROIs with mean index statistics",
+        "Sunlit and shaded slope comparison for the same land cover",
+        "June to September NDVI change, sorted into land-cover change, phenology, and atmospheric effects"
+      ],
+      deliverables: [
+        "Simple Ratio and NDVI rasters for two dates",
+        "Land-cover index table and scatter plot",
+        "Seasonal change table with pixel locations and causes"
+      ],
+      knowsAbout: ["remote sensing", "NDVI", "vegetation indices", "Landsat", "phenology", "change detection", "ENVI"],
+      links: []
+    },
+
+    {
       // ---- GYATT-2025-12 — GyattChores ----
       // Software project. Uses the optional `stack` + `features` fields
       // (rendered by index.html and tools/build.mjs) instead of the drone blocks.

@@ -73,6 +73,8 @@ function projectPage(p) {
   if (hero) sections.push(`<img class="hero-img" src="../../${esc(hero)}" alt="${esc(p.project_name)}, ${esc(loc(p) || p.category)}">`);
   if (fig) sections.push(fig);
   if (p.overview) sections.push(`<section><h2>Overview</h2><p>${esc(p.overview)}</p></section>`);
+  if (p.results?.length) sections.push(`<section><h2>Results</h2><ul class="list">${p.results.map((r) => `<li>${esc(r)}</li>`).join("")}</ul></section>`);
+  if (p.figures?.length) sections.push(`<section><h2>Figures</h2>${p.figures.map((f, i) => `<figure class="fig shot"><img src="../../${esc(f.src)}" alt="${esc(f.caption)}" loading="lazy"><p class="bp-cap"><b>FIG. ${i + 1}</b> ${esc(f.caption)}</p></figure>`).join("")}</section>`);
   if (p.stack?.length) sections.push(`<section><h2>Stack</h2><div class="stack">${p.stack.map((t) => `<span>${esc(t)}</span>`).join("")}</div></section>`);
   if (p.features?.length) sections.push(`<section><h2>Features</h2><ul class="list">${p.features.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></section>`);
   const fr = flightRows(p.flight); if (fr.length) sections.push(`<section><h2>Flight</h2>${specsHTML(fr)}</section>`);

@@ -61,3 +61,6 @@ ul.list li::before{content:'+';font-family:var(--font-mono);color:var(--bp-acc);
 .back:hover{color:var(--bp-acc);}
 .fig{margin:0 0 2.2rem;padding:18px 16px 10px;background:rgba(255,255,255,.72);border:1.5px solid var(--text);}
 @media (max-width:640px){.crs .row{grid-template-columns:1fr;gap:2px}.crumbs{margin:0 -24px 24px}}
+
+.fig.shot{margin:0 0 1.4rem;padding:10px 10px 6px;}
+.fig.shot img{width:100%;height:auto;display:block;border:1px solid var(--border);}

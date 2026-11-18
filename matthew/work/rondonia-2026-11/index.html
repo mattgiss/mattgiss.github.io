@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amazon Deforestation Land-Cover Classification | Coursework | Matthew Gissentanna</title>
+  <meta name="description" content="Three classifiers run on one Landsat 7 scene of Amazon deforestation and checked against a published reference map: which ones separate forest, pasture, regrowth, and burn scars, and where each one…">
+  <link rel="canonical" href="https://gissentanna.com/matthew/work/rondonia-2026-11/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Amazon Deforestation Land-Cover Classification">
+  <meta property="og:description" content="Three classifiers run on one Landsat 7 scene of Amazon deforestation and checked against a published reference map: which ones separate forest, pasture, regrowth, and burn scars, and where each one…">
+  <meta property="og:url" content="https://gissentanna.com/matthew/work/rondonia-2026-11/">
+  <meta property="og:image" content="https://gissentanna.com/matthew/images/rondonia-hero.jpg">
+  <meta property="og:site_name" content="Liquid Sun Creative">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://gissentanna.com/matthew/images/rondonia-hero.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Portfolio","item":"https://gissentanna.com/matthew/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://gissentanna.com/matthew/#work"},{"@type":"ListItem","position":3,"name":"Amazon Deforestation Land-Cover Classification","item":"https://gissentanna.com/matthew/work/rondonia-2026-11/"}]},{"@type":"CreativeWork","name":"Amazon Deforestation Land-Cover Classification","headline":"Amazon Deforestation Land-Cover Classification","description":"Three classifiers run on one Landsat 7 scene of Amazon deforestation and checked against a published reference map: which ones separate forest, pasture, regrowth, and burn scars, and where each one…","image":"https://gissentanna.com/matthew/images/rondonia-hero.jpg","url":"https://gissentanna.com/matthew/work/rondonia-2026-11/","dateCreated":"13 November 2026","creator":{"@type":"Person","name":"Matthew Gissentanna","url":"https://gissentanna.com/matthew/"},"keywords":"remote sensing, land-cover classification, Landsat, ENVI, supervised classification, ISODATA, deforestation mapping"}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../work.css">
+  <link rel="stylesheet" href="../../diagram.css">
+  <script src="../../diagrams.js" defer></script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="wrap">
+  <nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span>Amazon Deforestation Land-Cover Classification</nav>
+  <span class="tag">Coursework</span>
+  <h1>Amazon Deforestation Land-Cover Classification</h1>
+  <div class="pid">RONDONIA-2026-11 · Delivered</div>
+  <div class="meta">Rondônia, Brazil · Delivered 13 November 2026</div>
+  <div class="bp bp-rule" data-bp aria-hidden="true"><svg viewBox="0 0 960 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<path id="bpr-p" class="ln draw" pathLength="1" style="--d:0s" d="M2 12 H958"/>
+<path class="ln fade" style="--d:.8s" d="M2 5 V19 M240 8 V16 M480 8 V16 M720 8 V16 M958 5 V19"/>
+<g class="drone fade" style="--d:1s"><circle r="3"/><animateMotion dur="9s" repeatCount="indefinite" begin="1s"><mpath href="#bpr-p"/></animateMotion></g>
+</svg></div>
+  <img class="hero-img" src="../../images/rondonia-hero.jpg" alt="Amazon Deforestation Land-Cover Classification, Rondônia, Brazil">
+  <section><h2>Overview</h2><p>A guided lab from Remote Sensing I at the University of Denver, using a Landsat 7 ETM+ scene (24 August 2000) of fishbone-pattern clearing in Rondônia, Brazil. The question was practical: if you need a land-cover map of an active deforestation front, how much does the choice of classifier matter? Six training classes (primary forest, pasture, second-growth forest, urban and bare soil, water, burn scar) were digitized as regions of interest in ENVI, then used to run Minimum Distance and Maximum Likelihood classifications. ISODATA unsupervised clustering was run at 3, 5, and 8 clusters for comparison. Every result was compared with the reference classification from Roberts et al. (2002). The left half of the image above is the 5-4-3 false-color composite; the right half is the Maximum Likelihood result for the same ground.</p></section>
+  <section><h2>Results</h2><ul class="list"><li>Maximum Likelihood tracked the reference map best. Over the comparison extent it mapped about 22% pasture and 3% urban, against 29% and 2% in the reference.</li><li>Minimum Distance labeled about 11% of the area urban and only 12% pasture, because bright and dry pasture pixels sit closer to the urban mean than to the pasture mean.</li><li>Rule-image scores showed primary forest is most easily confused with second-growth (-5.2 vs. -10.1) and least with pasture (-80.0).</li><li>ISODATA needed 8 clusters before water separated, and never produced an urban cluster.</li></ul></section>
+  <section><h2>Figures</h2><figure class="fig shot"><img src="../../images/rondonia-543.jpg" alt="Landsat 7 ETM+ 5-4-3 false-color composite. Forest is dark green, pasture is pink, burn scars are dark purple." loading="lazy"><p class="bp-cap"><b>FIG. 1</b> Landsat 7 ETM+ 5-4-3 false-color composite. Forest is dark green, pasture is pink, burn scars are dark purple.</p></figure><figure class="fig shot"><img src="../../images/rondonia-reference.jpg" alt="Reference classification (Roberts et al. 2002) used as the benchmark." loading="lazy"><p class="bp-cap"><b>FIG. 2</b> Reference classification (Roberts et al. 2002) used as the benchmark.</p></figure><figure class="fig shot"><img src="../../images/rondonia-mindist.jpg" alt="Minimum Distance. Large pastures break into urban (thistle) and scattered water (blue)." loading="lazy"><p class="bp-cap"><b>FIG. 3</b> Minimum Distance. Large pastures break into urban (thistle) and scattered water (blue).</p></figure><figure class="fig shot"><img src="../../images/rondonia-maxlike.jpg" alt="Maximum Likelihood. Pastures hold together and urban is limited to the town and bare fields." loading="lazy"><p class="bp-cap"><b>FIG. 4</b> Maximum Likelihood. Pastures hold together and urban is limited to the town and bare fields.</p></figure><figure class="fig shot"><img src="../../images/rondonia-isodata8.jpg" alt="ISODATA, 8 clusters, relabeled to the same legend. Forest and pasture are captured; urban is not." loading="lazy"><p class="bp-cap"><b>FIG. 5</b> ISODATA, 8 clusters, relabeled to the same legend. Forest and pasture are captured; urban is not.</p></figure></section>
+  <section><h2>Processing</h2><div class="specs"><div class="spec"><span class="l">Software</span><span class="v">ENVI 6.1</span></div></div></section>
+  <section><h2>Coordinate Reference Systems</h2><dl class="crs"><div class="row"><dt>Horizontal</dt><dd>UTM Zone 20 South, South American 1969 (30 m pixels)</dd></div></dl></section>
+  <section><h2>Methods</h2><ul class="list"><li>5-4-3 false-color composite for visual interpretation of the six classes</li><li>Six training ROIs, five small rectangles each, spread across the scene</li><li>Supervised classification: Minimum Distance and Maximum Likelihood, with rule images</li><li>Independent test ROIs and rule-image statistics to measure class confusion</li><li>ISODATA unsupervised clustering at 3, 5, and 8 clusters, each relabeled to the reference legend</li><li>Side-by-side comparison of every result with the reference classification</li></ul></section>
+  <section><h2>Deliverables</h2><ul class="list"><li>Two supervised classification rasters with rule images</li><li>Three ISODATA classification rasters</li><li>Training and test ROI files</li><li>Written analysis of class confusion and method comparison</li></ul></section>
+  <section><h2>Key Technical Challenge</h2><p>Second-growth forest and burn scars occur in small, irregular patches, so it is hard to find pure training and test pixels for them. An independent second-growth test area scored highest for burn scar, not second-growth, which showed the sample was mixed and that these two classes are the weak point of every method tried.</p></section>
+  <section><h2>Lessons Learned</h2><p>Classifier choice matters most for the spectrally variable classes. A classifier that models class variance (Maximum Likelihood) held pasture together where a means-only classifier (Minimum Distance) broke it apart. Unsupervised clusters are spectral groupings, not land uses: the town and bright pasture never separated, even at 8 clusters. Area percentages here were measured over one screen extent and are approximate, and no formal accuracy assessment (confusion matrix) was part of the exercise.</p></section>
+  <a class="back" href="/matthew/">← Back to portfolio</a>
+</main>
+</body>
+</html>
