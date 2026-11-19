@@ -1081,9 +1081,9 @@ export const PROJECTS = [
         "Skill file and agent docs so an AI agent can run shoots and extend the code for your own workflow"
       ],
       knowsAbout: ["Python", "AI agents", "media pipelines", "photo culling", "color grading", "LUTs", "HDR photography", "video editing automation", "exiftool", "ffmpeg"],
-      links: [
-        { label: "Source on GitHub", url: "https://github.com/mattgiss/shootpack", primary: true }
-      ]
+      // Add { label: "Source on GitHub", url: "https://github.com/mattgiss/shootpack", primary: true }
+      // once the repo is public.
+      links: []
     }
 
     /* ---- TEMPLATE — copy this whole block (with the comma) and paste above ----
