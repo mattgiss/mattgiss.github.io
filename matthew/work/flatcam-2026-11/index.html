@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ƒlatcam | Software | Matthew Gissentanna</title>
+  <meta name="description" content="A camera app for Android and iPhone that shoots a natural, flat capture and finishes it with film-style recipes you see live in the viewfinder. Flick-to-set dials for shutter, ISO, white balance and…">
+  <link rel="canonical" href="https://gissentanna.com/matthew/work/flatcam-2026-11/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ƒlatcam">
+  <meta property="og:description" content="A camera app for Android and iPhone that shoots a natural, flat capture and finishes it with film-style recipes you see live in the viewfinder. Flick-to-set dials for shutter, ISO, white balance and…">
+  <meta property="og:url" content="https://gissentanna.com/matthew/work/flatcam-2026-11/">
+  <meta property="og:image" content="https://gissentanna.com/matthew/images/flatcam-hero.jpg">
+  <meta property="og:site_name" content="Liquid Sun Creative">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://gissentanna.com/matthew/images/flatcam-hero.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Portfolio","item":"https://gissentanna.com/matthew/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://gissentanna.com/matthew/#work"},{"@type":"ListItem","position":3,"name":"ƒlatcam","item":"https://gissentanna.com/matthew/work/flatcam-2026-11/"}]},{"@type":"CreativeWork","name":"ƒlatcam","headline":"ƒlatcam","description":"A camera app for Android and iPhone that shoots a natural, flat capture and finishes it with film-style recipes you see live in the viewfinder. Flick-to-set dials for shutter, ISO, white balance and…","image":"https://gissentanna.com/matthew/images/flatcam-hero.jpg","url":"https://gissentanna.com/matthew/work/flatcam-2026-11/","creator":{"@type":"Person","name":"Matthew Gissentanna","url":"https://gissentanna.com/matthew/"},"keywords":"Android, Kotlin, Camera2, OpenGL ES, iOS, AVFoundation, Metal, color grading, 3D LUTs, computational photography"}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../work.css">
+  <link rel="stylesheet" href="../../diagram.css">
+  <script src="../../diagrams.js" defer></script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="wrap">
+  <nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span>ƒlatcam</nav>
+  <span class="tag">Software</span>
+  <h1>ƒlatcam</h1>
+  <div class="pid">FLATCAM-2026-11 · In Testing</div>
+  
+  <div class="bp bp-rule" data-bp aria-hidden="true"><svg viewBox="0 0 960 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<path id="bpr-p" class="ln draw" pathLength="1" style="--d:0s" d="M2 12 H958"/>
+<path class="ln fade" style="--d:.8s" d="M2 5 V19 M240 8 V16 M480 8 V16 M720 8 V16 M958 5 V19"/>
+<g class="drone fade" style="--d:1s"><circle r="3"/><animateMotion dur="9s" repeatCount="indefinite" begin="1s"><mpath href="#bpr-p"/></animateMotion></g>
+</svg></div>
+  <img class="hero-img" src="../../images/flatcam-hero.jpg" alt="ƒlatcam, Software">
+  <section><h2>Overview</h2><p>Phone cameras bake heavy processing into every photo. ƒlatcam goes the other way: it shoots flat, with natural colour, gentle contrast and room in the shadows and highlights, then applies a recipe, a film-style colour look rendered live in the viewfinder and either baked into the photo or shown only while shooting. Recipes come built in, import from .cube LUT files, or are made from any photo you like: the app reads that photo's tone, its colour in the shadows, midtones and highlights, and its saturation, and builds a look from it. Manual control runs through ruler dials that coast to a stop with a haptic click on every step, and the mode (auto, shutter priority, ISO priority or manual) follows whichever dials you turn. On Android it is built on Camera2 with an OpenGL ES 3 rendering pipeline; on iPhone on AVFoundation, Core Image and Metal. Night mode stacks several frames for cleaner low-light shots, and video records with the look baked in or as LOG.</p></section>
+  <section><h2>Stack</h2><div class="stack"><span>Kotlin + Camera2 (Android)</span><span>OpenGL ES 3 LUT renderer</span><span>Swift, AVFoundation, Core Image + Metal (iOS)</span><span>SwiftUI</span><span>.cube 3D LUT parser</span><span>Multi-frame night stacking</span><span>adb device test harness (Python)</span></div></section>
+  <section><h2>Features</h2><ul class="list"><li>Flat, natural capture with film-style recipes shown live in the viewfinder</li><li>Make a recipe from any photo, or import .cube LUT files; a strength dial from a hint to the full look</li><li>Flick-to-set ruler dials for shutter, ISO, white balance, focus and exposure, with a haptic click on every stop</li><li>Auto, shutter priority, ISO priority or full manual, chosen by the dials you turn</li><li>Right- or left-hand layout that keeps every control under your thumb; follows a foldable's cover and inner screens</li><li>Photo, Night (multi-frame stacking) and Video (look baked in, or LOG; 4K 30 or 1080p 60)</li><li>JPEG or RAW + JPEG, real focal-length lens chips, grid, self-timer</li><li>No account, no ads, no tracking and no internet permission</li></ul></section>
+  <section><h2>Key Technical Challenge</h2><p>Rendering a 3D LUT look live on the camera preview and applying exactly the same look to full-resolution photos and video, while keeping the viewfinder at the right aspect ratio through every fold state of a Galaxy Z Fold (cover screen, inner screen, tabletop, tent) without restarting the camera.</p></section>
+  <section><h2>Lessons Learned</h2><p>A device test harness pays for itself: scripted checks over wireless adb (cold launch, warm resume and every fold transition, with pixel statistics on screenshots and a crash-buffer check) caught layout and orientation bugs that would never show up on an emulator. Keeping the app offline by design, with no internet permission at all, made the privacy policy one sentence long.</p></section>
+  <section><h2>Links</h2><div class="links"><a class="btn " href="https://gissentanna.com/flatcam-site/" target="_blank" rel="noopener">Website</a><a class="btn sec" href="https://gissentanna.com/flatcam-site/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></div></section>
+  <a class="back" href="/matthew/">← Back to portfolio</a>
+</main>
+</body>
+</html>

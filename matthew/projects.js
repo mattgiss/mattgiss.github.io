@@ -945,38 +945,75 @@ export const PROJECTS = [
     },
 
     {
-      // ---- GYATT-2025-12 — GyattChores ----
+      // ---- DYW-2025-12 — DOYOURWORK (formerly GyattChores) ----
       // Software project. Uses the optional `stack` + `features` fields
       // (rendered by index.html and tools/build.mjs) instead of the drone blocks.
-      project_id: "GYATT-2025-12",
-      project_name: "GyattChores",
+      project_id: "DYW-2025-12",
+      project_name: "DOYOURWORK",
       category: "Software",
-      status: "Live",
+      status: "In Beta",
       portfolio_worthy: "Yes",
       confidential: "No",
 
-      hero_shot: "images/gyattchores-logo.svg",
-      thumbnail: "images/gyattchores-logo.svg",
+      hero_shot: "images/doyourwork-hero.svg",
+      thumbnail: "images/doyourwork-hero.svg",
 
-      summary: "A local-first, gamified family chore tracker. Kids log chores and parents approve them with a PIN; points feed daily and weekly leaderboards where the week's leader wears the 👑. Built as a single-file React 18 PWA that writes to localStorage first and syncs to Supabase only when the network allows — with a native SwiftUI companion for iPhone and Apple Watch.",
-      overview: "GyattChores began as a cloud-dependent React app and was rebuilt around a local-first architecture: every chore is written to the browser's localStorage instantly, so logging never blocks on the network and the app keeps working fully offline. When the shared Supabase backend is reachable, logs sync across devices in the background — local storage stays the source of truth and the cloud is a best-effort sync layer. The web app is a single self-contained HTML file (React 18 via CDN, Babel Standalone, hand-written Material-inspired dark CSS) installable as a PWA on iOS and Android, and a native SwiftUI app brings the same chore-logging to iPhone and Apple Watch. The repository is run under a lightweight, ITIL 4-aligned service-management system with change-control and incident documentation.",
-      key_technical_challenge: "Re-architecting from a network-blocking, cloud-first design to a local-first store that writes instantly and reconciles with Supabase in the background — keeping the parent-approval workflow trustworthy across devices without ever blocking a kid's tap on connectivity.",
-      lessons_learned: "Three things stuck. Logging should never block on the network, so localStorage became the source of truth and the cloud a best-effort sync layer. Perfect business rules on paper don't survive contact with real users — watching kids game the easy chores forced the real iteration. And enable row-level security from day one: it takes ten minutes and prevents disasters. Architecture should follow team size and timeline, not dogma — a single-file app was the right call for a solo, fast-moving project.",
+      summary: "A private chore scoreboard for a household, native on iPhone, iPad and Android. Everyone picks about 25 minutes of chores a day, an admin approves what got done, and points, streaks and a weekly winner follow. No accounts and no readable data on any server: a second phone syncs end-to-end encrypted. Formerly GyattChores; now in beta.",
+      overview: "DOYOURWORK started as GyattChores, one family's chore tracker: a single-file React web app that went from cloud-first to local-first with optional Supabase sync. It has since been rebuilt as native apps (SwiftUI for iPhone and iPad, Kotlin for Android) that follow the same scoring rules. Each player builds a daily card of chores up to a 25-minute budget, checks them off, and sends it; an admin, usually a parent behind their own code, approves or rejects each chore, and approved chores feed points, streaks and the weekly leaderboard. Chores nobody does grow bigger and move up the list. Families start from 27 everyday chores or describe their own by typing or dictating, and that list is parsed on the device. On one phone the app never goes online. Add a second phone and every change is encrypted on the device (AES-GCM via CryptoKit) with a key only the family's phones hold, so the server only ever relays scrambled copies. Backups go to a file the family controls, and one tap erases a family from the server.",
+      key_technical_challenge: "Keeping several phones in agreement on approvals, points and streaks while the server can't read anything it stores: all merging happens on the devices, from end-to-end encrypted changes, with the same scoring rules on iOS and Android so both platforms always reach the same totals.",
+      lessons_learned: "Rewriting a web app as native apps was the moment to rethink the data, not just the UI. Dropping accounts entirely and encrypting before anything leaves the phone made the privacy story simple to say and simple to keep. Rules that look fair on paper don't survive real kids, so escalation for skipped chores and 'nobody approves their own work' came from watching the first version get gamed. And automated UI tests on real devices catch the problems unit tests can't, like a system file panel that stalls.",
 
-      stack: ["React 18", "Babel Standalone", "localStorage (offline-first)", "Supabase (optional sync)", "PostgreSQL + RLS", "SwiftUI (iPhone + Apple Watch)", "PWA / iOS + Android install", "GitHub Pages"],
+      stack: ["SwiftUI (iPhone + iPad)", "Kotlin (Android)", "CryptoKit / AES-GCM end-to-end encryption", "On-device chore parsing", "XCTest + device UI tests", "Static marketing site on GitHub Pages"],
       features: [
-        "Local-first: every chore writes to localStorage instantly, so logging works fully offline and never blocks on the network",
-        "Best-effort Supabase sync in the background when the shared backend is reachable, with local storage as the source of truth",
-        "PIN-protected parent approval (with an 'approve all' shortcut) so points can't be self-awarded",
-        "Daily and weekly point tallies per player, with a 👑 for the week's leader",
-        "17 customizable chores with tunable point values",
-        "Installable PWA for iOS and Android, plus a native SwiftUI app for iPhone and Apple Watch",
-        "Run under a lightweight, ITIL 4-aligned service-management system (change control, incident docs)"
+        "Daily 25-minute chore card: pick your own or let the app suggest one",
+        "Admin approval behind a separate code, so nobody approves their own work",
+        "Points, streaks and a weekly winner on a shared leaderboard",
+        "Skipped chores grow bigger and move up the list until someone does them",
+        "27 starter chores, or type or dictate your own list; the parsing happens on the device",
+        "No accounts: one phone never goes online; a second phone syncs end-to-end encrypted",
+        "Backup to a file you control, and one-tap erase from the server",
+        "No ads, no tracking, no in-app purchases"
       ],
-      knowsAbout: ["React", "offline-first architecture", "Supabase", "PostgreSQL", "SwiftUI", "watchOS", "progressive web app", "ITIL service management"],
+      knowsAbout: ["SwiftUI", "Kotlin", "Android", "iOS", "end-to-end encryption", "CryptoKit", "offline-first architecture", "privacy by design"],
       links: [
-        { label: "Live App", url: "https://gyattchores.com", primary: true },
-        { label: "Source on GitHub", url: "https://github.com/mattgiss/gyattchores" }
+        { label: "Website", url: "https://doyourwork.today", primary: true },
+        { label: "Source on GitHub", url: "https://github.com/mattgiss/doyourwork" }
+      ]
+    },
+
+    {
+      // ---- FLATCAM-2026-11 — ƒlatcam ----
+      // Software project. Uses the optional `stack` + `features` fields.
+      project_id: "FLATCAM-2026-11",
+      project_name: "ƒlatcam",
+      category: "Software",
+      status: "In Testing",
+      portfolio_worthy: "Yes",
+      confidential: "No",
+
+      hero_shot: "images/flatcam-hero.jpg",
+      thumbnail: "images/flatcam-hero.jpg",
+
+      summary: "A camera app for Android and iPhone that shoots a natural, flat capture and finishes it with film-style recipes you see live in the viewfinder. Flick-to-set dials for shutter, ISO, white balance and focus, laid out for one hand, and a layout that follows a foldable as it opens and closes. No account, no ads and no internet permission.",
+      overview: "Phone cameras bake heavy processing into every photo. ƒlatcam goes the other way: it shoots flat, with natural colour, gentle contrast and room in the shadows and highlights, then applies a recipe, a film-style colour look rendered live in the viewfinder and either baked into the photo or shown only while shooting. Recipes come built in, import from .cube LUT files, or are made from any photo you like: the app reads that photo's tone, its colour in the shadows, midtones and highlights, and its saturation, and builds a look from it. Manual control runs through ruler dials that coast to a stop with a haptic click on every step, and the mode (auto, shutter priority, ISO priority or manual) follows whichever dials you turn. On Android it is built on Camera2 with an OpenGL ES 3 rendering pipeline; on iPhone on AVFoundation, Core Image and Metal. Night mode stacks several frames for cleaner low-light shots, and video records with the look baked in or as LOG.",
+      key_technical_challenge: "Rendering a 3D LUT look live on the camera preview and applying exactly the same look to full-resolution photos and video, while keeping the viewfinder at the right aspect ratio through every fold state of a Galaxy Z Fold (cover screen, inner screen, tabletop, tent) without restarting the camera.",
+      lessons_learned: "A device test harness pays for itself: scripted checks over wireless adb (cold launch, warm resume and every fold transition, with pixel statistics on screenshots and a crash-buffer check) caught layout and orientation bugs that would never show up on an emulator. Keeping the app offline by design, with no internet permission at all, made the privacy policy one sentence long.",
+
+      stack: ["Kotlin + Camera2 (Android)", "OpenGL ES 3 LUT renderer", "Swift, AVFoundation, Core Image + Metal (iOS)", "SwiftUI", ".cube 3D LUT parser", "Multi-frame night stacking", "adb device test harness (Python)"],
+      features: [
+        "Flat, natural capture with film-style recipes shown live in the viewfinder",
+        "Make a recipe from any photo, or import .cube LUT files; a strength dial from a hint to the full look",
+        "Flick-to-set ruler dials for shutter, ISO, white balance, focus and exposure, with a haptic click on every stop",
+        "Auto, shutter priority, ISO priority or full manual, chosen by the dials you turn",
+        "Right- or left-hand layout that keeps every control under your thumb; follows a foldable's cover and inner screens",
+        "Photo, Night (multi-frame stacking) and Video (look baked in, or LOG; 4K 30 or 1080p 60)",
+        "JPEG or RAW + JPEG, real focal-length lens chips, grid, self-timer",
+        "No account, no ads, no tracking and no internet permission"
+      ],
+      knowsAbout: ["Android", "Kotlin", "Camera2", "OpenGL ES", "iOS", "AVFoundation", "Metal", "color grading", "3D LUTs", "computational photography"],
+      links: [
+        { label: "Website", url: "https://gissentanna.com/flatcam-site/", primary: true },
+        { label: "Privacy Policy", url: "https://gissentanna.com/flatcam-site/privacy.html" }
       ]
     },
 
