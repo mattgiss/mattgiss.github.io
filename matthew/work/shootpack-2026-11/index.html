@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KTJSH5SZ');</script>
+  <!-- End Google Tag Manager -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>shootpack | Software | Matthew Gissentanna</title>
+  <meta name="description" content="An open media pipeline that takes a shoot folder from drone and camera cards to culled picks, HDR photos and a graded, beat-cut video in one step. It's built to be the base for your own media-culling…">
+  <link rel="canonical" href="https://gissentanna.com/matthew/work/shootpack-2026-11/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="shootpack">
+  <meta property="og:description" content="An open media pipeline that takes a shoot folder from drone and camera cards to culled picks, HDR photos and a graded, beat-cut video in one step. It's built to be the base for your own media-culling…">
+  <meta property="og:url" content="https://gissentanna.com/matthew/work/shootpack-2026-11/">
+  <meta property="og:image" content="https://gissentanna.com/matthew/images/shootpack-hero.svg">
+  <meta property="og:site_name" content="Liquid Sun Creative">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://gissentanna.com/matthew/images/shootpack-hero.svg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Portfolio","item":"https://gissentanna.com/matthew/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://gissentanna.com/matthew/#work"},{"@type":"ListItem","position":3,"name":"shootpack","item":"https://gissentanna.com/matthew/work/shootpack-2026-11/"}]},{"@type":"CreativeWork","name":"shootpack","headline":"shootpack","description":"An open media pipeline that takes a shoot folder from drone and camera cards to culled picks, HDR photos and a graded, beat-cut video in one step. It's built to be the base for your own media-culling…","image":"https://gissentanna.com/matthew/images/shootpack-hero.svg","url":"https://gissentanna.com/matthew/work/shootpack-2026-11/","creator":{"@type":"Person","name":"Matthew Gissentanna","url":"https://gissentanna.com/matthew/"},"keywords":"Python, AI agents, media pipelines, photo culling, color grading, LUTs, HDR photography, video editing automation, exiftool, ffmpeg"}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../work.css">
+  <link rel="stylesheet" href="../../diagram.css">
+  <script src="../../diagrams.js" defer></script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTJSH5SZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="wrap">
+  <nav class="crumbs"><a href="/matthew/">Portfolio</a><span class="sep">/</span><a href="/matthew/#work">Work</a><span class="sep">/</span>shootpack</nav>
+  <span class="tag">Software</span>
+  <h1>shootpack</h1>
+  <div class="pid">SHOOTPACK-2026-11 · Open Source</div>
+  
+  <div class="bp bp-rule" data-bp aria-hidden="true"><svg viewBox="0 0 960 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+<path id="bpr-p" class="ln draw" pathLength="1" style="--d:0s" d="M2 12 H958"/>
+<path class="ln fade" style="--d:.8s" d="M2 5 V19 M240 8 V16 M480 8 V16 M720 8 V16 M958 5 V19"/>
+<g class="drone fade" style="--d:1s"><circle r="3"/><animateMotion dur="9s" repeatCount="indefinite" begin="1s"><mpath href="#bpr-p"/></animateMotion></g>
+</svg></div>
+  <img class="hero-img" src="../../images/shootpack-hero.svg" alt="shootpack, Software">
+  <section><h2>Overview</h2><p>shootpack is the workflow I use to turn a day of shooting into finished edits, written down as code an agent can run. It starts at the card: offload copies every file to a dated archive with SHA-256 verification and only calls a card safe to format when every copy checks out. From there one command inventories the folder, detects each file's camera from its metadata and reads it with a device profile (DJI Mavic 4 Pro, Sony A1 II, Fujifilm X-E4, DJI Osmo 360 II, or a generic fallback), groups exposure brackets, and splits the shoot into sessions named by sun elevation. It auto-culls a varied set of picks and leaves an editable cull file you can override, HDR-merges brackets from the raws, detects each clip's log curve and grades it to Rec.709 with official or fitted LUTs plus your own creative looks, finds the steady camera moves in long takes, and cuts a short video on the beat of a licensed track. Re-running only does what's missing. Every step is a small Python script with its own doc, and the repo ships a skill file and agent docs so an AI agent knows how to run a shoot and where to change the code. Swap in your own devices, looks and rules, and it becomes your own culling and editing agent.</p></section>
+  <section><h2>Stack</h2><div class="stack"><span>Python 3</span><span>ffmpeg</span><span>exiftool</span><span>OpenCV + NumPy</span><span>rawpy</span><span>LightCraft HDR CLI</span><span>3D LUTs (.cube)</span><span>Claude Code skill + agent docs</span></div></section>
+  <section><h2>Features</h2><ul class="list"><li>Card offload with SHA-256 verification, date-sorted archive and a clear SAFE TO FORMAT signal</li><li>Per-camera device profiles detected from metadata; mixed drone, camera and 360 shoots in one folder</li><li>Auto-cull of a varied set of picks per session, with an editable cull file the pipeline never overwrites</li><li>HDR merges from raw brackets, sun-in-frame detection and full-res plus web exports</li><li>Log-curve detection and Rec.709 grading with official or fitted LUTs and your own creative looks</li><li>Short videos and trailers cut on the beat of a licensed track, in 4K, 1080p and 720p</li><li>Plan mode and re-runs that only do what's missing</li><li>Skill file and agent docs so an AI agent can run shoots and extend the code for your own workflow</li></ul></section>
+  <section><h2>Key Technical Challenge</h2><p>Making mixed-camera shoots behave like one: every file is matched to a device profile from its own metadata, dual-slot duplicates are confirmed by hash, each clip's log curve is measured from its code values rather than trusted from its label, and sessions, picks and the edit span all devices while every clip still gets the right LUT.</p></section>
+  <section><h2>Lessons Learned</h2><p>An agent is only as good as the process it's given. Writing the workflow as small, re-runnable steps with plain-file overrides (a cull.json the agent never overwrites) and a doc per area made it something an AI agent can run and extend safely, instead of a black box. Backups come first: nothing gets edited until the card's copy is verified.</p></section>
+  <a class="back" href="/matthew/">← Back to portfolio</a>
+</main>
+</body>
+</html>

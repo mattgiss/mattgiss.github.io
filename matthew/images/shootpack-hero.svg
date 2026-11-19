@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="shootpack — from a shoot folder to culled, graded edits">
+  <defs>
+    <linearGradient id="sp-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141a22"/>
+      <stop offset="0.6" stop-color="#1c2633"/>
+      <stop offset="1" stop-color="#2b2236"/>
+    </linearGradient>
+    <radialGradient id="sp-glow" cx="0.8" cy="0.26" r="0.65">
+      <stop offset="0" stop-color="#F5A623" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#F5A623" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .ey{font-family:'Helvetica Neue',Arial,sans-serif;font-size:30px;letter-spacing:7px;fill:#f5c46b;font-weight:700;}
+      .ti{font-family:'Helvetica Neue',Arial,sans-serif;font-size:118px;fill:#F6F0E0;font-weight:800;letter-spacing:-2px;}
+      .su{font-family:'Helvetica Neue',Arial,sans-serif;font-size:40px;fill:#e2e6ec;font-weight:400;}
+      .ch{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:28px;fill:#F6F0E0;font-weight:500;}
+    </style>
+  </defs>
+  <rect width="1200" height="900" fill="url(#sp-bg)"/>
+  <rect width="1200" height="900" fill="url(#sp-glow)"/>
+  <!-- contact sheet: frames being culled (top-right motif) -->
+  <g transform="translate(730,110)">
+    <rect x="-24" y="-24" width="396" height="300" rx="16" fill="#ffffff" opacity="0.07"/>
+    <!-- row 1 -->
+    <rect x="0" y="0" width="108" height="72" rx="6" fill="#5b7fa6"/>
+    <path d="M0 72 L30 44 L56 60 L82 36 L108 58 L108 72 Z" fill="#1c2633" opacity="0.6"/>
+    <rect x="124" y="0" width="108" height="72" rx="6" fill="#e9a54b"/>
+    <circle cx="200" cy="26" r="12" fill="#F6F0E0" opacity="0.85"/>
+    <rect x="248" y="0" width="108" height="72" rx="6" fill="#5b7fa6" opacity="0.35"/>
+    <!-- row 2 -->
+    <rect x="0" y="88" width="108" height="72" rx="6" fill="#5b7fa6" opacity="0.35"/>
+    <rect x="124" y="88" width="108" height="72" rx="6" fill="#c9756a"/>
+    <path d="M124 160 L160 124 L190 146 L232 112 L232 160 Z" fill="#1c2633" opacity="0.55"/>
+    <rect x="248" y="88" width="108" height="72" rx="6" fill="#7fb59a"/>
+    <!-- row 3 -->
+    <rect x="0" y="176" width="108" height="72" rx="6" fill="#e9a54b" opacity="0.9"/>
+    <rect x="124" y="176" width="108" height="72" rx="6" fill="#5b7fa6" opacity="0.35"/>
+    <rect x="248" y="176" width="108" height="72" rx="6" fill="#5b7fa6"/>
+    <path d="M248 248 L284 214 L314 232 L356 206 L356 248 Z" fill="#1c2633" opacity="0.55"/>
+    <!-- picks (check) -->
+    <g fill="#F5A623"><circle cx="96" cy="14" r="13"/><circle cx="220" cy="14" r="13"/><circle cx="220" cy="102" r="13"/><circle cx="344" cy="102" r="13"/><circle cx="96" cy="190" r="13"/><circle cx="344" cy="190" r="13"/></g>
+    <g fill="none" stroke="#141a22" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M90 14 l4 5 l8 -10"/><path d="M214 14 l4 5 l8 -10"/><path d="M214 102 l4 5 l8 -10"/><path d="M338 102 l4 5 l8 -10"/><path d="M90 190 l4 5 l8 -10"/><path d="M338 190 l4 5 l8 -10"/>
+    </g>
+  </g>
+  <text class="ey" x="110" y="440">OPEN SOURCE &#183; AGENT-READY</text>
+  <text class="ti" x="104" y="560">shootpack</text>
+  <text class="su" x="110" y="626">From a shoot folder to edits, in one step</text>
+  <!-- chips -->
+  <g>
+    <rect x="110" y="690" width="160" height="58" rx="8" fill="#ffffff" opacity="0.10"/>
+    <text class="ch" x="134" y="728">Offload</text>
+    <rect x="292" y="690" width="114" height="58" rx="8" fill="#ffffff" opacity="0.10"/>
+    <text class="ch" x="316" y="728">Cull</text>
+    <rect x="428" y="690" width="130" height="58" rx="8" fill="#ffffff" opacity="0.10"/>
+    <text class="ch" x="452" y="728">Grade</text>
+    <rect x="580" y="690" width="114" height="58" rx="8" fill="#ffffff" opacity="0.10"/>
+    <text class="ch" x="604" y="728">Edit</text>
+  </g>
+  <rect x="0" y="884" width="1200" height="16" fill="#F5A623"/>
+</svg>
