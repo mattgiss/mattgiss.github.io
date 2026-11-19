@@ -176,10 +176,10 @@
     <image:image><image:loc>https://gissentanna.com/matthew/images/recuter-hero.svg</image:loc><image:title>Recuter</image:title></image:image>
   </url>
   <url>
-    <loc>https://gissentanna.com/matthew/work/archive-2026-06/</loc>
+    <loc>https://gissentanna.com/matthew/work/shootpack-2026-11/</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
-    <image:image><image:loc>https://gissentanna.com/matthew/images/archive-hero.svg</image:loc><image:title>Photo &amp; Video Archive Toolkit</image:title></image:image>
+    <image:image><image:loc>https://gissentanna.com/matthew/images/shootpack-hero.svg</image:loc><image:title>shootpack</image:title></image:image>
   </url>
 </urlset>

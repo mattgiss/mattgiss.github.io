@@ -1051,35 +1051,38 @@ export const PROJECTS = [
     },
 
     {
-      // ---- ARCHIVE-2026-06 — Photo & Video Archive Toolkit ----
+      // ---- SHOOTPACK-2026-11 — shootpack ----
       // Software project. Uses the optional `stack` + `features` fields.
-      project_id: "ARCHIVE-2026-06",
-      project_name: "Photo & Video Archive Toolkit",
+      // Replaces ARCHIVE-2026-06: shootpack's offload step grew out of the archive toolkit.
+      project_id: "SHOOTPACK-2026-11",
+      project_name: "shootpack",
       category: "Software",
-      status: "Built",
+      status: "Open Source",
       portfolio_worthy: "Yes",
       confidential: "No",
 
-      hero_shot: "images/archive-hero.svg",
-      thumbnail: "images/archive-hero.svg",
+      hero_shot: "images/shootpack-hero.svg",
+      thumbnail: "images/shootpack-hero.svg",
 
-      summary: "A copy-only, hash-verified media pipeline that ingests camera cards and drives, date-sorts every photo and video by EXIF capture date, and indexes the whole collection into a searchable SQLite catalog — 90,484 files cataloged. Built in Python around exiftool and BLAKE2b checksums.",
-      overview: "A personal media-archival system that turns a chaotic 90k-file photo and video collection into one date-sorted, integrity-checked, instantly searchable archive. The core engine reads each file's EXIF capture date, files it under PhotoArchive or VideoArchive by date, BLAKE2b-hashes every copy to prove it is byte-perfect, skips anything already backed up, and records it in a SQLite catalog so the drive never needs rescanning. Sidecars (Lightroom .xmp, .aae, DJI .lrf/.srt) travel with their media. A pull → cull → project-SSD workflow then queries the catalog by camera, GPS, orientation, drone, or 4K duration, pulls a hash-verified selection onto a working drive, and promotes the keepers to a project SSD. One-click .command buttons and an Apple Shortcuts action make 'dump my cards' a single tap.",
-      key_technical_challenge: "Making the pipeline safe to trust and safe to re-run: every copy is hash-verified against its source, the whole process is idempotent (re-running only copies what is new), and sources are never modified — so a card can be formatted only after the tool confirms a byte-perfect, cataloged copy exists.",
-      lessons_learned: "When the data is irreplaceable, copy-only, verify-before-trust, and idempotent re-runs matter more than speed. A self-cataloging archive — index on write, never rescan — is what makes 90k files actually usable: the SQLite catalog turns 'find the 4K geotagged drone clips over 30 seconds' into a single SQL query.",
+      summary: "An open media pipeline that takes a shoot folder from drone and camera cards to culled picks, HDR photos and a graded, beat-cut video in one step. It's built to be the base for your own media-culling agent: fork it, add your cameras and your looks, and hand it to an AI agent to run quick edits for your personal brand.",
+      overview: "shootpack is the workflow I use to turn a day of shooting into finished edits, written down as code an agent can run. It starts at the card: offload copies every file to a dated archive with SHA-256 verification and only calls a card safe to format when every copy checks out. From there one command inventories the folder, detects each file's camera from its metadata and reads it with a device profile (DJI Mavic 4 Pro, Sony A1 II, Fujifilm X-E4, DJI Osmo 360 II, or a generic fallback), groups exposure brackets, and splits the shoot into sessions named by sun elevation. It auto-culls a varied set of picks and leaves an editable cull file you can override, HDR-merges brackets from the raws, detects each clip's log curve and grades it to Rec.709 with official or fitted LUTs plus your own creative looks, finds the steady camera moves in long takes, and cuts a short video on the beat of a licensed track. Re-running only does what's missing. Every step is a small Python script with its own doc, and the repo ships a skill file and agent docs so an AI agent knows how to run a shoot and where to change the code. Swap in your own devices, looks and rules, and it becomes your own culling and editing agent.",
+      key_technical_challenge: "Making mixed-camera shoots behave like one: every file is matched to a device profile from its own metadata, dual-slot duplicates are confirmed by hash, each clip's log curve is measured from its code values rather than trusted from its label, and sessions, picks and the edit span all devices while every clip still gets the right LUT.",
+      lessons_learned: "An agent is only as good as the process it's given. Writing the workflow as small, re-runnable steps with plain-file overrides (a cull.json the agent never overwrites) and a doc per area made it something an AI agent can run and extend safely, instead of a black box. Backups come first: nothing gets edited until the card's copy is verified.",
 
-      stack: ["Python 3", "SQLite", "exiftool", "BLAKE2b hashing", "rsync", "Bash", "Czkawka", "osxphotos", "Apple Shortcuts"],
+      stack: ["Python 3", "ffmpeg", "exiftool", "OpenCV + NumPy", "rawpy", "LightCraft HDR CLI", "3D LUTs (.cube)", "Claude Code skill + agent docs"],
       features: [
-        "Copy-only, hash-verified ingest — BLAKE2b-checksums every file; originals are never modified",
-        "Date-sorts photos and videos into PhotoArchive / VideoArchive by EXIF capture date",
-        "Idempotent dedup: re-running only copies what is new, never duplicates",
-        "Self-cataloging SQLite index of 90,484 files, queryable by camera, GPS, orientation, drone, and 4K duration",
-        "Pull → cull → project-SSD workflow with saved query presets and hash-verified selections",
-        "One-click 'Dump Cards' buttons plus an Apple Shortcuts action for menu-bar / Siri triggering"
+        "Card offload with SHA-256 verification, date-sorted archive and a clear SAFE TO FORMAT signal",
+        "Per-camera device profiles detected from metadata; mixed drone, camera and 360 shoots in one folder",
+        "Auto-cull of a varied set of picks per session, with an editable cull file the pipeline never overwrites",
+        "HDR merges from raw brackets, sun-in-frame detection and full-res plus web exports",
+        "Log-curve detection and Rec.709 grading with official or fitted LUTs and your own creative looks",
+        "Short videos and trailers cut on the beat of a licensed track, in 4K, 1080p and 720p",
+        "Plan mode and re-runs that only do what's missing",
+        "Skill file and agent docs so an AI agent can run shoots and extend the code for your own workflow"
       ],
-      knowsAbout: ["Python", "SQLite", "data pipelines", "metadata / EXIF", "automation", "photo and video archival"],
+      knowsAbout: ["Python", "AI agents", "media pipelines", "photo culling", "color grading", "LUTs", "HDR photography", "video editing automation", "exiftool", "ffmpeg"],
       links: [
-        { label: "Source on GitHub", url: "https://github.com/mattgiss/photo-archive-plugin", primary: true }
+        { label: "Source on GitHub", url: "https://github.com/mattgiss/shootpack", primary: true }
       ]
     }
 
