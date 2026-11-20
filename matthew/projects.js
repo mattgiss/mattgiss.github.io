@@ -951,14 +951,14 @@ export const PROJECTS = [
       project_id: "DYW-2025-12",
       project_name: "DOYOURWORK",
       category: "Software",
-      status: "In Beta",
+      status: "On the App Store",
       portfolio_worthy: "Yes",
       confidential: "No",
 
       hero_shot: "images/doyourwork-hero.svg",
       thumbnail: "images/doyourwork-hero.svg",
 
-      summary: "A private chore scoreboard for a household, native on iPhone, iPad and Android. Everyone picks about 25 minutes of chores a day, an admin approves what got done, and points, streaks and a weekly winner follow. No accounts and no readable data on any server: a second phone syncs end-to-end encrypted. Formerly GyattChores; now in beta.",
+      summary: "A private chore scoreboard for a household, native on iPhone, iPad and Android. Everyone picks about 25 minutes of chores a day, an admin approves what got done, and points, streaks and a weekly winner follow. No accounts and no readable data on any server: a second phone syncs end-to-end encrypted. Formerly GyattChores. Out now on the App Store for iPhone and iPad; the Android beta is open.",
       overview: "DOYOURWORK started as GyattChores, one family's chore tracker: a single-file React web app that went from cloud-first to local-first with optional Supabase sync. It has since been rebuilt as native apps (SwiftUI for iPhone and iPad, Kotlin for Android) that follow the same scoring rules. Each player builds a daily card of chores up to a 25-minute budget, checks them off, and sends it; an admin, usually a parent behind their own code, approves or rejects each chore, and approved chores feed points, streaks and the weekly leaderboard. Chores nobody does grow bigger and move up the list. Families start from 27 everyday chores or describe their own by typing or dictating, and that list is parsed on the device. On one phone the app never goes online. Add a second phone and every change is encrypted on the device (AES-GCM via CryptoKit) with a key only the family's phones hold, so the server only ever relays scrambled copies. Backups go to a file the family controls, and one tap erases a family from the server.",
       key_technical_challenge: "Keeping several phones in agreement on approvals, points and streaks while the server can't read anything it stores: all merging happens on the devices, from end-to-end encrypted changes, with the same scoring rules on iOS and Android so both platforms always reach the same totals.",
       lessons_learned: "Rewriting a web app as native apps was the moment to rethink the data, not just the UI. Dropping accounts entirely and encrypting before anything leaves the phone made the privacy story simple to say and simple to keep. Rules that look fair on paper don't survive real kids, so escalation for skipped chores and 'nobody approves their own work' came from watching the first version get gamed. And automated UI tests on real devices catch the problems unit tests can't, like a system file panel that stalls.",
@@ -976,7 +976,9 @@ export const PROJECTS = [
       ],
       knowsAbout: ["SwiftUI", "Kotlin", "Android", "iOS", "end-to-end encryption", "CryptoKit", "offline-first architecture", "privacy by design"],
       links: [
-        { label: "Website", url: "https://doyourwork.today", primary: true },
+        { label: "App Store", url: "https://apps.apple.com/us/app/doyourwork/id6833601994", primary: true },
+        { label: "Join the Android beta", url: "https://doyourwork.today/#beta" },
+        { label: "Website", url: "https://doyourwork.today" },
         { label: "Source on GitHub", url: "https://github.com/mattgiss/doyourwork" }
       ]
     },
@@ -987,14 +989,14 @@ export const PROJECTS = [
       project_id: "FLATCAM-2026-11",
       project_name: "ƒlatcam",
       category: "Software",
-      status: "In Testing",
+      status: "On the App Store",
       portfolio_worthy: "Yes",
       confidential: "No",
 
       hero_shot: "images/flatcam-hero.jpg",
       thumbnail: "images/flatcam-hero.jpg",
 
-      summary: "A camera app for Android and iPhone that shoots a natural, flat capture and finishes it with film-style recipes you see live in the viewfinder. Flick-to-set dials for shutter, ISO, white balance and focus, laid out for one hand, and a layout that follows a foldable as it opens and closes. No account, no ads and no internet permission.",
+      summary: "A camera app for Android and iPhone that shoots a natural, flat capture and finishes it with film-style recipes you see live in the viewfinder. Flick-to-set dials for shutter, ISO, white balance and focus, laid out for one hand, and a layout that follows a foldable as it opens and closes. No account, no ads and no internet permission. Out now on the App Store for iPhone; the Android beta is open.",
       overview: "Phone cameras bake heavy processing into every photo. ƒlatcam goes the other way: it shoots flat, with natural colour, gentle contrast and room in the shadows and highlights, then applies a recipe, a film-style colour look rendered live in the viewfinder and either baked into the photo or shown only while shooting. Recipes come built in, import from .cube LUT files, or are made from any photo you like: the app reads that photo's tone, its colour in the shadows, midtones and highlights, and its saturation, and builds a look from it. Manual control runs through ruler dials that coast to a stop with a haptic click on every step, and the mode (auto, shutter priority, ISO priority or manual) follows whichever dials you turn. On Android it is built on Camera2 with an OpenGL ES 3 rendering pipeline; on iPhone on AVFoundation, Core Image and Metal. Night mode stacks several frames for cleaner low-light shots, and video records with the look baked in or as LOG.",
       key_technical_challenge: "Rendering a 3D LUT look live on the camera preview and applying exactly the same look to full-resolution photos and video, while keeping the viewfinder at the right aspect ratio through every fold state of a Galaxy Z Fold (cover screen, inner screen, tabletop, tent) without restarting the camera.",
       lessons_learned: "A device test harness pays for itself: scripted checks over wireless adb (cold launch, warm resume and every fold transition, with pixel statistics on screenshots and a crash-buffer check) caught layout and orientation bugs that would never show up on an emulator. Keeping the app offline by design, with no internet permission at all, made the privacy policy one sentence long.",
@@ -1012,7 +1014,9 @@ export const PROJECTS = [
       ],
       knowsAbout: ["Android", "Kotlin", "Camera2", "OpenGL ES", "iOS", "AVFoundation", "Metal", "color grading", "3D LUTs", "computational photography"],
       links: [
-        { label: "Website", url: "https://gissentanna.com/flatcam-site/", primary: true },
+        { label: "App Store", url: "https://apps.apple.com/us/app/%C6%92latcam/id6835015210", primary: true },
+        { label: "Join the Android beta", url: "https://gissentanna.com/flatcam-site/#android-beta" },
+        { label: "Website", url: "https://gissentanna.com/flatcam-site/" },
         { label: "Privacy Policy", url: "https://gissentanna.com/flatcam-site/privacy.html" }
       ]
     },
